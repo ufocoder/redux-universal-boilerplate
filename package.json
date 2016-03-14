@@ -1,0 +1,75 @@
+{
+  "name": "universal-react-boilerplate",
+  "description": "Boilerplate of an isomorphic (universal) react application",
+  "author": "Sergey Ivanov <xufocoder@gmail.com>",
+  "license": "MIT",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ufocoder/universal-react-boilerplate"
+  },
+  "homepage": "https://github.com/ufocoder/universal-react-boilerplate",
+  "keywords": [
+    "react",
+    "react-router",
+    "universal",
+    "webpack",
+    "express",
+    "redux",
+    "boilerplate",
+    "babel"
+  ],
+  "main": "bin/server.js",
+  "scripts": {
+    "start": "forever --minUptime 1000 --spinSleepTime 1000 -c \"node --harmony\" ./bin/server.js",
+    "build-server": "webpack --colors --display-error-details --config webpack/server/config.js",
+    "build-client": "webpack --colors --display-error-details --config webpack/client/config.js",
+    "build": "concurrently \"npm run build-server\" \"npm run build-client\"",
+    "watch": "concurrently --kill-others \"npm run watch-server-start\" \"npm run watch-server\" \"npm run watch-client\"",
+    "watch-server-start": "node node_modules/just-wait --pattern \"dist/*.js\" && npm run start",
+    "watch-server": "webpack --watch --verbose --colors --display-error-details --config webpack/server/watch.js",
+    "watch-client": "webpack-dev-server --config webpack/client/watch.js",
+    "lint": "eslint ./src ./bin -c ./.eslintrc"
+  },
+  "dependencies": {
+    "axios": "^0.9.1",
+    "babel": "6.5.2",
+    "babel-core": "6.5.2",
+    "babel-loader": "6.2.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-polyfill": "6.5.0",
+    "babel-preset-es2015": "6.5.0",
+    "babel-preset-react": "6.5.0",
+    "babel-preset-react-hmre": "1.1.0",
+    "babel-preset-stage-0": "6.5.0",
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "file-loader": "^0.8.5",
+    "forever": "0.15.1",
+    "lodash": "^4.6.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.4.0",
+    "react-router": "^2.0.0",
+    "react-router-redux": "^4.0.0",
+    "react-tap-event-plugin": "0.2.2",
+    "redux": "^3.3.1",
+    "redux-thunk": "^1.0.3",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.14",
+    "webpack-isomorphic-tools": "^2.2.30"
+  },
+  "devDependencies": {
+    "concurrently": "^2.0.0",
+    "eslint": "^2.2.0",
+    "eslint-config-google": "^0.4.0",
+    "eslint-plugin-react": "^4.1.0",
+    "just-wait": "^1.0.5",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-node-externals": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  }
+}

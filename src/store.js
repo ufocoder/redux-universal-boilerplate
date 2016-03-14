@@ -1,0 +1,33 @@
+/* global window, __DEV__, __CLIENT__ */
+
+import {createStore, applyMiddleware, compose} from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers';
+
+export default function(initialState) {
+  let finalCreateStore;
+
+  if (__DEV__ && __CLIENT__) {
+    finalCreateStore = compose(
+      applyMiddleware(thunk),
+      typeof window === 'object' &&
+      typeof window.devToolsExtension !== 'undefined' ?
+             window.devToolsExtension() : f => f
+    )(createStore);
+  } else {
+    finalCreateStore = compose(
+      applyMiddleware(thunk)
+    )(createStore);
+  }
+
+  const store = finalCreateStore(rootReducer, initialState);
+
+  if (__DEV__ && module.hot) {
+    module.hot.accept('./reducers', () => {
+      const {reducer: nextReducer} = require('./reducers/index');
+      store.replaceReducer(nextRootReducer);
+    });
+  }
+
+  return store;
+}
