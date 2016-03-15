@@ -1,4 +1,5 @@
 /* global webpackIsomorphicTools, __DEV__ */
+/* eslint no-console: [2, { allow: ["log"] }] */
 
 import BabelPolyFill from 'babel-polyfill';
 import path from 'path';

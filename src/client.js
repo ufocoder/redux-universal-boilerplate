@@ -1,5 +1,5 @@
 /* global window, __PRODUCTION__ */
-/* eslint no-console: 0 */
+/* eslint no-console: [2, { allow: ["error"] }] */
 
 import BabelPolyFill from 'babel-polyfill';
 import React from 'react';
