@@ -1,21 +1,24 @@
 {
-  "name": "universal-react-boilerplate",
+  "name": "redux-universal-boilerplate",
   "description": "Boilerplate of an isomorphic (universal) react application",
   "author": "Sergey Ivanov <xufocoder@gmail.com>",
   "license": "MIT",
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ufocoder/universal-react-boilerplate"
+    "url": "https://github.com/ufocoder/redux-universal-boilerplate"
   },
-  "homepage": "https://github.com/ufocoder/universal-react-boilerplate",
+  "homepage": "https://github.com/ufocoder/redux-universal-boilerplate",
   "keywords": [
     "react",
     "react-router",
+    "react-redux",
+    "redux",
     "universal",
+    "isomorphic",
     "webpack",
     "express",
-    "redux",
+    "starter-kit",
     "boilerplate",
     "babel"
   ],

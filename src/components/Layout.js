@@ -8,7 +8,7 @@ export default class Layout extends React.Component {
   render() {
     return (
       <div>
-        <h1>Universal react boilerplate</h1>
+        <h1>Redux universal boilerplate</h1>
 
         <menu>
           <Link to="/">homepage</Link>
