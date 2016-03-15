@@ -1,9 +1,12 @@
 {
   "extends": [
     "eslint-config-google",
-    "eslint:recommended", 
-    "plugin:react/recommended"
+    "plugin:react/recommended",
   ],
+  "rules": {
+    "no-unused-vars": 0 
+  },
+  "parser": "babel-eslint",
   "plugins": [
     "react"
   ]
