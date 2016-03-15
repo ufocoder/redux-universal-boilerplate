@@ -18,14 +18,17 @@ Boilerplate based on:
 # Features
 
 * Server and client side rendering
-* Routing
+* Routing on clietn and server sides
 * Html layout as `react` component
 * Not Found page with 404 HTTP status
 
+# Installation
 
-## List of main npm commands
+```bash
+git clone https://github.com/ufocoder/universal-react-boilerplate.git
+cd universal-react-boilerplate
 
-* `build` - build `server` and `client` bundles 
-* `start` - run application on default or specified port
-* `watch` - run application in hot loading mode
-* `lint` - check codestyle
+npm install
+NODE_ENV=production npm run build
+NODE_ENV=production npm run start
+```
