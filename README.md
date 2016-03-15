@@ -3,6 +3,7 @@ Redux universal boilerplate
 
 Boilerplate for react universal application building on flux architecture based on redux implementation.
 
+[![Dependencies](https://david-dm.org/ufocoder/redux-universal-boilerplate.svg)](https://david-dm.org/ufocoder/redux-universal-boilerplate)
 [![MIT License](https://img.shields.io/npm/l/check-dependencies.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
 Boilerplate based on:
