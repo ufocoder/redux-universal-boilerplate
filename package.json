@@ -29,7 +29,7 @@
     "watch-server-start": "node node_modules/just-wait --pattern \"dist/*.js\" && npm run start",
     "watch-server": "webpack --watch --verbose --colors --display-error-details --config webpack/server/watch.js",
     "watch-client": "webpack-dev-server --config webpack/client/watch.js",
-    "lint": "eslint ./src ./bin -c ./.eslintrc"
+    "lint": "eslint ./src ./bin ./webpack -c ./.eslintrc"
   },
   "dependencies": {
     "axios": "^0.9.1",
