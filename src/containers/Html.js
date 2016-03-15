@@ -1,3 +1,6 @@
+/* eslint max-len: [2, 120, 4] */
+/* eslint react/no-danger: 0 */
+
 import React, {PropTypes} from "react";
 import {CONTAINER_ID} from '../constants/application';
 
@@ -19,9 +22,8 @@ export default class Html extends React.Component {
     images: PropTypes.array
   }
   render() {
-
-    const { assets, state, content, lang } = this.props;
-    const { title, description, siteName, currentUrl, images } = this.props;
+    const {assets, state, content, lang} = this.props;
+    const {title, description, siteName, currentUrl, images} = this.props;
 
     return (
       <html lang={ lang }>

@@ -34,7 +34,7 @@ module.exports = _.merge(config, {
   output: {
     publicPath: config.devServer.publicPath,
     hotUpdateMainFilename: "update/[hash]/update.json",
-    hotUpdateChunkFilename: "update/[hash]/[id].update.js",
+    hotUpdateChunkFilename: "update/[hash]/[id].update.js"
   },
   plugins: [
     new webpack.DefinePlugin({

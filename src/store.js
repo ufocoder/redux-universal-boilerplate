@@ -4,6 +4,12 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
+/**
+ * Return store
+ *
+ * @param {object} initialState Initial state for store
+ * @return {object} Returns store with state
+ */
 export default function(initialState) {
   let finalCreateStore;
 
@@ -24,7 +30,7 @@ export default function(initialState) {
 
   if (__DEV__ && module.hot) {
     module.hot.accept('./reducers', () => {
-      const {reducer: nextReducer} = require('./reducers/index');
+      const nextRootReducer = require('./reducers/index');
       store.replaceReducer(nextRootReducer);
     });
   }

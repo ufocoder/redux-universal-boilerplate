@@ -33,7 +33,10 @@ app.use(cookieParser());
 app.use(Express.static(publicPath));
 
 app.use((req, res, next) => {
-  match({routes, location: req.path}, (error, redirectLocation, renderProps) => {
+  match({
+    routes,
+    location: req.path
+  }, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
       res.redirect(redirectLocation.pathname + redirectLocation.search);
       return;
@@ -46,7 +49,8 @@ app.use((req, res, next) => {
 
     const assets = webpackIsomorphicTools.assets();
     const lang = req.locale;
-    const state = 'window.__INITIAL_STATE__=' + JSON.stringify(initialState) + ';';
+    const state = 'window.__INITIAL_STATE__=' +
+      JSON.stringify(initialState) + ';';
     const content = ReactDOM.renderToString(
       <Provider store={store}>
         <RouterContext {...renderProps} />

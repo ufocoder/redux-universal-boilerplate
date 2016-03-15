@@ -1,3 +1,5 @@
+/* eslint max-len: [2, 120, 4] */
+
 var _ = require('lodash');
 var webpack = require('webpack');
 var path = require('path');
@@ -9,7 +11,7 @@ var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
 
 module.exports = _.merge(config, {
-  target:  'node',
+  target: 'node',
   devtool: 'source-map',
   entry: [
     path.resolve(path.join(appPath, 'src', 'server'))
@@ -21,7 +23,7 @@ module.exports = _.merge(config, {
   module: {
     loaders: [
       {
-        test: /\.json$/, 
+        test: /\.json$/,
         loaders: ['json']
       },
       {
@@ -33,7 +35,7 @@ module.exports = _.merge(config, {
         loader: 'babel',
         query: {
           cacheDirectory: true,
-          plugins: ['transform-decorators-legacy' ],
+          plugins: ['transform-decorators-legacy'],
           presets: ['es2015', 'stage-0', 'react']
         },
         exclude: /node_modules/
@@ -43,7 +45,7 @@ module.exports = _.merge(config, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      __CLIENT__: false, 
+      __CLIENT__: false,
       __SERVER__: true,
       __PRODUCTION__: process.env.NODE_ENV === 'production',
       __DEV__: process.env.NODE_ENV !== 'production'

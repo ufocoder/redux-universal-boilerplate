@@ -1,3 +1,5 @@
+/* eslint camelcase: [2, {properties: "never"}] */
+
 var path = require('path');
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 
@@ -5,7 +7,7 @@ module.exports = {
   webpack_assets_file_path: '../webpack-assets.json',
   webpack_stats_file_path: '../webpack-stats.json',
   assets: {
-    images:  {
+    images: {
       extensions: [
         'png',
         'jpg',
@@ -19,9 +21,14 @@ module.exports = {
     },
     styles: {
       extension: 'scss',
-      filter(module, regular_expression, options, log) {
+      filter(module, regularExpression, options, log) {
         if (options.development) {
-          return WebpackIsomorphicToolsPlugin.style_loader_filter(module, regular_expression, options, log)
+          return WebpackIsomorphicToolsPlugin.style_loader_filter(
+            module,
+            regularExpression,
+            options,
+            log
+          );
         }
       },
       path: WebpackIsomorphicToolsPlugin.style_loader_path_extractor,
