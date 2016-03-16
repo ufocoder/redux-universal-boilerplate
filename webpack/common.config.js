@@ -1,4 +1,3 @@
-var _ = require('lodash');
 var webpack = require('webpack');
 
 module.exports = {
