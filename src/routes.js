@@ -2,8 +2,8 @@ import React from 'react';
 import {browserHistory, Router, Route, IndexRoute} from 'react-router';
 import Layout from './components/Layout';
 import NotFound from './components/NotFound';
-import About from './components/About';
-import Home from './components/Home';
+import About from './components/Page/About';
+import Home from './components/Page/Home';
 
 module.exports = (
   <Router history={browserHistory}>

@@ -1,7 +1,7 @@
 import React from "react";
-import {BASE_URL} from "../constants/application";
+import {BASE_URL} from "../../constants/application";
 
-export default class Layout extends React.Component {
+export default class Home extends React.Component {
   render() {
     return (
       <div>
