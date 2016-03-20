@@ -17,10 +17,18 @@ module.exports = {
       ]
     },
     fonts: {
-      extension: 'woff'
+      extensions: [
+        'woff',
+        'woff2',
+        'ttf',
+        'eot'
+      ]
     },
     styles: {
-      extension: 'scss',
+      extensions: [
+        'css',
+        'scss'
+      ],
       filter(module, regularExpression, options, log) {
         if (options.development) {
           return WebpackIsomorphicToolsPlugin.style_loader_filter(
