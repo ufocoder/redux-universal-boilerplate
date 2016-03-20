@@ -34,7 +34,7 @@
     "watch-client": "webpack-dev-server --config webpack/client/watch.js",
     "test": "karma start ./tests/karma.config.js --single-run",
     "tdd": "karma start ./tests/karma.config.js no-single-run",
-    "lint": "eslint ./src ./bin ./webpack -c ./.eslintrc"
+    "lint": "eslint ./src ./bin ./webpack ./tests -c ./.eslintrc"
   },
   "dependencies": {
     "axios": "^0.9.1",
