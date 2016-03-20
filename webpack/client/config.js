@@ -28,6 +28,18 @@ module.exports = _.merge(config, {
         loaders: ['json']
       },
       {
+        test: webpackIsomorphicToolsPlugin.regular_expression('styles'),
+        loaders: ['css']
+      },
+      {
+        test: webpackIsomorphicToolsPlugin.regular_expression('images'),
+        loader: 'url?limit=10240'
+      },
+      {
+        test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
+        loader: 'file'
+      },
+      {
         test: /\.js$/,
         loader: 'babel',
         query: {
@@ -36,10 +48,6 @@ module.exports = _.merge(config, {
           presets: ['es2015', 'stage-0', 'react']
         },
         exclude: /node_modules/
-      },
-      {
-        test: webpackIsomorphicToolsPlugin.regular_expression('images'),
-        loader: 'url-loader?limit=10240'
       }
     ],
     noParse: /\.min\.js/

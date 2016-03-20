@@ -27,8 +27,16 @@ module.exports = _.merge(config, {
         loaders: ['json']
       },
       {
+        test: webpackIsomorphicToolsPlugin.regular_expression('styles'),
+        loaders: ['css']
+      },
+      {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
-        loader: 'url-loader?limit=10240'
+        loader: 'url?limit=10240'
+      },
+      {
+        test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
+        loader: 'file'
       },
       {
         test: /\.js$/,
