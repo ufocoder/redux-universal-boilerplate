@@ -1,3 +1,4 @@
+var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
@@ -24,7 +25,17 @@ module.exports = {
         exclude: /node_modules/
       }
     ],
-    noParse: /\.min\.js/
+    noParse: [
+      /\.min\.js/,
+      /sinon/
+    ]
+  },
+  resolve: {
+      modulesDirectories: ['node_modules'],
+      alias: {
+          src: path.dirname(__dirname) + '/src/',
+          sinon: 'sinon/pkg/sinon'
+      }
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -33,5 +44,9 @@ module.exports = {
       __PRODUCTION__: process.env.NODE_ENV === 'production',
       __DEV__: process.env.NODE_ENV !== 'production'
     })
-  ]
+  ],
+  externals: {
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+  }
 };
