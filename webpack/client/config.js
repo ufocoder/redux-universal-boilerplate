@@ -33,11 +33,11 @@ module.exports = _.merge(config, {
       },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
-        loader: 'url?limit=10240'
+        loader: 'url?limit=10240&name=dist/img/[hash].[ext]'
       },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
-        loader: 'file'
+        loader: 'file?name=dist/fonts/[hash].[ext]'
       },
       {
         test: /\.js$/,
