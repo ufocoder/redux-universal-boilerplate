@@ -4,8 +4,10 @@ export default class About extends React.Component {
   render() {
     return (
       <div>
-        <h2>About</h2>
-        <p>text about</p>
+        <p>
+          Boilerplate for react universal application building on
+          flux architecture based on redux implementation.
+        </p>
       </div>
     );
   }
