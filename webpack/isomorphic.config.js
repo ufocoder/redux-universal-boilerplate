@@ -42,7 +42,7 @@ module.exports = {
       },
       path: function(module, options, log) {
         if (options.development) {
-          WebpackIsomorphicToolsPlugin.style_loader_path_extractor(
+          return WebpackIsomorphicToolsPlugin.style_loader_path_extractor(
             module,
             options,
             log
@@ -53,7 +53,7 @@ module.exports = {
       },
       parser: function(module, options, log) {
         if (options.development) {
-          WebpackIsomorphicToolsPlugin.css_loader_parser(
+          return WebpackIsomorphicToolsPlugin.css_loader_parser(
             module,
             options,
             log
