@@ -1,6 +1,5 @@
 /* eslint camelcase: [2, {properties: "never"}] */
 
-var path = require('path');
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 
 module.exports = {
