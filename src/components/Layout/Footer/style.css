@@ -1,0 +1,7 @@
+@media (min-height: 320px) {
+  footer.ui.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}

@@ -2,8 +2,7 @@ import React, {PropTypes} from "react";
 import Header from './Header';
 import Footer from './Footer';
 
-import 'semantic-ui-css/components/reset.css';
-import 'semantic-ui-css/components/container.css';
+import 'semantic-ui-css/semantic.css';
 
 export default class Layout extends React.Component {
   static propTypes = {
@@ -13,7 +12,9 @@ export default class Layout extends React.Component {
     return (
       <div>
         <Header />
-        { this.props.children }
+        <div className="ui text main-container container">
+          { this.props.children }
+        </div>
         <Footer />
       </div>
     );

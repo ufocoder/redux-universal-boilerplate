@@ -1,18 +1,15 @@
 import React from "react";
-import {Link} from 'react-router';
+import {IndexLink, Link} from 'react-router';
 
 export default class Header extends React.Component {
   render() {
     return (
-      <div>
-        <header>
-          <h1>Redux universal boilerplate</h1>
-        </header>
-        <menu>
-          <Link to="/">homepage</Link>
-          { " | "}
-          <Link to="/about">about</Link>
-        </menu>
+      <div className="ui text container">
+        <h1 className="ui dividing header">Redux universal boilerplate</h1>
+        <div className="ui secondary pointing menu">
+          <IndexLink to="/" className="item" activeClassName="active">Homepage</IndexLink>
+          <Link to="/about" className="item" activeClassName="active">About</Link>
+        </div>
       </div>
     );
   }
