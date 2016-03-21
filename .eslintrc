@@ -13,5 +13,8 @@
   "env": {
     "node": true,
     "mocha": true,
+  },
+  "globals": {
+    "expect": true
   }
 }
