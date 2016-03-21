@@ -9,7 +9,6 @@ module.exports = {
         test: /\.json$/,
         loaders: ['json']
       },
-
       {
         test: /\.png$/,
         loader: 'url-loader?limit=10240'
@@ -31,11 +30,11 @@ module.exports = {
     ]
   },
   resolve: {
-      modulesDirectories: ['node_modules'],
-      alias: {
-          src: path.dirname(__dirname) + '/src/',
-          sinon: 'sinon/pkg/sinon'
-      }
+    modulesDirectories: ['node_modules'],
+    alias: {
+      src: path.dirname(__dirname) + '/src/',
+      sinon: 'sinon/pkg/sinon'
+    }
   },
   plugins: [
     new webpack.DefinePlugin({

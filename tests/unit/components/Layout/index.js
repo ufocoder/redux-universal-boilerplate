@@ -1,6 +1,6 @@
 import React from 'react';
 import sinon from 'sinon';
-import { shallow, mount, render } from 'enzyme';
+import {shallow, mount, render} from 'enzyme';
 import Layout from 'src/components/Layout';
 import Header from 'src/components/Layout/Header';
 import Footer from 'src/components/Layout/Footer';

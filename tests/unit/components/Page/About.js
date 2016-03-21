@@ -1,6 +1,6 @@
 import React from 'react';
 import sinon from 'sinon';
-import { shallow, mount, render } from 'enzyme';
+import {shallow, mount, render} from 'enzyme';
 import About from 'src/components/Page/About';
 
 describe("<About />", function() {

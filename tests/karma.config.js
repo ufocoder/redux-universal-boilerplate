@@ -1,4 +1,4 @@
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
     frameworks: [
       'mocha',
@@ -7,13 +7,13 @@ module.exports = function (config) {
     ],
     browsers: ['PhantomJS'],
     plugins: [
-        'karma-mocha',
-        'karma-chai',
-        'karma-sinon',
-        'karma-phantomjs-launcher',
-        'karma-sourcemap-loader',
-        'karma-coverage',
-        require('karma-webpack')
+      'karma-mocha',
+      'karma-chai',
+      'karma-sinon',
+      'karma-phantomjs-launcher',
+      'karma-sourcemap-loader',
+      'karma-coverage',
+      require('karma-webpack')
     ],
     reporters: ['dots'],
     preprocessors: {
