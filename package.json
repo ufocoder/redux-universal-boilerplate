@@ -88,8 +88,7 @@
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^0.14.7",
     "sinon": "^1.17.3",
-    "webpack-dev-server": "^1.14.1",
-    "webpack-node-externals": "^1.0.0"
+    "webpack-dev-server": "^1.14.1"
   },
   "engines": {
     "node": ">=4.0.0"
