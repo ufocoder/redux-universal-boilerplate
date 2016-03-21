@@ -36,10 +36,32 @@ module.exports = {
             options,
             log
           );
+        } else {
+          return regularExpression.test(module.name);
         }
       },
-      path: WebpackIsomorphicToolsPlugin.style_loader_path_extractor,
-      parser: WebpackIsomorphicToolsPlugin.css_loader_parser
+      path: function(module, options, log) {
+        if (options.development) {
+          WebpackIsomorphicToolsPlugin.style_loader_path_extractor(
+            module,
+            options,
+            log
+          );
+        } else {
+          return module.name;
+        }
+      },
+      parser: function(module, options, log) {
+        if (options.development) {
+          WebpackIsomorphicToolsPlugin.css_loader_parser(
+            module,
+            options,
+            log
+          );
+        } else {
+          return module.source;
+        }
+      }
     }
   }
 };
