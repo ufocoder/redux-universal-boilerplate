@@ -15,7 +15,7 @@ module.exports = _.merge(config, {
   cache: true,
   debug: true,
   output: {
-    publicPath: 'http://' + wds.hostname + ':' + wds.port + '/dist'
+    publicPath: 'http://' + wds.hostname + ':' + wds.port + '/'
   },
   plugins: [
     new webpack.DefinePlugin({

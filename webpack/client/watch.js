@@ -1,6 +1,8 @@
 var _ = require('lodash');
 var webpack = require("webpack");
 var config = require("./config");
+var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
 var wds = {
   hostname: process.env.HOSTNAME || "localhost",
   port: process.env.PORT || 8080
@@ -12,7 +14,7 @@ config.entry.unshift(
 );
 
 config.devServer = {
-  publicPath: "http://" + wds.hostname + ":" + wds.port + "/dist",
+  publicPath: "http://" + wds.hostname + ":" + wds.port + "/",
   hot: true,
   inline: false,
   lazy: false,
@@ -44,7 +46,8 @@ module.exports = _.merge(config, {
       __DEV__: process.env.NODE_ENV !== "production"
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    webpackIsomorphicToolsPlugin
   ]
 });
 
