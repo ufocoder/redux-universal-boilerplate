@@ -4,10 +4,14 @@
     "plugin:react/recommended",
   ],
   "rules": {
-    "no-unused-vars": 0 
+    "no-unused-vars": 0
   },
   "parser": "babel-eslint",
   "plugins": [
     "react"
-  ]
+  ],
+  "env": {
+    "node": true,
+    "mocha": true,
+  }
 }
