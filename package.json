@@ -63,6 +63,7 @@
     "react-tap-event-plugin": "^0.2.2",
     "redux": "^3.3.1",
     "redux-thunk": "^2.0.1",
+    "semantic-ui-css": "^2.1.8",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-isomorphic-tools": "^2.2.30"
