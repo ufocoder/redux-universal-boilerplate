@@ -28,7 +28,7 @@ module.exports = _.merge(config, {
       },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('styles'),
-        loaders: ['css']
+        loader: 'file'
       },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
@@ -49,7 +49,9 @@ module.exports = _.merge(config, {
         exclude: /node_modules/
       }
     ],
-    noParse: /\.min\.js/
+    noParse: [
+      /\.min\.js/
+    ]
   },
   plugins: [
     new webpack.DefinePlugin({
