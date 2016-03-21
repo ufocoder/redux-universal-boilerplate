@@ -7,6 +7,7 @@ var config = require('../common.config');
 
 var appPath = path.join(__dirname, '..', '..');
 
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
 
@@ -29,7 +30,7 @@ module.exports = _.merge(config, {
       },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('styles'),
-        loaders: ['css']
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
@@ -66,6 +67,7 @@ module.exports = _.merge(config, {
         warnings: false
       }
     }),
+    new ExtractTextPlugin("dist/styles.css"),
     webpackIsomorphicToolsPlugin
   ]
 });
