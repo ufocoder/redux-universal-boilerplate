@@ -5,7 +5,7 @@ var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
 var wds = {
   hostname: process.env.HOSTNAME || "localhost",
-  port: process.env.PORT || 8080
+  port: process.env.PORT || 8000
 };
 
 config.entry.unshift(
