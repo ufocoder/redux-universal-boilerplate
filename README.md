@@ -22,6 +22,7 @@ Boilerplate based on:
 * Testing enviroment
 * Server and client side rendering
 * Routing on client and server sides
+* Hot module replacement [Work in progress]
 * Html layout as `react` component
 * Not Found page with 404 HTTP status
 
@@ -62,3 +63,14 @@ npm watch
 * [Sinon](http://sinonjs.org/)
 * [Enzyme](https://github.com/airbnb/enzyme)
 * and etc.
+
+# Contributing
+
+Current boilerplate could be used for building but it need to be improved.
+
+I would be thankful for your [issues](https://github.com/ufocoder/redux-universal-boilerplate/issues) and [pull requests](https://github.com/ufocoder/redux-universal-boilerplate/pulls)
+
+
+# License
+
+MIT license. Copyright © 2016, Ufocoder. All rights reserved.
