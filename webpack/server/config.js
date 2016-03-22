@@ -10,7 +10,7 @@ var appPath = path.join(__dirname, '..', '..');
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
 
-module.exports = _.merge(config, {
+module.exports = _.mergeWith(config, {
   target: 'node',
   devtool: 'source-map',
   entry: [
@@ -20,39 +20,6 @@ module.exports = _.merge(config, {
     path: path.resolve(path.join(appPath, 'dist')),
     filename: 'server.js'
   },
-  module: {
-    loaders: [
-      {
-        test: /\.json$/,
-        loaders: ['json']
-      },
-      {
-        test: webpackIsomorphicToolsPlugin.regular_expression('styles'),
-        loader: 'file'
-      },
-      {
-        test: webpackIsomorphicToolsPlugin.regular_expression('images'),
-        loader: 'url?limit=10240'
-      },
-      {
-        test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
-        loader: 'file'
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel',
-        query: {
-          cacheDirectory: true,
-          plugins: ['transform-decorators-legacy'],
-          presets: ['es2015', 'stage-0', 'react']
-        },
-        exclude: /node_modules/
-      }
-    ],
-    noParse: [
-      /\.min\.js/
-    ]
-  },
   plugins: [
     new webpack.DefinePlugin({
       __CLIENT__: false,
@@ -61,4 +28,8 @@ module.exports = _.merge(config, {
       __DEV__: process.env.NODE_ENV !== 'production'
     })
   ]
+}, function(objValue, srcValue) {
+  if (_.isArray(objValue)) {
+    return objValue.concat(srcValue);
+  }
 });

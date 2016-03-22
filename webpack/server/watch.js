@@ -11,19 +11,13 @@ config.entry.unshift(
   'webpack/hot/poll?1000'
 );
 
-module.exports = _.merge(config, {
+module.exports = _.mergeWith(config, {
   cache: true,
   debug: true,
   output: {
     publicPath: 'http://' + wds.hostname + ':' + wds.port + '/'
   },
   plugins: [
-    new webpack.DefinePlugin({
-      __CLIENT__: false,
-      __SERVER__: true,
-      __PRODUCTION__: process.env.NODE_ENV === 'production',
-      __DEV__: process.env.NODE_ENV !== 'production'
-    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
@@ -32,4 +26,9 @@ module.exports = _.merge(config, {
       whitelist: ['webpack/hot/poll?1000']
     })
   ]
+}, function(objValue, srcValue) {
+  if (_.isArray(objValue)) {
+    return objValue.concat(srcValue);
+  }
 });
+

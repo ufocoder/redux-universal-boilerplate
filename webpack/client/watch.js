@@ -29,7 +29,7 @@ config.devServer = {
   host: wds.hostname
 };
 
-module.exports = _.merge(config, {
+module.exports = _.mergeWith(config, {
   cache: true,
   debug: true,
   devtool: 'cheap-module-eval-source-map',
@@ -39,15 +39,13 @@ module.exports = _.merge(config, {
     hotUpdateChunkFilename: "update/[hash]/[id].update.js"
   },
   plugins: [
-    new webpack.DefinePlugin({
-      __CLIENT__: true,
-      __SERVER__: false,
-      __PRODUCTION__: process.env.NODE_ENV === "production",
-      __DEV__: process.env.NODE_ENV !== "production"
-    }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    webpackIsomorphicToolsPlugin
+    new webpack.NoErrorsPlugin()
   ]
+}, function(objValue, srcValue) {
+  if (_.isArray(objValue)) {
+    return objValue.concat(srcValue);
+  }
 });
+
 

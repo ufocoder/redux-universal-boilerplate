@@ -11,7 +11,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
 
-module.exports = _.merge(config, {
+module.exports = _.mergeWith(config, {
   target: 'web',
   devtool: false,
   entry: [
@@ -21,37 +21,6 @@ module.exports = _.merge(config, {
     path: path.resolve(path.join(appPath, 'static')),
     filename: 'dist/client.js',
     chunkFilename: '[name].[id].js'
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.json$/,
-        loaders: ['json']
-      },
-      {
-        test: webpackIsomorphicToolsPlugin.regular_expression('styles'),
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-      },
-      {
-        test: webpackIsomorphicToolsPlugin.regular_expression('images'),
-        loader: 'url?limit=10240&name=dist/img/[hash].[ext]'
-      },
-      {
-        test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
-        loader: 'file?name=dist/fonts/[hash].[ext]'
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel',
-        query: {
-          cacheDirectory: true,
-          plugins: ['transform-decorators-legacy'],
-          presets: ['es2015', 'stage-0', 'react']
-        },
-        exclude: /node_modules/
-      }
-    ],
-    noParse: /\.min\.js/
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -67,7 +36,10 @@ module.exports = _.merge(config, {
         warnings: false
       }
     }),
-    new ExtractTextPlugin("dist/styles.css"),
     webpackIsomorphicToolsPlugin
   ]
+}, function(objValue, srcValue) {
+  if (_.isArray(objValue)) {
+    return objValue.concat(srcValue);
+  }
 });
