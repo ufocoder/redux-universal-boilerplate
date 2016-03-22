@@ -1,8 +1,6 @@
 import React from 'react';
 import logo from './logo.png';
 
-console.log('logo: ', logo);
-
 export default class Home extends React.Component {
   render() {
     return (
