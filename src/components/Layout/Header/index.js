@@ -4,7 +4,6 @@ import {IndexLink, Link} from 'react-router';
 export default class Header extends React.Component {
   render() {
     return (
-
       <div className="ui text container" style={{  marginTop: '50px' }}>
         <h1 className="ui dividing header">Redux universal boilerplate</h1>
         <div className="ui secondary pointing menu">
