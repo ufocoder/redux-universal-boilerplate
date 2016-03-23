@@ -14,6 +14,7 @@ config.entry.unshift(
 module.exports = _.mergeWith(config, {
   cache: true,
   debug: true,
+  watch: true,
   output: {
     publicPath: 'http://' + wds.hostname + ':' + wds.port + '/'
   },
@@ -31,4 +32,3 @@ module.exports = _.mergeWith(config, {
     return objValue.concat(srcValue);
   }
 });
-
