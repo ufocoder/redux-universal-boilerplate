@@ -4,7 +4,7 @@ var config = require('../webpack/isomorphic.config');
 var projectBasePath = require('path').resolve(__dirname);
 
 var webpackIsomorphicTools = new WebpackIsomorphicTools(config)
-  .development(process.env.NODE_ENV === 'development')
+  .development(process.env.NODE_ENV !== 'production')
   .server(projectBasePath, () => {
     require('../dist/server');
   });
