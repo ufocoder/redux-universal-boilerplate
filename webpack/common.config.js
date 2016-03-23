@@ -30,11 +30,11 @@ module.exports = {
       },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
-        loader: 'url?limit=10240&name=dist/img/[hash].[ext]'
+        loader: 'url?limit=10240&name=assets/img/[hash].[ext]'
       },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
-        loader: 'file?name=dist/fonts/[hash].[ext]'
+        loader: 'file?name=assets/fonts/[hash].[ext]'
       },
       {
         test: /\.js$/,
@@ -50,7 +50,7 @@ module.exports = {
     noParse: /\.min\.js/
   },
   plugins: [
-    new ExtractTextPlugin("dist/styles.css")
+    new ExtractTextPlugin("assets/styles.css")
   ],
   node: {
     __dirname: true,
