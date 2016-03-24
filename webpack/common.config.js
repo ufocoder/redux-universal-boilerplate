@@ -10,6 +10,11 @@ module.exports = {
   output: {
     publicPath: '/'
   },
+  stats: {
+    colors: true,
+    hasErrors: true,
+    hasWarnings: true
+  },
   resolve: {
     modulesDirectories: [
       'src',
