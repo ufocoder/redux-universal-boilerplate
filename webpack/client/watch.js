@@ -1,11 +1,12 @@
 var _ = require('lodash');
 var webpack = require("webpack");
+var webpackNodeExternals = require('webpack-node-externals');
 var config = require("./config");
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
 var wds = {
   hostname: process.env.HOSTNAME || "localhost",
-  port: process.env.PORT || 8000
+  port: process.env.PORT || 8080
 };
 
 config.entry.unshift(
@@ -22,6 +23,9 @@ config.devServer = {
   noInfo: true,
   headers: {
     "Access-Control-Allow-Origin": "*"
+  },
+  proxy: {
+    '*': 'http://localhost:8000/'
   },
   stats: {
     colors: true
@@ -41,11 +45,14 @@ module.exports = _.mergeWith(config, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
+  ],
+  externals: [
+    webpackNodeExternals({
+      whitelist: ['webpack/hot/only-dev-server']
+    })
   ]
 }, function(objValue, srcValue) {
   if (_.isArray(objValue)) {
     return objValue.concat(srcValue);
   }
 });
-
-

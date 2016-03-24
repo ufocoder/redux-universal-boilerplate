@@ -4,7 +4,7 @@ var webpackNodeExternals = require('webpack-node-externals');
 var config = require('./config');
 var wds = {
   hostname: process.env.HOSTNAME || 'localhost',
-  port: process.env.PORT || 8000
+  port: process.env.PORT || 8080
 };
 
 config.entry.unshift(
