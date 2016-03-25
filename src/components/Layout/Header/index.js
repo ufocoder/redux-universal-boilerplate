@@ -10,9 +10,9 @@ export default class Header extends React.Component {
           <IndexLink to="/" className="item" activeClassName="active">Homepage</IndexLink>
           <Link to="/trends" className="item" activeClassName="active">Github trends</Link>
           <Link to="/about" className="item" activeClassName="active">About</Link>
+          <Link to="/login" className="item right" activeClassName="active">Login</Link>
         </div>
       </div>
     );
   }
 }
-
