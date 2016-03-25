@@ -45,11 +45,6 @@ module.exports = _.mergeWith(config, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  ],
-  externals: [
-    webpackNodeExternals({
-      whitelist: ['webpack/hot/only-dev-server']
-    })
   ]
 }, function(objValue, srcValue) {
   if (_.isArray(objValue)) {
