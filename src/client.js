@@ -8,15 +8,16 @@ import {Router, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
 import {syncHistoryWithStore} from 'react-router-redux';
 import configureStore from './store.js';
-import routes from './routes';
+import routesContainer from './routes';
 import {CONTAINER_ID} from './constants/application';
 
 const store = configureStore(window.__INITIAL_STATE__);
 const history = syncHistoryWithStore(browserHistory, store);
+const reactRoot = window.document.getElementById(CONTAINER_ID);
+
+let routes = routesContainer(store);
 
 delete window.__INITIAL_STATE__;
-
-const reactRoot = window.document.getElementById(CONTAINER_ID);
 
 ReactDOM.render(
   <Provider store={store}>

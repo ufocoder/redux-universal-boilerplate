@@ -15,8 +15,6 @@ import configureStore from './store.js';
 import Html from './containers/Html';
 import routesContainer from './routes';
 
-let routes = routesContainer;
-
 const store = configureStore();
 const initialState = store.getState();
 
@@ -24,6 +22,8 @@ const hostname = process.env.HOSTNAME || 'localhost';
 const port = process.env.PORT || 8000;
 const app = new Express();
 const publicPath = path.resolve('static');
+
+let routes = routesContainer(store);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
