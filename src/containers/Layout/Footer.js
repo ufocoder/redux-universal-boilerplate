@@ -1,8 +1,6 @@
 import React from "react";
 import {Link} from 'react-router';
 
-import './style.css';
-
 export default class Header extends React.Component {
   render() {
     const date = new Date();

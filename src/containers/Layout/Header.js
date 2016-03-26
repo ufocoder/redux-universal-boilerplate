@@ -43,8 +43,8 @@ export default class Header extends React.Component {
         <div className="ui secondary pointing menu">
           <IndexLink to="/" className="item" activeClassName="active">Homepage</IndexLink>
           {
-            links.map(function(link) {
-              return <Link to={link.to} className="item" activeClassName="active">{link.title}</Link>
+            links.map(function(link, i) {
+              return <Link to={link.to} key={i} className="item" activeClassName="active">{link.title}</Link>
             })
           }
         </div>
