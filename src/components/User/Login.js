@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {login} from '../../actions/Auth';
+import Error from '../Error';
 
 @connect(
   state => ({
@@ -35,7 +36,7 @@ export default class Login extends Component {
         <h2>Login form</h2>
         { this.props.error ?
           (
-            <p>{this.props.error}</p>
+            <Error title="Auth error" message={this.props.error} />
           ) : null
         }
         <form className="ui form" onSubmit={this.handleSubmit}>

@@ -7,6 +7,9 @@ import 'semantic-ui-css/components/header.css';
 import 'semantic-ui-css/components/container.css';
 import 'semantic-ui-css/components/segment.css';
 import 'semantic-ui-css/components/menu.css';
+import 'semantic-ui-css/components/message.css';
+import 'semantic-ui-css/components/form.css';
+import 'semantic-ui-css/components/button.css';
 
 export default class Layout extends React.Component {
   static propTypes = {
