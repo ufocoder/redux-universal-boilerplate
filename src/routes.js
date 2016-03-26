@@ -4,7 +4,7 @@ import Layout from './containers/Layout';
 import NotFound from './components/NotFound';
 import {About, Home, Trends} from './components/Page';
 import {Login, Logout, Profile} from './components/User';
-import {authRequired, authNoRequired, authLogout} from './helpers/routes'
+import {authRequired, authNoRequired, authLogout, fetchTrends} from './helpers/routes'
 
 export default (store) => {
   return (
@@ -12,7 +12,7 @@ export default (store) => {
       <Route path="/" component={Layout}>
         <IndexRoute component={Home} />
         <Route path="about" component={About} />
-        <Route path="trends" component={Trends} />
+        <Route path="trends" component={Trends} onEnter={fetchTrends(store)} />
 
         <Route onEnter={authNoRequired(store)}>
           <Route path="login" component={Login} />
