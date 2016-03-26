@@ -2,7 +2,7 @@
 /* eslint react/no-danger: 0 */
 
 import React, {PropTypes} from "react";
-import {CONTAINER_ID} from '../constants/application';
+import {CONTAINER_ID} from '../../constants/application';
 import './style.css';
 
 export default class Html extends React.Component {
@@ -19,12 +19,11 @@ export default class Html extends React.Component {
     title: PropTypes.string,
     description: PropTypes.string,
     siteName: PropTypes.string,
-    currentUrl: PropTypes.string,
-    images: PropTypes.array
+    currentUrl: PropTypes.string
   }
   render() {
     const {assets, state, content, lang} = this.props;
-    const {title, description, siteName, currentUrl, images} = this.props;
+    const {title, description, siteName, currentUrl} = this.props;
 
     return (
       <html lang={ lang }>
