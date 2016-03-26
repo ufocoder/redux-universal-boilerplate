@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 import 'semantic-ui-css/semantic.css';
+import './style.css'
 
 export default class Layout extends React.Component {
   static propTypes = {
@@ -10,9 +11,9 @@ export default class Layout extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="main-container">
         <Header />
-        <div className="ui text main-container container">
+        <div className="ui text container">
           { this.props.children }
         </div>
         <Footer />
