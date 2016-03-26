@@ -3,6 +3,7 @@
 
 import React, {PropTypes} from "react";
 import {CONTAINER_ID} from '../constants/application';
+import './style.css';
 
 export default class Html extends React.Component {
   static defaultProps = {
