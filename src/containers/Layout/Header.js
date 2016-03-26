@@ -38,7 +38,7 @@ export default class Header extends React.Component {
     }
 
     return (
-      <div className="ui text container" style={{  marginTop: '50px' }}>
+      <div className="ui text container">
         <h1 className="ui dividing header">Redux universal boilerplate</h1>
         <div className="ui secondary pointing menu">
           <IndexLink to="/" className="item" activeClassName="active">Homepage</IndexLink>

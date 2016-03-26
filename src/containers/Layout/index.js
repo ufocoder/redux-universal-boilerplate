@@ -11,10 +11,12 @@ export default class Layout extends React.Component {
   }
   render() {
     return (
-      <div className="main-container">
-        <Header />
-        <div className="ui text container">
-          { this.props.children }
+      <div>
+        <div className="layout-container">
+          <Header />
+          <div className="ui text container">
+            { this.props.children }
+          </div>
         </div>
         <Footer />
       </div>
