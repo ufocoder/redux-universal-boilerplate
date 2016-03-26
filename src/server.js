@@ -4,6 +4,7 @@
 import BabelPolyFill from 'babel-polyfill';
 import path from 'path';
 import _ from 'lodash';
+import locale from 'locale';
 import Express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
@@ -18,6 +19,7 @@ import routesContainer from './routes';
 const store = configureStore();
 const initialState = store.getState();
 
+const supportedLocales = ["en", "en_US"];
 const hostname = process.env.HOSTNAME || 'localhost';
 const port = process.env.PORT || 8000;
 const app = new Express();
@@ -29,6 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+app.use(locale(supportedLocales))
 app.use(cookieParser());
 app.use(Express.static(publicPath));
 
