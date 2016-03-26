@@ -35,7 +35,7 @@ export function logout() {
   return async (dispatch) => {
     try {
       dispatch({
-        type: LOGIN_SUCCESS
+        type: LOGOUT_SUCCESS
       });
     } catch (error) {
       dispatch({
