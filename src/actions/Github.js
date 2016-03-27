@@ -1,4 +1,5 @@
 import {
+  FETCH_TRENDS_LOADING,
   FETCH_TRENDS_SUCCESS,
   FETCH_TRENDS_FAILURE
 } from '../constants/actions/Github';
@@ -14,6 +15,11 @@ const URL = 'https://api.github.com/search/repositories' +
 export function fetchTrends() {
   return async (dispatch) => {
     try {
+
+      dispatch({
+        type: FETCH_TRENDS_LOADING
+      });
+
       const response = await axios.get(URL);
 
       dispatch({

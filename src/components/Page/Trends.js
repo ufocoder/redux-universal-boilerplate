@@ -1,21 +1,42 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import {fetchTrends} from '../../actions/Github';
 import Error from '../Error';
 
 @connect(
   state => ({
     trends: state.github.trends,
+    loading: state.github.loading,
     error: state.github.error
+  }),
+  dispatch => ({
+    fetchData: () => {
+      dispatch(fetchTrends())
+    }
   })
 )
+
 export default class Trends extends Component {
   static propTypes = {
     trends: PropTypes.array,
-    error: PropTypes.string
+    error: PropTypes.string,
+    fetchData: PropTypes.func
+  }
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    this.props.fetchData();
   }
   render() {
     return (
       <div className="ui relaxed divided list">
+
+        { this.props.loading ?
+          (
+            <div>loading..</div>
+          ) : null
+        }
         { this.props.error ?
           (
             <Error title="Github error" message={this.props.error} />
