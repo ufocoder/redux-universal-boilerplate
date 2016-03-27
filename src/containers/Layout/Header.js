@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
 )
 export default class Header extends Component {
   static propTypes = {
-    loggedIn: PropTypes.boolean
+    loggedIn: PropTypes.bool
   }
 
   render() {

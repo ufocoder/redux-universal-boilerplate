@@ -18,7 +18,7 @@ import Error from '../components/Error';
 export default class Trends extends Component {
   static propTypes = {
     trends: PropTypes.array,
-    loading: PropTypes.boolean,
+    loading: PropTypes.bool,
     error: PropTypes.string,
     fetchData: PropTypes.func
   }
