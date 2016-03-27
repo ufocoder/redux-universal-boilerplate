@@ -3,7 +3,7 @@ import {browserHistory, Router, Route, IndexRoute} from 'react-router';
 import Layout from './containers/Layout';
 import NotFound from './components/NotFound';
 import {About, Home, Trends} from './components/Page';
-import {Login, Logout, Profile} from './components/User';
+import {Login, Profile} from './containers/User';
 import {authRequired, authNoRequired, authLogout} from './helpers/routes'
 
 export default (store) => {

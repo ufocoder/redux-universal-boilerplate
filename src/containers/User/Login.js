@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {login} from '../../actions/Auth';
-import Error from '../Error';
+import Error from '../../components/Error';
 
 @connect(
   state => ({
