@@ -1,2 +1,2 @@
-export Login from './Login';
-export Profile from './Profile';
+export * as Login from './Login';
+export * as Profile from './Profile';

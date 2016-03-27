@@ -10,7 +10,7 @@ import Error from '../../components/Error';
   }),
   dispatch => ({
     submit: (username, password) => {
-      dispatch(login(username, password))
+      dispatch(login(username, password));
     }
   })
 )
@@ -18,10 +18,10 @@ export default class Login extends Component {
   static propTypes = {
     user: PropTypes.object,
     error: PropTypes.string,
-    submit: PropTypes.func,
+    submit: PropTypes.func
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     const username = this.refs.username.value;
     const password = this.refs.password.value;
 
@@ -48,7 +48,9 @@ export default class Login extends Component {
             <label>Password</label>
             <input type="password" ref="password" placeholder="Last Name" />
           </div>
-          <button className="ui button" type="submit" onClick={this.handleSubmit}>Submit</button>
+          <button className="ui button"
+                  type="submit"
+                  onClick={this.handleSubmit}>Submit</button>
         </form>
       </div>
     );

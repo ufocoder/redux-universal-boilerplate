@@ -11,19 +11,16 @@ import Error from '../components/Error';
   }),
   dispatch => ({
     fetchData: () => {
-      dispatch(fetchTrends())
+      dispatch(fetchTrends());
     }
   })
 )
-
 export default class Trends extends Component {
   static propTypes = {
     trends: PropTypes.array,
+    loading: PropTypes.boolean,
     error: PropTypes.string,
     fetchData: PropTypes.func
-  }
-  constructor(props) {
-    super(props);
   }
   componentDidMount() {
     this.props.fetchData();
@@ -49,7 +46,7 @@ export default class Trends extends Component {
                 <i className="large github middle aligned icon"></i>
                 <div className="content">
                   <a className="header">{trend.full_name}</a>
-                  <div className="description">stars: {trend.stargazers_count}</div>
+                  <div className="description">{trend.stargazers_count}</div>
                 </div>
               </div>
             );

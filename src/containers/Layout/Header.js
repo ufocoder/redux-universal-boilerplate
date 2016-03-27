@@ -1,4 +1,6 @@
-import React from "react";
+/* eslint max-len: [2, 120, 4] */
+
+import React, {Component, PropTypes} from 'react';
 import {IndexLink, Link} from 'react-router';
 import {connect} from 'react-redux';
 
@@ -7,9 +9,12 @@ import {connect} from 'react-redux';
     loggedIn: state.auth.loggedIn
   })
 )
-export default class Header extends React.Component {
-  render() {
+export default class Header extends Component {
+  static propTypes = {
+    loggedIn: PropTypes.boolean
+  }
 
+  render() {
     let links = [
       {
         to: '/trends',
@@ -18,15 +23,10 @@ export default class Header extends React.Component {
       {
         to: '/about',
         title: 'About'
-      },
+      }
     ];
 
-    if (! this.props.loggedIn) {
-      links.push({
-        to: '/login',
-        title: 'Login'
-      });
-    } else {
+    if (this.props.loggedIn) {
       links.push({
         to: '/profile',
         title: 'Profile'
@@ -34,6 +34,11 @@ export default class Header extends React.Component {
       links.push({
         to: '/logout',
         title: 'Logout'
+      });
+    } else {
+      links.push({
+        to: '/login',
+        title: 'Login'
       });
     }
 
@@ -44,7 +49,7 @@ export default class Header extends React.Component {
           <IndexLink to="/" className="item" activeClassName="active">Homepage</IndexLink>
           {
             links.map(function(link, i) {
-              return <Link to={link.to} key={i} className="item" activeClassName="active">{link.title}</Link>
+              return <Link to={link.to} key={i} className="item" activeClassName="active">{link.title}</Link>;
             })
           }
         </div>

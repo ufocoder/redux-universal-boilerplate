@@ -10,10 +10,15 @@ const fakeUser = {
   token: 'ojn2jr3wrefj'
 };
 
+/**
+ * @param  {string} username Username value for `login` request
+ * @param  {string} password Password value for `login` request
+ *
+ * @return {function} Login async action
+ */
 export function login(username, password) {
   return async (dispatch) => {
     try {
-
       if (username !== 'demo' && password !== 'demo') {
         throw new Error('Bad credentials');
       }
@@ -31,6 +36,9 @@ export function login(username, password) {
   };
 }
 
+/**
+ * @return {function} Logout async action
+ */
 export function logout() {
   return async (dispatch) => {
     try {

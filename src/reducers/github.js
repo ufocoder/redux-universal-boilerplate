@@ -4,7 +4,6 @@ import {
   FETCH_TRENDS_FAILURE
 } from '../constants/actions';
 
-
 const initialState = {
   trends: [],
   loading: false,

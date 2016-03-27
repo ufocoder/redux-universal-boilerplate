@@ -3,7 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 import 'semantic-ui-css/semantic.css';
-import './style.css'
+import './style.css';
 
 export default class Layout extends React.Component {
   static propTypes = {

@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use(locale(supportedLocales))
+app.use(locale(supportedLocales));
 app.use(cookieParser());
 app.use(Express.static(publicPath));
 

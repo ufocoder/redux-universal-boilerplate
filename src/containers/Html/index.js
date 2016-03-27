@@ -4,7 +4,6 @@
 import React, {PropTypes} from "react";
 import {CONTAINER_ID} from '../../constants/application';
 
-
 export default class Html extends React.Component {
   static defaultProps = {
     title: 'Universal react boilerplate'
@@ -43,7 +42,7 @@ export default class Html extends React.Component {
         </head>
 
         <body>
-          <div id={ CONTAINER_ID } style={{minHeight: '100%', position: 'relative'}} dangerouslySetInnerHTML={ {__html: content} } />
+          <div id={ CONTAINER_ID } dangerouslySetInnerHTML={ {__html: content} } />
           <script dangerouslySetInnerHTML={ {__html: state} } />
           {Object.keys(assets.javascript).map((script, i) =>
             <script src={assets.javascript[script]} key={i}/>

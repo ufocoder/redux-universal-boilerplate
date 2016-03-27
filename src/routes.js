@@ -5,9 +5,9 @@ import NotFound from './components/NotFound';
 import {About, Home} from './components/Page';
 import {Login, Profile} from './containers/User';
 import Trends from './containers/Trends';
-import {authRequired, authNoRequired, authLogout} from './helpers/routes'
+import {authRequired, authNoRequired, authLogout} from './helpers/routes';
 
-export default (store) => {
+const routes = store => {
   return (
     <Router history={browserHistory}>
       <Route path="/" component={Layout}>
@@ -28,4 +28,6 @@ export default (store) => {
       </Route>
     </Router>
   );
-}
+};
+
+export default routes;

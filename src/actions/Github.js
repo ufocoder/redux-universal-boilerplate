@@ -12,10 +12,12 @@ const URL = 'https://api.github.com/search/repositories' +
             '&created:>2016-01-01' +
             '&sort=stars';
 
+/**
+ * @return {function} Fetch trends async action
+ */
 export function fetchTrends() {
   return async (dispatch) => {
     try {
-
       dispatch({
         type: FETCH_TRENDS_LOADING
       });

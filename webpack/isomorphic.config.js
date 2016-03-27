@@ -36,9 +36,9 @@ module.exports = {
             options,
             log
           );
-        } else {
-          return regularExpression.test(module.name);
         }
+
+        return regularExpression.test(module.name);
       },
       path: function(module, options, log) {
         if (options.development) {
@@ -47,9 +47,9 @@ module.exports = {
             options,
             log
           );
-        } else {
-          return module.name;
         }
+
+        return module.name;
       },
       parser: function(module, options, log) {
         if (options.development) {
@@ -58,9 +58,9 @@ module.exports = {
             options,
             log
           );
-        } else {
-          return module.source;
         }
+
+        return module.source;
       }
     }
   }
