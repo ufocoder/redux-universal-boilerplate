@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {fetchTrends} from '../../actions/Github';
-import Error from '../Error';
+import {fetchTrends} from '../actions/Github';
+import Error from '../components/Error';
 
 @connect(
   state => ({

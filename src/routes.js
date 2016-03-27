@@ -2,8 +2,9 @@ import React from 'react';
 import {browserHistory, Router, Route, IndexRoute} from 'react-router';
 import Layout from './containers/Layout';
 import NotFound from './components/NotFound';
-import {About, Home, Trends} from './components/Page';
+import {About, Home} from './components/Page';
 import {Login, Profile} from './containers/User';
+import Trends from './containers/Trends';
 import {authRequired, authNoRequired, authLogout} from './helpers/routes'
 
 export default (store) => {
