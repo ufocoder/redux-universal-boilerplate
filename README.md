@@ -44,14 +44,14 @@ There're two ways to work with boilerplate
 1) Build once and then run bunldes:
 
 ```bash
-npm build
-npm start
+NODE_ENV=dev npm build
+NODE_ENV=dev npm start
 ```
 
 2) Developing in `watch` mode:
 
 ```bash
-npm watch
+NODE_ENV=dev npm watch
 ```
 
 # Testing enviroment
@@ -69,7 +69,6 @@ npm watch
 Current boilerplate could be used for building but it need to be improved.
 
 I would be thankful for your [issues](https://github.com/ufocoder/redux-universal-boilerplate/issues) and [pull requests](https://github.com/ufocoder/redux-universal-boilerplate/pulls)
-
 
 # License
 
