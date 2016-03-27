@@ -11,6 +11,30 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
 
+var devMode = process.env.NODE_ENV !== 'production';
+var prodMode = process.env.NODE_ENV === 'production';
+
+var plugins = [
+  new webpack.DefinePlugin({
+    __CLIENT__: true,
+    __SERVER__: false,
+    __PRODUCTION__: prodMode,
+    __DEV__: devMode
+  })
+];
+
+if (prodMode) {
+  plugins.push(new webpack.optimize.DedupePlugin());
+  plugins.push(new webpack.optimize.OccurenceOrderPlugin());
+  plugins.push(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false
+    }
+  }));
+}
+
+plugins.push(webpackIsomorphicToolsPlugin);
+
 module.exports = _.mergeWith(config, {
   target: 'web',
   devtool: false,
@@ -22,22 +46,7 @@ module.exports = _.mergeWith(config, {
     filename: 'assets/client.js',
     chunkFilename: '[name].[id].js'
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      __CLIENT__: true,
-      __SERVER__: false,
-      __PRODUCTION__: process.env.NODE_ENV === 'production',
-      __DEV__: process.env.NODE_ENV !== 'production'
-    }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
-    webpackIsomorphicToolsPlugin
-  ]
+  plugins: plugins
 }, function(objValue, srcValue) {
   if (_.isArray(objValue)) {
     return objValue.concat(srcValue);
