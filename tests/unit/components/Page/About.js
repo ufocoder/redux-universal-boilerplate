@@ -4,8 +4,8 @@ import {shallow, mount, render} from 'enzyme';
 import About from 'src/components/Page/About';
 
 describe("<About />", function() {
-  it("contains `h2` header", function() {
+  it("contains `p` tag", function() {
     const wrapper = render(<About />);
-    expect(wrapper.find('h2').length).equal(1);
+    expect(wrapper.find('p').length).equal(1);
   });
 });
