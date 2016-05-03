@@ -2,12 +2,10 @@ var _ = require('lodash');
 var webpack = require('webpack');
 var path = require('path');
 var config = require('../common.config');
-
-var appPath = path.join(__dirname, '..', '..');
-
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
+var appPath = path.join(__dirname, '..', '..');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var devMode = process.env.NODE_ENV !== 'production';
 var prodMode = process.env.NODE_ENV === 'production';
@@ -18,7 +16,9 @@ var plugins = [
     __SERVER__: false,
     __PRODUCTION__: prodMode,
     __DEV__: devMode
-  })
+  }),
+  webpackIsomorphicToolsPlugin,
+  new ExtractTextPlugin("assets/styles.css")
 ];
 
 if (prodMode) {
@@ -31,16 +31,27 @@ if (prodMode) {
   }));
 }
 
-plugins.push(webpackIsomorphicToolsPlugin);
-
 module.exports = _.mergeWith(config, {
   target: 'web',
   devtool: false,
+  module: {
+    loaders: [
+      {
+        test: webpackIsomorphicToolsPlugin.regular_expression('styles'),
+        loader: ExtractTextPlugin.extract(['css'])
+      },
+      {
+        test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
+        loader: 'file?name=assets/fonts/[hash].[ext]'
+      }
+    ]
+  },
   entry: [
     path.resolve(path.join(appPath, 'src', 'client'))
   ],
   output: {
     path: path.resolve(path.join(appPath, 'static')),
+    publicPath: '/',
     filename: 'assets/client.js',
     chunkFilename: '[name].[id].js'
   },

@@ -1,12 +1,16 @@
 var _ = require('lodash');
+var path = require('path');
 var webpack = require("webpack");
-var webpackNodeExternals = require('webpack-node-externals');
 var config = require("./config");
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
-var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
+var appPath = path.join(__dirname, '..', '..');
+
 var wds = {
-  hostname: process.env.HOSTNAME || "localhost",
-  port: process.env.PORT || 8080
+  hostname: process.env.WATCH_HOSTNAME || "localhost",
+  port: process.env.WATCH_PORT || 8080
+};
+var proxy = {
+  hostname: process.env.HOSTNAME || 'localhost',
+  port: process.env.PORT || 8000
 };
 
 config.entry.unshift(
@@ -14,8 +18,15 @@ config.entry.unshift(
   "webpack/hot/only-dev-server"
 );
 
+config.module.loaders.unshift({
+  test: /\.js$/,
+  loader: 'react-hot',
+  exclude: /node_modules/
+});
+
 config.devServer = {
-  publicPath: "http://" + wds.hostname + ":" + wds.port + "/",
+  publicPath: 'http://' + wds.hostname + ':' + wds.port + '/',
+  contentBase:  path.resolve(path.join(appPath, 'static')),
   hot: true,
   inline: false,
   lazy: false,
@@ -25,12 +36,13 @@ config.devServer = {
     "Access-Control-Allow-Origin": "*"
   },
   proxy: {
-    '*': 'http://localhost:8000/'
+    '*': 'http://' + proxy.hostname + ':' + proxy.port
   },
   stats: {
     colors: true
   },
-  host: wds.hostname
+  host: wds.hostname,
+  port: wds.port
 };
 
 module.exports = _.mergeWith(config, {
@@ -38,9 +50,8 @@ module.exports = _.mergeWith(config, {
   debug: true,
   devtool: 'cheap-module-eval-source-map',
   output: {
-    publicPath: config.devServer.publicPath,
-    hotUpdateMainFilename: "update/[hash]/update.json",
-    hotUpdateChunkFilename: "update/[hash]/[id].update.js"
+    publicPath: '/',
+    filename: 'assets/client.js'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
