@@ -82,7 +82,8 @@ if (__DEV__ && module.hot) {
   console.log('[HMR] Waiting for server-side updates');
 
   module.hot.accept('../common/routes', () => {
-    routes = require('../common/routes');
+    let routesContainer = require('../common/routes').default;
+    routes = routesContainer(store);
   });
 
   module.hot.addStatusHandler(status => {
