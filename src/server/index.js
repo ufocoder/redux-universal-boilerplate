@@ -12,9 +12,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import {RouterContext, match} from 'react-router';
 import {Provider} from 'react-redux';
-import configureStore from './store.js';
-import Html from './containers/Html';
-import routesContainer from './routes';
+import configureStore from '../common/store.js';
+import Html from '../common/containers/Html';
+import routesContainer from '../common/routes';
 
 const store = configureStore();
 const initialState = store.getState();
@@ -81,8 +81,8 @@ app.use((req, res, next) => {
 if (__DEV__ && module.hot) {
   console.log('[HMR] Waiting for server-side updates');
 
-  module.hot.accept('./routes', () => {
-    routes = require('./routes');
+  module.hot.accept('../common/routes', () => {
+    routes = require('../common/routes');
   });
 
   module.hot.addStatusHandler(status => {

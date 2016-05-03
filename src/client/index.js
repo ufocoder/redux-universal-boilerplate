@@ -7,9 +7,9 @@ import ReactDOM from 'react-dom';
 import {Router, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
 import {syncHistoryWithStore} from 'react-router-redux';
-import configureStore from './store.js';
-import routesContainer from './routes';
-import {CONTAINER_ID} from './constants/application';
+import configureStore from '../common/store.js';
+import routesContainer from '../common/routes';
+import {CONTAINER_ID} from '../common/constants/application';
 
 const store = configureStore(window.__INITIAL_STATE__);
 const history = syncHistoryWithStore(browserHistory, store);
