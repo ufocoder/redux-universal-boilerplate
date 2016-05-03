@@ -6,7 +6,7 @@ import 'semantic-ui-css/semantic.css';
 
 export default class Layout extends React.Component {
   static propTypes = {
-    children: PropTypes.object.isRequired
+    children: PropTypes.object
   }
   render() {
     return (
