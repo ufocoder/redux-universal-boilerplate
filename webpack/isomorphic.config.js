@@ -2,6 +2,43 @@
 
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 
+function styleFilter(module, regularExpression, options, log) {
+  if (options.development) {
+    return WebpackIsomorphicToolsPlugin.style_loader_filter(
+      module,
+      regularExpression,
+      options,
+      log
+    );
+  }
+
+  return regularExpression.test(module.name);
+}
+
+function stylePath(module, options, log) {
+  if (options.development) {
+    return WebpackIsomorphicToolsPlugin.style_loader_path_extractor(
+      module,
+      options,
+      log
+    );
+  }
+
+  return module.name;
+}
+
+function styleParser(module, options, log) {
+  if (options.development) {
+    return WebpackIsomorphicToolsPlugin.css_loader_parser(
+      module,
+      options,
+      log
+    );
+  }
+
+  return module.source;
+}
+
 module.exports = {
   webpack_assets_file_path: '../webpack-assets.json',
   webpack_stats_file_path: '../webpack-stats.json',
@@ -23,45 +60,13 @@ module.exports = {
         'eot'
       ]
     },
-    styles: {
+    'styles': {
       extensions: [
-        'css',
-        'scss'
+        'css'
       ],
-      filter(module, regularExpression, options, log) {
-        if (options.development) {
-          return WebpackIsomorphicToolsPlugin.style_loader_filter(
-            module,
-            regularExpression,
-            options,
-            log
-          );
-        }
-
-        return regularExpression.test(module.name);
-      },
-      path: function(module, options, log) {
-        if (options.development) {
-          return WebpackIsomorphicToolsPlugin.style_loader_path_extractor(
-            module,
-            options,
-            log
-          );
-        }
-
-        return module.name;
-      },
-      parser: function(module, options, log) {
-        if (options.development) {
-          return WebpackIsomorphicToolsPlugin.css_loader_parser(
-            module,
-            options,
-            log
-          );
-        }
-
-        return module.source;
-      }
+      filter: styleFilter,
+      path: stylePath,
+      parser: styleParser
     }
   }
 };
