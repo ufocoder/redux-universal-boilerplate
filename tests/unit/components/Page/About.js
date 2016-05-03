@@ -1,7 +1,7 @@
 import React from 'react';
 import sinon from 'sinon';
 import {shallow, mount, render} from 'enzyme';
-import About from 'src/components/Page/About';
+import About from 'src/common/components/Page/About';
 
 describe("<About />", function() {
   it("contains `p` tag", function() {

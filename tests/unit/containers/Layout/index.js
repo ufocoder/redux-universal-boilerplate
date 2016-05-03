@@ -1,9 +1,9 @@
 import React from 'react';
 import sinon from 'sinon';
 import {shallow, mount, render} from 'enzyme';
-import Layout from 'src/containers/Layout';
-import Header from 'src/containers/Layout/Header';
-import Footer from 'src/containers/Layout/Footer';
+import Layout from 'src/common/containers/Layout';
+import Header from 'src/common/containers/Layout/Header';
+import Footer from 'src/common/containers/Layout/Footer';
 
 describe("<Layout />", function() {
   it("contains <Header /> and <Footer /> components", function() {

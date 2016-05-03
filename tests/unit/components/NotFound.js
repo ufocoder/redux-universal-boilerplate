@@ -1,7 +1,7 @@
 import React from 'react';
 import sinon from 'sinon';
 import {shallow, mount, render} from 'enzyme';
-import NotFound from 'src/components/NotFound';
+import NotFound from 'src/common/components/NotFound';
 
 describe("<NotFound />", function() {
   it("contains `h1` header", function() {
