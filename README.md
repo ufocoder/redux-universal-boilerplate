@@ -23,7 +23,7 @@ Boilerplate based on:
 * Testing enviroment
 * Server and client side rendering
 * Routing on client and server sides
-* Hot module replacement [Work in progress]
+* Hot module replacement
 * Html layout as `react` component
 * Not Found page with 404 HTTP status
 
@@ -34,6 +34,13 @@ git clone https://github.com/ufocoder/redux-universal-boilerplate.git
 cd redux-universal-boilerplate
 
 npm install
+```
+
+# Production
+
+To build and start project for production run in console:
+
+```bash
 NODE_ENV=production npm run build
 NODE_ENV=production npm run start
 ```
@@ -45,23 +52,22 @@ There're two ways to work with boilerplate
 1) Build once and then run bunldes:
 
 ```bash
-NODE_ENV=dev npm build
-NODE_ENV=dev npm start
+npm run build
+npm run start
 ```
 
 2) Developing in `watch` mode:
 
 ```bash
-NODE_ENV=dev npm watch
+npm run watch
 ```
-
 
 # Watch mode
 
 When you run in console:
 
 ```bash
-NODE_ENV=dev npm watch
+npm run watch
 ```
 
 Two web servers will be run:
@@ -82,6 +88,12 @@ For working with hot reloading mode, open your in browser http://localhost:8080/
 * [Sinon](http://sinonjs.org/)
 * [Enzyme](https://github.com/airbnb/enzyme)
 * and etc.
+
+There is a watch mode for testing:
+
+```bash
+npm run test:watch
+```
 
 # Contributing
 
