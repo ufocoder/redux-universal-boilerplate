@@ -71,6 +71,7 @@ Two web servers will be run:
 
 For working with hot reloading mode, open your in browser http://localhost:8080/, all `non-assets` http request to will be proxy to backend endpoint
 
+![Example of hot reload mode](docs/examle-hrm.gif)
 
 # Testing enviroment
 
