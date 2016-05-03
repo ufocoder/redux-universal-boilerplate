@@ -6,7 +6,7 @@ export default class Home extends React.Component {
     return (
       <div>
         <p style={{textAlign: 'center', margin: '50px'}}>
-          <img style={{maxWidth: '256'}} src={logo} />
+          <img style={{maxWidth: '256px'}} src={logo} />
         </p>
       </div>
     );
