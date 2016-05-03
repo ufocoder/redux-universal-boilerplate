@@ -69,8 +69,8 @@
     "semantic-ui-css": "^2.1.8",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
-    "webpack": "^1.12.14",
-    "webpack-isomorphic-tools": "^2.2.30"
+    "webpack": "^1.13.0",
+    "webpack-isomorphic-tools": "^2.2.50"
   },
   "devDependencies": {
     "babel-eslint": "^6.0.4",
