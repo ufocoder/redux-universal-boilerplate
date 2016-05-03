@@ -55,6 +55,23 @@ NODE_ENV=dev npm start
 NODE_ENV=dev npm watch
 ```
 
+
+# Watch mode
+
+When you run in console:
+
+```bash
+NODE_ENV=dev npm watch
+```
+
+Two web servers will be run:
+
+  * web-server for backend started by `server` entry point on 8000 default port
+  * webpack-dev-server with `client` bundle working on 8080 default port
+
+For working with hot reloading mode, open your in browser http://localhost:8080/, all `non-assets` http request to will be proxy to backend endpoint
+
+
 # Testing enviroment
 
 * [Karma](https://karma-runner.github.io/)
@@ -66,8 +83,6 @@ NODE_ENV=dev npm watch
 * and etc.
 
 # Contributing
-
-Current boilerplate could be used for building but it need to be improved.
 
 I would be thankful for your [issues](https://github.com/ufocoder/redux-universal-boilerplate/issues) and [pull requests](https://github.com/ufocoder/redux-universal-boilerplate/pulls)
 
