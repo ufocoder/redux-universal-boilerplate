@@ -13,7 +13,7 @@ import ReactDOM from 'react-dom/server';
 import {RouterContext, match} from 'react-router';
 import {Provider} from 'react-redux';
 import configureStore from '../common/store.js';
-import Html from '../common/containers/Html';
+import Html from './containers/Html';
 import routesContainer from '../common/routes';
 
 const store = configureStore();

@@ -1,7 +1,7 @@
 /* eslint react/no-danger: 0 */
 
 import React, {PropTypes} from "react";
-import {CONTAINER_ID} from '../../constants/application';
+import {CONTAINER_ID} from '../../../common/constants/application';
 
 export default class Html extends React.Component {
   static defaultProps = {
