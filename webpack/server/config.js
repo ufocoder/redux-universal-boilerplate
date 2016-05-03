@@ -24,6 +24,10 @@ var regExpGroups = [
   'fonts'
 ];
 
+/**
+ * Add node noop
+ * @param {[type]} regExpGroup [description]
+ */
 function addNodeNoop(regExpGroup) {
   plugins.push(new webpack.NormalModuleReplacementPlugin(
     webpackIsomorphicToolsPlugin.regular_expression(regExpGroup),
@@ -31,18 +35,20 @@ function addNodeNoop(regExpGroup) {
   ));
 }
 
-for (var regExpGroup in regExpGroups){
-  addNodeNoop(regExpGroups[regExpGroup]);
+var regExpGroup;
+
+for (regExpGroup in regExpGroups) {
+  if (regExpGroups.hasOwnProperty(regExpGroup)) {
+    addNodeNoop(regExpGroups[regExpGroup]);
+  }
 }
 
 plugins.push(new webpack.DefinePlugin({
-    __CLIENT__: false,
-    __SERVER__: true,
-    __PRODUCTION__: process.env.NODE_ENV === 'production',
-    __DEV__: process.env.NODE_ENV !== 'production'
-  })
-);
-
+  __CLIENT__: false,
+  __SERVER__: true,
+  __PRODUCTION__: process.env.NODE_ENV === 'production',
+  __DEV__: process.env.NODE_ENV !== 'production'
+}));
 
 module.exports = _.mergeWith(config, {
   target: 'node',

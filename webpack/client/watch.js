@@ -26,7 +26,7 @@ config.module.loaders.unshift({
 
 config.devServer = {
   publicPath: 'http://' + wds.hostname + ':' + wds.port + '/',
-  contentBase:  path.resolve(path.join(appPath, 'static')),
+  contentBase: path.resolve(path.join(appPath, 'static')),
   hot: true,
   inline: false,
   lazy: false,
