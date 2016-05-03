@@ -48,7 +48,7 @@ config.devServer = {
 module.exports = _.mergeWith(config, {
   cache: true,
   debug: true,
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   output: {
     publicPath: '/',
     filename: 'assets/client.js'
