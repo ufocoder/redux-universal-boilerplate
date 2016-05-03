@@ -65,7 +65,8 @@ export default class Header extends Component {
                   className="item"
                   activeClassName="active">
                   {link.title}
-                </Link>;
+                </Link>
+              );
             })
           }
         </div>
