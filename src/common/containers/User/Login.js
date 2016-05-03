@@ -37,7 +37,7 @@ export default class Login extends Component {
   }
 
   render() {
-    return { this.props.loggedIn
+    return this.props.loggedIn
        ? <div>You already logged in</div>
        : (
           <div>
@@ -67,6 +67,6 @@ export default class Login extends Component {
             </form>
           </div>
         );
-      }
+
   }
 }
