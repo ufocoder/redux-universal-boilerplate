@@ -21,6 +21,10 @@ export default class Header extends Component {
       {
         to: '/about',
         title: 'About'
+      },
+      {
+        to: '/404',
+        title: 'Non-exists page'
       }
     ];
 
