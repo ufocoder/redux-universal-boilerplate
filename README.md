@@ -20,6 +20,7 @@ Boilerplate based on:
 
 # Features
 
+* es6/es7 syntax
 * Testing enviroment
 * Server and client side rendering
 * Routing on client and server sides
