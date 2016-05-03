@@ -1,5 +1,3 @@
-/* eslint max-len: [2, 120, 4] */
-
 import React, {Component, PropTypes} from 'react';
 import {IndexLink, Link} from 'react-router';
 import {connect} from 'react-redux';

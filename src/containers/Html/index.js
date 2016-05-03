@@ -1,4 +1,3 @@
-/* eslint max-len: [2, 120, 4] */
 /* eslint react/no-danger: 0 */
 
 import React, {PropTypes} from "react";

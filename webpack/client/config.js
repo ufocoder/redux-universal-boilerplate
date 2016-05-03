@@ -1,5 +1,3 @@
-/* eslint max-len: [2, 120, 4] */
-
 var _ = require('lodash');
 var webpack = require('webpack');
 var path = require('path');

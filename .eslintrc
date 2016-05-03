@@ -5,7 +5,8 @@
   ],
   "rules": {
     "no-unused-vars": 0,
-    "object-curly-spacing": 0
+    "object-curly-spacing": 0,
+    "max-len": [1,120, 4, {"ignoreUrls": true}]
   },
   "parser": "babel-eslint",
   "plugins": [
