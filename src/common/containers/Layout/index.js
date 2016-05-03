@@ -14,7 +14,9 @@ export default class Layout extends React.Component {
         <div className="layout-container">
           <Header />
           <div className="ui text container">
-            { this.props.children }
+            <div className="ui segment">
+              { this.props.children }
+            </div>
           </div>
         </div>
         <Footer />
