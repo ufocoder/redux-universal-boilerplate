@@ -2,7 +2,9 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT_SUCCESS,
-  LOGOUT_FAILURE
+  LOGOUT_FAILURE,
+  TEST_USERNAME,
+  TEST_PASSWORD
 } from '../constants/actions/Auth';
 
 const fakeUser = {
@@ -19,7 +21,7 @@ const fakeUser = {
 export function login(username, password) {
   return async (dispatch) => {
     try {
-      if (username !== 'demo' && password !== 'demo') {
+      if (username !== TEST_USERNAME && password !== TEST_PASSWORD) {
         throw new Error('Bad credentials');
       }
 
