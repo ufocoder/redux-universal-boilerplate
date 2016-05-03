@@ -37,7 +37,6 @@ export default class Login extends Component {
   }
 
   render() {
-
     let userLayout = (
       <div>You already logged in</div>
     );
@@ -71,6 +70,6 @@ export default class Login extends Component {
       </div>
     );
 
-    return this.props.loggedIn ? userLayout: guestLayout;
+    return this.props.loggedIn ? userLayout : guestLayout;
   }
 }
