@@ -57,6 +57,7 @@
     "json-loader": "^0.5.4",
     "locale": "0.0.21",
     "lodash": "^4.6.1",
+    "node-noop": "^1.0.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-redux": "^4.4.0",
