@@ -46,12 +46,26 @@ export default class Header extends Component {
 
     return (
       <div className="ui text container">
-        <h1 className="ui dividing header">Redux universal boilerplate</h1>
+        <h1 className="ui dividing header">
+          Redux universal boilerplate
+        </h1>
         <div className="ui secondary pointing menu">
-          <IndexLink to="/" className="item" activeClassName="active">Homepage</IndexLink>
+          <IndexLink
+            className="item"
+            to="/"
+            activeClassName="active">
+            Homepage
+          </IndexLink>
           {
             links.map(function(link, i) {
-              return <Link to={link.to} key={i} className="item" activeClassName="active">{link.title}</Link>;
+              return (
+                <Link
+                  to={link.to}
+                  key={i}
+                  className="item"
+                  activeClassName="active">
+                  {link.title}
+                </Link>;
             })
           }
         </div>
