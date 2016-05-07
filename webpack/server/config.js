@@ -5,8 +5,9 @@ var path = require('path');
 var config = require('../common.config');
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
-
 var appPath = path.join(__dirname, '..', '..');
+var prodMode = process.env.NODE_ENV === 'production';
+var devMode = process.env.NODE_ENV !== 'production';
 
 var nodeModules = {};
 fs.readdirSync('node_modules')
@@ -46,9 +47,18 @@ for (regExpGroup in regExpGroups) {
 plugins.push(new webpack.DefinePlugin({
   __CLIENT__: false,
   __SERVER__: true,
-  __PRODUCTION__: process.env.NODE_ENV === 'production',
-  __DEV__: process.env.NODE_ENV !== 'production'
+  __PRODUCTION__: prodMode,
+  __DEV__: devMode
 }));
+
+
+if (prodMode) {
+  plugins.push(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false
+    }
+  }));
+}
 
 module.exports = _.mergeWith(config, {
   target: 'node',
