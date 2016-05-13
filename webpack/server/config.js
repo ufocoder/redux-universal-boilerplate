@@ -51,7 +51,6 @@ plugins.push(new webpack.DefinePlugin({
   __DEV__: devMode
 }));
 
-
 if (prodMode) {
   plugins.push(new webpack.optimize.UglifyJsPlugin({
     compress: {
