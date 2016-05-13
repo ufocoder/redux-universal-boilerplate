@@ -1,10 +1,20 @@
-import React from "react";
+import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
 
-export default class Profile extends React.Component {
+@connect(
+  state => ({
+    user: state.auth.user
+  })
+)
+export default class Profile extends Component {
+  static propTypes = {
+    user: PropTypes.object
+  };
+
   render() {
     return (
       <div>
-        Profile page
+        Welcome, {this.props.user.username}!
       </div>
     );
   }
