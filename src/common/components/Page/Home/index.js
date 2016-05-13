@@ -1,13 +1,12 @@
 import React from 'react';
-import logo from './logo.png';
+import logoSrc from './logo.png';
+import './styles.css';
 
 export default class Home extends React.Component {
   render() {
     return (
-      <div>
-        <p style={{textAlign: 'center', margin: '50px'}}>
-          <img style={{maxWidth: '256px'}} src={logo} />
-        </p>
+      <div className="logo">
+          <img src={logoSrc} className="logo__image" />
       </div>
     );
   }
