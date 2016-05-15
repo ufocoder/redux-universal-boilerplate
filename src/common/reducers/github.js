@@ -2,7 +2,7 @@ import {
   FETCH_TRENDS_LOADING,
   FETCH_TRENDS_SUCCESS,
   FETCH_TRENDS_FAILURE
-} from '../constants/actions';
+} from '../constants/actions/Github';
 
 const initialState = {
   trends: [],
@@ -20,11 +20,13 @@ export default (state = initialState, action) => {
     case FETCH_TRENDS_SUCCESS:
       return {
         ...state,
+        loading: false,
         trends: action.trends
       };
     case FETCH_TRENDS_FAILURE:
       return {
         ...state,
+        loading: false,
         error: action.error
       };
     default:
