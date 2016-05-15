@@ -6,7 +6,6 @@ import {
 
 import axios from 'axios';
 
-const date = new Date();
 const URL = 'https://api.github.com/search/repositories' +
             '?q=react' +
             '&created:>2016-01-01' +
