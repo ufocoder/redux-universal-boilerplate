@@ -20,8 +20,6 @@ function styleFilter(module, regularExpression, options, log) {
       log
     );
   }
-
-  return regularExpression.test(module.name);
 }
 
 /**
@@ -40,8 +38,6 @@ function stylePath(module, options, log) {
       log
     );
   }
-
-  return module.name;
 }
 
 /**
@@ -59,8 +55,6 @@ function styleParser(module, options, log) {
       log
     );
   }
-
-  return module.source;
 }
 
 module.exports = {

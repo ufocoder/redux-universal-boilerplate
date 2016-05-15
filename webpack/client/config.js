@@ -21,6 +21,13 @@ var plugins = [
   new ExtractTextPlugin("assets/styles.css")
 ];
 
+var loaders = [
+  {
+    test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
+    loader: 'file?name=assets/fonts/[hash].[ext]'
+  }
+];
+
 if (prodMode) {
   plugins.push(new webpack.optimize.DedupePlugin());
   plugins.push(new webpack.optimize.OccurenceOrderPlugin());
@@ -29,22 +36,23 @@ if (prodMode) {
       warnings: false
     }
   }));
+
+  loaders.push({
+    test: webpackIsomorphicToolsPlugin.regular_expression('styles'),
+    loader: ExtractTextPlugin.extract('style', 'css')
+  });
+} else {
+  loaders.push({
+    test: webpackIsomorphicToolsPlugin.regular_expression('styles'),
+    loader: 'style!css'
+  });
 }
 
 module.exports = _.mergeWith(config, {
   target: 'web',
   devtool: false,
   module: {
-    loaders: [
-      {
-        test: webpackIsomorphicToolsPlugin.regular_expression('styles'),
-        loader: ExtractTextPlugin.extract(['css'])
-      },
-      {
-        test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
-        loader: 'file?name=assets/fonts/[hash].[ext]'
-      }
-    ]
+    loaders: loaders
   },
   entry: [
     path.resolve(path.join(appPath, 'src', 'client'))
