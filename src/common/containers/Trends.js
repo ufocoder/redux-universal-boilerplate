@@ -25,17 +25,16 @@ export default class Trends extends Component {
   render() {
     return (
       <div className="ui relaxed divided list">
-        { this.props.loading ?
-          (
-            <div>loading..</div>
-          ) : null
-        }
+        <h1>React Github trends</h1>
+
         { this.props.error ?
           (
             <Error title="Github error" message={this.props.error} />
           ) : null
         }
-        {
+
+        { this.props.loading ?
+          <div>loading..</div> :
           this.props.trends.map(function(trend, i) {
             return (
               <div className="item" key={i}>
