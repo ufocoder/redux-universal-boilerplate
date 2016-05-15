@@ -76,7 +76,7 @@
     "babel-eslint": "^6.0.4",
     "chai": "^3.5.0",
     "concurrently": "^2.0.0",
-    "enzyme": "^2.2.0",
+    "enzyme": "^2.3.0",
     "eslint": "^2.9.0",
     "eslint-config-google": "^0.5.0",
     "eslint-plugin-react": "^5.1.1",
