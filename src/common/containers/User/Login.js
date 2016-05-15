@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router';
 import {login} from '../../actions/Auth';
 import Error from '../../components/Error';
 import {
@@ -39,7 +39,7 @@ export default class Login extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.loggedIn) {
-      browserHistory.push('/profile')
+      browserHistory.push('/profile');
     }
   }
 
