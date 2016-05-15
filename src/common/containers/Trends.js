@@ -22,13 +22,9 @@ export default class Trends extends Component {
     error: PropTypes.string,
     fetchData: PropTypes.func
   }
-  componentDidMount() {
-    this.props.fetchData();
-  }
   render() {
     return (
       <div className="ui relaxed divided list">
-
         { this.props.loading ?
           (
             <div>loading..</div>
