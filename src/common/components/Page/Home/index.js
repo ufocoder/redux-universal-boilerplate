@@ -1,12 +1,17 @@
 import React from 'react';
-import logoSrc from './logo.png';
-import './styles.css';
+import './assets/styles.css';
 
 export default class Home extends React.Component {
   render() {
     return (
-      <div className="logo">
-          <img src={logoSrc} className="logo__image" />
+      <div className="homepage">
+          <div className="homepage__space">
+            <div className="homepage__space__title">
+              Universal biolerplate
+            </div>
+            <div className="homepage__space__astronaut"></div>
+          </div>
+          <div className="homepage__ground"></div>
       </div>
     );
   }
