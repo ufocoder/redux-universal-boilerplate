@@ -5,7 +5,6 @@ var config = require('../common.config');
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
 var appPath = path.join(__dirname, '..', '..');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var devMode = process.env.NODE_ENV !== 'production';
 var prodMode = process.env.NODE_ENV === 'production';
@@ -17,8 +16,7 @@ var plugins = [
     __PRODUCTION__: prodMode,
     __DEV__: devMode
   }),
-  webpackIsomorphicToolsPlugin,
-  new ExtractTextPlugin("assets/styles.css")
+  webpackIsomorphicToolsPlugin
 ];
 
 var loaders = [
@@ -29,6 +27,9 @@ var loaders = [
 ];
 
 if (prodMode) {
+  var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+  plugins.push(new ExtractTextPlugin("assets/styles.css"));
   plugins.push(new webpack.optimize.DedupePlugin());
   plugins.push(new webpack.optimize.OccurenceOrderPlugin());
   plugins.push(new webpack.optimize.UglifyJsPlugin({
