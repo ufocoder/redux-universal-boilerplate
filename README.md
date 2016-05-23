@@ -12,6 +12,7 @@ Boilerplate based on:
 * [ExpressJS](http://expressjs.com)
 * [React](https://github.com/reactjs/)
 * [React-router](https://github.com/reactjs/react-router)
+* [React-helmet](https://github.com/nfl/react-helmet)
 * [React-redux](https://github.com/reactjs/react-redux)
 * [Redux](https://github.com/reactjs/redux)
 * [BabelJS](https://babeljs.io)

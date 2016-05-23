@@ -1,6 +1,7 @@
 /* eslint react/no-danger: 0 */
 
 import React, {PropTypes} from "react";
+import Helmet from "react-helmet";
 import {CONTAINER_ID} from '../../../common/constants/application';
 
 export default class Html extends React.Component {
@@ -20,20 +21,18 @@ export default class Html extends React.Component {
     currentUrl: PropTypes.string
   }
   render() {
-    const {assets, state, content, lang} = this.props;
-    const {title, description, siteName, currentUrl} = this.props;
+    const {assets, state, content} = this.props;
+
+    let helmet = Helmet.rewind();
+    const attrs = helmet.htmlAttributes.toComponent();
 
     return (
-      <html lang={ lang }>
+      <html {...attrs}>
         <head>
           <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-          <title>{ title }</title>
-          <meta name="description" content={ description } />
-          <meta property="og:type" content="website" />
-          <meta property="og:site_name" content={ siteName } />
-          <meta property="og:title" content={ title } />
-          <meta property="og:description" content={ description } />
-          <meta property="og:url" content={ currentUrl } />
+          {helmet.title.toComponent()}
+          {helmet.meta.toComponent()}
+          {helmet.link.toComponent()}
 
           {Object.keys(assets.styles).map((style, i) =>
             <link href={assets.styles[style]} key={i} media="screen, projection" rel="stylesheet" type="text/css"/>

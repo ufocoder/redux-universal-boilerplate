@@ -1,10 +1,12 @@
 import React from 'react';
+import Helmet from "react-helmet";
 import './assets/styles.css';
 
 export default class Home extends React.Component {
   render() {
     return (
       <div className="homepage">
+          <Helmet title="Homepage" />
           <div className="homepage__space">
             <div className="homepage__space__title">
               Universal biolerplate

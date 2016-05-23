@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import Helmet from "react-helmet";
 import {connect} from 'react-redux';
 import {fetchTrends} from '../actions/Github';
 import Error from '../components/Error';
@@ -25,6 +26,8 @@ export default class Trends extends Component {
   render() {
     return (
       <div className="ui relaxed divided list">
+        <Helmet title="React Github trends" />
+
         <h1>React Github trends</h1>
 
         { this.props.error ?

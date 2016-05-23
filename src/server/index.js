@@ -51,9 +51,7 @@ app.use((req, res, next) => {
     }
 
     const assets = webpackIsomorphicTools.assets();
-    const lang = req.locale;
-    const state = 'window.__INITIAL_STATE__=' +
-      JSON.stringify(initialState) + ';';
+    const state = 'window.__INITIAL_STATE__=' + JSON.stringify(initialState) + ';';
     const content = ReactDOM.renderToString(
       <Provider store={store}>
         <RouterContext {...renderProps} />
@@ -61,10 +59,9 @@ app.use((req, res, next) => {
     );
 
     const markup = <Html
-      assets = { assets }
-      lang={ lang }
-      state={ state }
-      content={ content } />;
+      assets={assets}
+      state={state}
+      content={content} />;
 
     const doctype = '<!doctype html>';
     const html = ReactDOM.renderToStaticMarkup(markup);

@@ -1,10 +1,13 @@
 import React from "react";
 import {Link} from 'react-router';
+import Helmet from "react-helmet";
 
 export default class NotFound extends React.Component {
   render() {
     return (
       <div>
+        <Helmet title="Page not found" />
+
         <h1>404</h1>
         <p>Page not found</p>
         <div className="ui info message">

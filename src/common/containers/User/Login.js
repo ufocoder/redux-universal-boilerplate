@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import Helmet from "react-helmet";
 import {connect} from 'react-redux';
 import { browserHistory } from 'react-router';
 import {login} from '../../actions/Auth';
@@ -50,6 +51,8 @@ export default class Login extends Component {
 
     let guestLayout = (
       <div>
+        <Helmet title="Login" />
+
         <h2>Login form</h2>
 
         <div className="ui message">

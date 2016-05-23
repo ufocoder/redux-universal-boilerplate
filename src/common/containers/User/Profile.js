@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import Helmet from "react-helmet";
 import {connect} from 'react-redux';
 
 @connect(
@@ -14,6 +15,8 @@ export default class Profile extends Component {
   render() {
     return (
       <div>
+        <Helmet title="Profile" />
+
         Welcome, {this.props.user.username}!
       </div>
     );
