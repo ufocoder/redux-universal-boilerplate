@@ -5,14 +5,13 @@ import Helmet from "react-helmet";
 import {CONTAINER_ID} from '../../../common/constants/application';
 
 export default class Html extends React.Component {
-  static defaultProps = {
-    title: 'Universal react boilerplate'
-  }
+
   static propTypes = {
     state: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     assets: PropTypes.object.isRequired
   }
+
   render() {
     const {assets, state, content} = this.props;
 
