@@ -9,16 +9,9 @@ export default class Html extends React.Component {
     title: 'Universal react boilerplate'
   }
   static propTypes = {
-    lang: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
-    assets: PropTypes.object.isRequired,
-
-    // meta tags, title, etc.
-    title: PropTypes.string,
-    description: PropTypes.string,
-    siteName: PropTypes.string,
-    currentUrl: PropTypes.string
+    assets: PropTypes.object.isRequired
   }
   render() {
     const {assets, state, content} = this.props;
