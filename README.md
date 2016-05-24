@@ -28,6 +28,7 @@ Boilerplate based on:
 * Hot module replacement
 * Html layout as `react` component
 * Not Found page with 404 HTTP status
+* Stubs of media asset modules for server bundle
 
 # Installation
 
