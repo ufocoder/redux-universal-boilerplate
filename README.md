@@ -52,7 +52,7 @@ NODE_ENV=production npm run start
 
 There're two ways to work with boilerplate
 
-1) Build once and then run bunldes:
+1) Build once and then run bundles:
 
 ```bash
 npm run build
