@@ -1,12 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {IndexLink, Link} from 'react-router';
-import {connect} from 'react-redux';
 
-@connect(
-  state => ({
-    loggedIn: state.auth.loggedIn
-  })
-)
 export default class Header extends Component {
   static propTypes = {
     loggedIn: PropTypes.bool
