@@ -21,7 +21,8 @@ const fakeUser = {
 export function login(username, password) {
   return async (dispatch) => {
     try {
-      if (username !== TEST_USERNAME && password !== TEST_PASSWORD) {
+      let validCredentials = username !== TEST_USERNAME && password !== TEST_PASSWORD;
+      if (validCredentials) {
         throw new Error('Bad credentials');
       }
 
