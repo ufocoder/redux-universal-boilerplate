@@ -6,7 +6,6 @@ import path from 'path';
 import _ from 'lodash';
 import locale from 'locale';
 import Express from 'express';
-import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
@@ -32,7 +31,6 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(locale(supportedLocales));
-app.use(cookieParser());
 app.use(Express.static(publicPath));
 
 app.use((req, res, next) => {
