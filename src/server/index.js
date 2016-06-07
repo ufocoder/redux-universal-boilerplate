@@ -88,4 +88,6 @@ if (__DEV__ && module.hot) {
   });
 }
 
-app.listen(port, hostname);
+app.listen(port, hostname, function() {
+  console.log('Express server listening on port ' + port);
+});
