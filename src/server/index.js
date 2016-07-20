@@ -16,8 +16,6 @@ import Html from './containers/Html';
 import routesContainer from '../common/routes';
 
 const store = configureStore();
-const initialState = store.getState();
-
 const supportedLocales = ["en", "en_US"];
 const hostname = process.env.HOSTNAME || 'localhost';
 const port = process.env.PORT || 8000;
@@ -49,12 +47,13 @@ app.use((req, res, next) => {
     }
 
     const assets = webpackIsomorphicTools.assets();
-    const state = 'window.__INITIAL_STATE__=' + JSON.stringify(initialState) + ';';
     const content = ReactDOM.renderToString(
       <Provider store={store}>
         <RouterContext {...renderProps} />
       </Provider>
     );
+
+    const state = 'window.__INITIAL_STATE__=' + JSON.stringify(store.getState()) + ';';
 
     const markup = <Html
       assets={assets}
