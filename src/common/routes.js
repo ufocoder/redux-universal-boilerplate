@@ -15,9 +15,14 @@ import {
 const routes = store => {
   /**
    * Dispatch fetch trends action
+   * @return {function} onEnter callback
    */
   function loadTrends() {
-    store.dispatch(fetchTrends());
+    return (nextState, replace, callback) => {
+      store.dispatch(fetchTrends())
+        .then(() => callback())
+        .catch(() => callback());
+    };
   }
 
   return (
@@ -25,7 +30,7 @@ const routes = store => {
       <Route path="/" component={Layout}>
         <IndexRoute component={Home} />
         <Route path="about" component={About} />
-        <Route path="trends" component={Trends} onEnter={loadTrends} />
+        <Route path="trends" component={Trends} onEnter={loadTrends()} />
 
         <Route onEnter={authNoRequired(store)}>
           <Route path="login" component={Login} />
