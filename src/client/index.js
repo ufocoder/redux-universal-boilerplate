@@ -11,7 +11,7 @@ import configureStore from '../common/store.js';
 import routesContainer from '../common/routes';
 import {CONTAINER_ID} from '../common/constants/application';
 
-const store = configureStore(window.__INITIAL_STATE__);
+const store = configureStore(browserHistory, window.__INITIAL_STATE__);
 const history = syncHistoryWithStore(browserHistory, store);
 const reactRoot = window.document.getElementById(CONTAINER_ID);
 

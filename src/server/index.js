@@ -9,20 +9,17 @@ import Express from 'express';
 import bodyParser from 'body-parser';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import {RouterContext, match} from 'react-router';
+import {createMemoryHistory, RouterContext, match} from 'react-router';
+import {syncHistoryWithStore} from 'react-router-redux';
 import {Provider} from 'react-redux';
 import configureStore from '../common/store.js';
 import Html from './containers/Html';
 import routesContainer from '../common/routes';
 
-const store = configureStore();
 const supportedLocales = ["en", "en_US"];
-const hostname = process.env.HOSTNAME || 'localhost';
 const port = process.env.PORT || 8000;
 const app = new Express();
 const publicPath = path.resolve('static');
-
-let routes = routesContainer(store);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -31,7 +28,19 @@ app.use(bodyParser.urlencoded({
 app.use(locale(supportedLocales));
 app.use(Express.static(publicPath));
 
+let memoryHistory;
+let store;
+let history;
+let routes;
+
 app.use((req, res, next) => {
+  const location = req.url;
+
+  memoryHistory = createMemoryHistory(location);
+  store = configureStore(memoryHistory);
+  history = syncHistoryWithStore(memoryHistory, store);
+  routes = routesContainer(store);
+
   match({
     routes,
     location: req.path
@@ -87,6 +96,6 @@ if (__DEV__ && module.hot) {
   });
 }
 
-app.listen(port, hostname, function() {
+app.listen(port, function() {
   console.log('Express server listening on port ' + port);
 });
