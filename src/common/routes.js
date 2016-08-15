@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import {browserHistory, Router, Route, IndexRoute} from 'react-router';
 import Layout from './containers/Layout';
 import NotFound from './components/NotFound';
@@ -12,6 +13,8 @@ import {
   authLogout
 } from './helpers/routes';
 
+import {initialState as trendsInitialState} from './reducers/github';
+
 const routes = store => {
   /**
    * Dispatch fetch trends action
@@ -19,9 +22,13 @@ const routes = store => {
    */
   function loadTrends() {
     return (nextState, replace, callback) => {
-      store.dispatch(fetchTrends())
-        .then(() => callback())
-        .catch(() => callback());
+      if (_.isEqual(trendsInitialState, store.getState().github)) {
+        store.dispatch(fetchTrends())
+          .then(() => callback())
+          .catch(() => callback());
+      } else {
+        callback();
+      }
     };
   }
 

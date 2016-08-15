@@ -4,7 +4,7 @@ import {
   FETCH_TRENDS_FAILURE
 } from '../constants/actions/Github';
 
-const initialState = {
+export const initialState = {
   trends: [],
   loading: false,
   error: null
