@@ -67,9 +67,9 @@ module.exports = _.mergeWith(config, {
     path.resolve(path.join(appPath, 'src', 'client'))
   ],
   output: {
-    path: path.resolve(path.join(appPath, 'static')),
+    path: path.resolve(path.join(appPath, 'static', 'assets')),
     publicPath: '/',
-    filename: 'assets/client.js',
+    filename: 'client.js',
     chunkFilename: '[name].[id].js'
   },
   plugins: plugins

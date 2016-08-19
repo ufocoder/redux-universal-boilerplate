@@ -18,7 +18,14 @@ fs.readdirSync('node_modules')
     nodeModules[mod] = 'commonjs ' + mod;
   });
 
-var plugins = [];
+var plugins = [
+  new webpack.DefinePlugin({
+    __CLIENT__: false,
+    __SERVER__: true,
+    __PRODUCTION__: prodMode,
+    __DEV__: devMode
+  })
+];
 
 var regExpGroups = [
   'styles',
@@ -43,13 +50,6 @@ for (regExpGroup in regExpGroups) {
     addNodeNoop(regExpGroups[regExpGroup]);
   }
 }
-
-plugins.push(new webpack.DefinePlugin({
-  __CLIENT__: false,
-  __SERVER__: true,
-  __PRODUCTION__: prodMode,
-  __DEV__: devMode
-}));
 
 if (prodMode) {
   plugins.push(new webpack.optimize.UglifyJsPlugin({
