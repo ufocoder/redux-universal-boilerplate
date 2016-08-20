@@ -22,14 +22,14 @@ var plugins = [
 var loaders = [
   {
     test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
-    loader: 'file?name=assets/fonts/[hash].[ext]'
+    loader: 'file?name=fonts/[hash].[ext]'
   }
 ];
 
 if (prodMode) {
   var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-  plugins.push(new ExtractTextPlugin("assets/styles.css"));
+  plugins.push(new ExtractTextPlugin("styles.css"));
   plugins.push(new webpack.optimize.DedupePlugin());
   plugins.push(new webpack.optimize.OccurenceOrderPlugin());
   plugins.push(new webpack.optimize.UglifyJsPlugin({
@@ -68,7 +68,6 @@ module.exports = _.mergeWith(config, {
   ],
   output: {
     path: path.resolve(path.join(appPath, 'static', 'assets')),
-    publicPath: '/',
     filename: 'client.js',
     chunkFilename: '[name].[id].js'
   },

@@ -25,7 +25,7 @@ config.module.loaders.unshift({
 });
 
 config.devServer = {
-  publicPath: 'http://' + wds.hostname + ':' + wds.port + '/',
+  publicPath: '/assets/',
   contentBase: path.resolve(path.join(appPath, 'static')),
   hot: true,
   inline: false,
@@ -50,8 +50,7 @@ module.exports = _.mergeWith(config, {
   debug: true,
   devtool: 'source-map',
   output: {
-    publicPath: '/',
-    filename: 'assets/client.js'
+    filename: 'client.js'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

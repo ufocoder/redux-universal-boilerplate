@@ -76,7 +76,6 @@ module.exports = _.mergeWith(config, {
   externals: nodeModules,
   output: {
     path: path.resolve(path.join(appPath, 'dist')),
-    publicPath: '/',
     filename: 'server.js'
   },
   plugins: plugins

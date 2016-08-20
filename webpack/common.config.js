@@ -41,6 +41,9 @@ module.exports = {
     ],
     noParse: /\.min\.js/
   },
+  output: {
+    publicPath: '/assets/'
+  },
   node: {
     __dirname: true,
     fs: 'empty'

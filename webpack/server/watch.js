@@ -17,7 +17,6 @@ module.exports = _.mergeWith(config, {
   debug: true,
   watch: true,
   output: {
-    publicPath: '/',
     hotUpdateMainFilename: "update/[hash]/update.json",
     hotUpdateChunkFilename: "update/[hash]/[id].update.js"
   },
