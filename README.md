@@ -5,6 +5,7 @@ Boilerplate for react universal application building on flux architecture based 
 
 [![Build Status](https://travis-ci.org/ufocoder/redux-universal-boilerplate.svg?branch=master)](https://travis-ci.org/ufocoder/redux-universal-boilerplate)
 [![Dependencies](https://david-dm.org/ufocoder/redux-universal-boilerplate.svg)](https://david-dm.org/ufocoder/redux-universal-boilerplate)
+[![devDependencies Status](https://david-dm.org/ufocoder/redux-universal-boilerplate/dev-status.svg)](https://david-dm.org/ufocoder/redux-universal-boilerplate?type=dev)
 [![MIT License](https://img.shields.io/npm/l/check-dependencies.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
 Boilerplate based on:
