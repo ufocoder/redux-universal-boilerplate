@@ -5,7 +5,7 @@ import Layout from './containers/Layout';
 import NotFound from './components/NotFound';
 import {About, Home} from './components/Page';
 import {Login, Profile} from './containers/User';
-import Trends from './containers/Trends';
+import Github from './containers/Github';
 import {fetchTrends} from './actions/Github';
 import {
   authRequired,

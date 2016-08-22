@@ -1,8 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import Helmet from "react-helmet";
 import {connect} from 'react-redux';
-import {fetchTrends} from '../actions/Github';
-import Error from '../components/Error';
+import {fetchTrends} from '../../actions/Github';
+import Error from '../../components/Error';
 
 @connect(
   state => ({
@@ -10,7 +10,7 @@ import Error from '../components/Error';
     error: state.github.error
   })
 )
-export default class Trends extends Component {
+export default class GithubContainer extends Component {
   static propTypes = {
     trends: PropTypes.array,
     error: PropTypes.string
