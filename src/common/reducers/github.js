@@ -1,4 +1,5 @@
 import {
+  RESET_TRENDS,
   FETCH_TRENDS_LOADING,
   FETCH_TRENDS_SUCCESS,
   FETCH_TRENDS_FAILURE
@@ -29,6 +30,8 @@ export default (state = initialState, action) => {
         loading: false,
         error: action.error
       };
+    case RESET_TRENDS:
+      return initialState;
     default:
       return state;
   }

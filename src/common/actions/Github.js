@@ -1,4 +1,5 @@
 import {
+  RESET_TRENDS,
   FETCH_TRENDS_LOADING,
   FETCH_TRENDS_SUCCESS,
   FETCH_TRENDS_FAILURE
@@ -33,5 +34,14 @@ export function fetchTrends() {
         error: error.message || 'Unknown error occured'
       });
     }
+  };
+}
+
+/**
+ * @return {function} Reset trends action
+ */
+export function resetTrends() {
+  return {
+    type: RESET_TRENDS
   };
 }
