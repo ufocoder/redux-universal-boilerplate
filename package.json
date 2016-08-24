@@ -65,6 +65,7 @@
     "react-router": "^2.6.1",
     "react-router-redux": "^4.0.5",
     "react-tap-event-plugin": "^1.0.0",
+    "redial": "^0.4.2",
     "redux": "^3.3.1",
     "redux-thunk": "^2.0.1",
     "semantic-ui-css": "^2.2.2",

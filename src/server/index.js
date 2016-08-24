@@ -2,6 +2,7 @@
 /* eslint no-console: [2, { allow: ["log"] }] */
 
 import BabelPolyFill from 'babel-polyfill';
+import {trigger} from 'redial';
 import path from 'path';
 import _ from 'lodash';
 import locale from 'locale';
@@ -55,29 +56,43 @@ app.use((req, res, next) => {
       return;
     }
 
-    const assets = webpackIsomorphicTools.assets();
-    const content = ReactDOM.renderToString(
-      <Provider store={store}>
-        <RouterContext {...renderProps} />
-      </Provider>
-    );
+    const {components} = renderProps;
+    const locals = {
+      path: renderProps.location.pathname,
+      query: renderProps.location.query,
+      params: renderProps.params,
+      dispatch: store.dispatch
+    };
 
-    const state = 'window.__INITIAL_STATE__=' + JSON.stringify(store.getState()) + ';';
+    trigger('fetch', components, locals)
+      .then(() => {
+        const assets = webpackIsomorphicTools.assets();
+        const content = ReactDOM.renderToString(
+          <Provider store={store}>
+            <RouterContext {...renderProps} />
+          </Provider>
+        );
 
-    const markup = <Html
-      assets={assets}
-      state={state}
-      content={content} />;
+        const state = 'window.__INITIAL_STATE__=' + JSON.stringify(store.getState()) + ';';
 
-    const doctype = '<!doctype html>';
-    const html = ReactDOM.renderToStaticMarkup(markup);
+        const markup = <Html
+          assets={assets}
+          state={state}
+          content={content} />;
 
-    const isNotFound = _.find(renderProps.routes, {
-      name: 'not-found'
-    });
+        const doctype = '<!doctype html>';
+        const html = ReactDOM.renderToStaticMarkup(markup);
 
-    res.status(isNotFound ? 404 : 200);
-    res.send(doctype + html);
+        const isNotFound = _.find(renderProps.routes, {
+          name: 'not-found'
+        });
+
+        res.status(isNotFound ? 404 : 200);
+        res.send(doctype + html);
+      })
+      .catch(() => {
+        res.status(503);
+      });
   });
 });
 
