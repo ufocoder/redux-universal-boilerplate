@@ -1,18 +1,27 @@
 import React, {Component, PropTypes} from 'react';
+import {provideHooks} from 'redial';
 import Helmet from "react-helmet";
 import {connect} from 'react-redux';
-import {fetchTrends} from '../../actions/Github';
+import {fetchTrends, resetTrends} from '../../actions/Github';
 import Error from '../../components/Error';
 
+@provideHooks({
+  fetch: ({dispatch}) => {
+    dispatch(resetTrends());
+    return dispatch(fetchTrends());
+  }
+})
 @connect(
   state => ({
     trends: state.github.trends,
+    loading: state.github.loading,
     error: state.github.error
   })
 )
 export default class GithubContainer extends Component {
   static propTypes = {
     trends: PropTypes.array,
+    loading: PropTypes.bool,
     error: PropTypes.string
   }
 
@@ -20,6 +29,12 @@ export default class GithubContainer extends Component {
     if (this.props.error) {
       return (
         <Error title="Github error" message={this.props.error} />
+      );
+    }
+
+    if (this.props.loading) {
+      return (
+        <div>loading..</div>
       );
     }
 

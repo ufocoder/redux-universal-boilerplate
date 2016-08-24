@@ -6,7 +6,6 @@ import NotFound from './components/NotFound';
 import {About, Home} from './components/Page';
 import {Login, Profile} from './containers/User';
 import Github from './containers/Github';
-import {fetchTrends} from './actions/Github';
 import {
   authRequired,
   authNoRequired,
@@ -16,28 +15,12 @@ import {
 import {initialState as trendsInitialState} from './reducers/github';
 
 const routes = store => {
-  /**
-   * Dispatch fetch trends action
-   * @return {function} onEnter callback
-   */
-  function loadTrends() {
-    return (nextState, replace, callback) => {
-      if (_.isEqual(trendsInitialState, store.getState().github)) {
-        store.dispatch(fetchTrends())
-          .then(() => callback())
-          .catch(() => callback());
-      } else {
-        callback();
-      }
-    };
-  }
-
   return (
     <Router history={browserHistory}>
       <Route path="/" component={Layout}>
         <IndexRoute component={Home} />
         <Route path="about" component={About} />
-        <Route path="trends" component={Trends} onEnter={loadTrends()} />
+        <Route path="trends" component={Github} />
 
         <Route onEnter={authNoRequired(store)}>
           <Route path="login" component={Login} />
