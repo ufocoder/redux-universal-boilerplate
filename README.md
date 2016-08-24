@@ -16,6 +16,7 @@ Boilerplate based on:
 * [React-helmet](https://github.com/nfl/react-helmet)
 * [React-redux](https://github.com/reactjs/react-redux)
 * [Redux](https://github.com/reactjs/redux)
+* [Redial](https://github.com/markdalgleish/redial)
 * [BabelJS](https://babeljs.io)
 * [Webpack](https://webpack.github.io/)
 * and etc.
