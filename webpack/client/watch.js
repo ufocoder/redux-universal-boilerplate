@@ -36,7 +36,7 @@ config.devServer = {
     "Access-Control-Allow-Origin": "*"
   },
   proxy: {
-    '*': 'http://' + proxy.hostname + ':' + proxy.port
+    '**': 'http://' + proxy.hostname + ':' + proxy.port
   },
   stats: {
     colors: true
