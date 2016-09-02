@@ -1,0 +1,27 @@
+@font-face
+  font-family Orbitron
+  src url('./fonts/Orbitron-Regular.ttf')
+
+.homepage
+  text-align center
+  margin -1em
+  &__ground
+    background url('./images/ground.png') repeat
+    height 15px
+  &__space
+    background url('./images/background.gif') repeat
+    height 250px
+    position relative
+    &__title
+      position relative
+      top 90px
+      font-size 40px
+      font-family 'Orbitron'
+    &__astronaut
+      position absolute
+      bottom 0px
+      height 48px
+      width 100%
+      background-image url('./images/astronaut.gif')
+      background-position center center
+      background-repeat no-repeat
