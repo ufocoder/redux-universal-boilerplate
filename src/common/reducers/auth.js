@@ -3,7 +3,7 @@ import {
   LOGIN_FAILURE,
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE
-} from '../constants/actions/Auth';
+} from 'src/common/constants/actions/Auth';
 
 const initialState = {
   user: null,

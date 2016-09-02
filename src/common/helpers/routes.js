@@ -1,4 +1,4 @@
-import {logout} from '../actions/Auth';
+import {logout} from 'src/common/actions/Auth';
 
 /**
  * @param  {object} store Redux store

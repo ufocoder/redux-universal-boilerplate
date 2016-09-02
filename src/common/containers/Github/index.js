@@ -1,8 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {provideHooks} from 'redial';
 import {connect} from 'react-redux';
-import {fetchTrends, resetTrends} from '../../actions/Github';
-import Github from '../../components/Github';
+import {fetchTrends, resetTrends} from 'src/common/actions/Github';
+import Github from 'src/common/components/Github';
 
 @provideHooks({
   fetch: ({dispatch}) => {

@@ -2,7 +2,7 @@
 
 import React, {PropTypes} from "react";
 import Helmet from "react-helmet";
-import {CONTAINER_ID} from '../../../common/constants/application';
+import {CONTAINER_ID} from 'src/common/constants/application';
 
 export default class Html extends React.Component {
 

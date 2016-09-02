@@ -2,12 +2,12 @@ import React, {Component, PropTypes} from 'react';
 import Helmet from "react-helmet";
 import {connect} from 'react-redux';
 import { browserHistory } from 'react-router';
-import {login} from '../../actions/Auth';
-import Error from '../../components/Error';
+import {login} from 'src/common/actions/Auth';
+import Error from 'src/common/components/Error';
 import {
   TEST_USERNAME,
   TEST_PASSWORD
-} from '../../constants/actions/Auth';
+} from 'src/common/constants/actions/Auth';
 
 @connect(
   state => ({

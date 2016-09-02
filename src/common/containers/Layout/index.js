@@ -1,6 +1,6 @@
 import React, {PropTypes} from "react";
 import {connect} from 'react-redux';
-import Layout from '../../components/Layout';
+import Layout from 'src/common/components/Layout';
 
 @connect(
   state => ({

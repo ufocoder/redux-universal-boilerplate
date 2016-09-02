@@ -3,7 +3,7 @@ import {
   FETCH_TRENDS_LOADING,
   FETCH_TRENDS_SUCCESS,
   FETCH_TRENDS_FAILURE
-} from '../constants/actions/Github';
+} from 'src/common/constants/actions/Github';
 
 import axios from 'axios';
 

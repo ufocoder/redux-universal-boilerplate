@@ -5,7 +5,7 @@ import {
   LOGOUT_FAILURE,
   TEST_USERNAME,
   TEST_PASSWORD
-} from '../constants/actions/Auth';
+} from 'src/common/constants/actions/Auth';
 
 const fakeUser = {
   username: 'demo',

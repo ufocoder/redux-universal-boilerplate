@@ -13,9 +13,9 @@ import ReactDOM from 'react-dom/server';
 import {createMemoryHistory, RouterContext, match} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 import {Provider} from 'react-redux';
-import configureStore from '../common/store.js';
+import configureStore from 'src/common/store.js';
+import routesContainer from 'src/common/routes';
 import Html from './containers/Html';
-import routesContainer from '../common/routes';
 
 const supportedLocales = ["en", "en_US"];
 const port = process.env.PORT || 8000;
@@ -72,8 +72,6 @@ app.use((req, res, next) => {
             <RouterContext {...renderProps} />
           </Provider>
         );
-
-        const state = 'window.__INITIAL_STATE__=' + JSON.stringify(store.getState()) + ';';
 
         const markup = <Html
           assets={assets}

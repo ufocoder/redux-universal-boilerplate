@@ -1,3 +1,4 @@
+var path = require('path');
 var webpack = require('webpack');
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./isomorphic.config'));
@@ -16,7 +17,10 @@ module.exports = {
       'src',
       'node_modules'
     ],
-    extensions: ['', '.json', '.js']
+    extensions: ['', '.json', '.js'],
+    alias: {
+      src: path.join(path.dirname(__dirname), 'src')
+    }
   },
   module: {
     loaders: [
