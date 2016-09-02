@@ -75,7 +75,7 @@ app.use((req, res, next) => {
 
         const markup = <Html
           assets={assets}
-          state={state}
+          store={store}
           content={content} />;
 
         const doctype = '<!doctype html>';

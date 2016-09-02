@@ -2,18 +2,19 @@
 
 import React, {PropTypes} from "react";
 import Helmet from "react-helmet";
+import serialize from 'serialize-javascript';
 import {CONTAINER_ID} from 'src/common/constants/application';
 
 export default class Html extends React.Component {
 
   static propTypes = {
-    state: PropTypes.string.isRequired,
+    assets: PropTypes.object.isRequired,
     content: PropTypes.string.isRequired,
-    assets: PropTypes.object.isRequired
+    store: PropTypes.object.isRequired
   }
 
   render() {
-    const {assets, state, content} = this.props;
+    const {assets, store, content} = this.props;
 
     let helmet = Helmet.rewind();
     const attrs = helmet.htmlAttributes.toComponent();
@@ -33,7 +34,9 @@ export default class Html extends React.Component {
 
         <body>
           <div id={ CONTAINER_ID } dangerouslySetInnerHTML={ {__html: content} } />
-          <script dangerouslySetInnerHTML={ {__html: state} } />
+          <script dangerouslySetInnerHTML={{
+            __html: 'window.__INITIAL_STATE__=' + serialize(store.getState()) + ';'
+          }} />
           {Object.keys(assets.javascript).map((script, i) =>
             <script src={assets.javascript[script]} key={i}/>
           )}
