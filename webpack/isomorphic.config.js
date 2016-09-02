@@ -78,9 +78,18 @@ module.exports = {
         'eot'
       ]
     },
-    styles: {
+    stylesCss: {
       extensions: [
-        'css'
+        'css',
+        'scss'
+      ],
+      filter: styleFilter,
+      path: stylePath,
+      parser: styleParser
+    },
+    stylesStyl: {
+      extensions: [
+        'styl'
       ],
       filter: styleFilter,
       path: stylePath,

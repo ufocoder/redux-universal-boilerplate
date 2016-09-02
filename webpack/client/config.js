@@ -47,13 +47,23 @@ if (prodMode) {
   }));
 
   loaders.push({
-    test: webpackIsomorphicToolsPlugin.regular_expression('styles'),
-    loader: ExtractTextPlugin.extract('style', 'css')
+    test: webpackIsomorphicToolsPlugin.regular_expression('stylesCss'),
+    loader: ExtractTextPlugin.extract('style', 'stylus')
+  });
+
+  loaders.push({
+    test: webpackIsomorphicToolsPlugin.regular_expression('stylesStyl'),
+    loader: ExtractTextPlugin.extract('style', 'css!stylus')
   });
 } else {
   loaders.push({
-    test: webpackIsomorphicToolsPlugin.regular_expression('styles'),
+    test: webpackIsomorphicToolsPlugin.regular_expression('stylesCss'),
     loader: 'style!css'
+  });
+
+  loaders.push({
+    test: webpackIsomorphicToolsPlugin.regular_expression('stylesStyl'),
+    loader: 'style!css!stylus'
   });
 }
 

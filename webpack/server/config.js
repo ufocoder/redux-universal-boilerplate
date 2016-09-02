@@ -27,8 +27,9 @@ var plugins = [
   })
 ];
 
-var regExpGroups = [
-  'styles',
+var assetsIgnoredGroups = [
+  'stylesCss',
+  'stylesStyl',
   'fonts'
 ];
 
@@ -43,13 +44,7 @@ function addNodeNoop(regExpGroup) {
   ));
 }
 
-var regExpGroup;
-
-for (regExpGroup in regExpGroups) {
-  if (regExpGroups.hasOwnProperty(regExpGroup)) {
-    addNodeNoop(regExpGroups[regExpGroup]);
-  }
-}
+_.forEach(assetsIgnoredGroups, addNodeNoop);
 
 if (prodMode) {
   plugins.push(new webpack.optimize.UglifyJsPlugin({
