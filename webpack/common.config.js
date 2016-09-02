@@ -10,7 +10,9 @@ module.exports = {
   stats: {
     colors: true,
     hasErrors: true,
-    hasWarnings: true
+    hasWarnings: true,
+    reasons: true,
+    errorDetails: true
   },
   resolve: {
     modulesDirectories: [
