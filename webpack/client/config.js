@@ -69,7 +69,7 @@ if (prodMode) {
 
 module.exports = _.mergeWith(config, {
   target: 'web',
-  devtool: false,
+  devtool: devMode ? 'source-map' : null,
   module: {
     loaders: loaders
   },
