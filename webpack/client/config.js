@@ -48,7 +48,7 @@ if (prodMode) {
 
   loaders.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesCss'),
-    loader: ExtractTextPlugin.extract('style', 'stylus')
+    loader: ExtractTextPlugin.extract('style', 'css')
   });
 
   loaders.push({
