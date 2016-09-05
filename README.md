@@ -31,6 +31,7 @@ Boilerplate based on:
 * Html layout as `react` component
 * Not Found page with 404 HTTP status
 * Stubs of media asset modules for server bundle
+* Stylus CSS preprocessor support
 
 # Installation
 
@@ -99,6 +100,11 @@ There is a watch mode for testing:
 ```bash
 npm run test:watch
 ```
+
+# Attention
+Don't forget that there's universal (isomorphic) boilerplate so you need to consider this fact when you will develop your UI application.
+
+Remember that you should use browser objects (like window, document and etc.) in ReactJS [https://facebook.github.io/react/docs/component-specs.html#mounting-componentdidmount](componentDidMount) Method
 
 # Contributing
 
