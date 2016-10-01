@@ -14,7 +14,7 @@ import {
 
 import {initialState as trendsInitialState} from './reducers/github';
 
-const routes = store => {
+const routes = (store) => {
   return (
     <Router history={browserHistory}>
       <Route path="/" component={Layout}>

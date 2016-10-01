@@ -102,7 +102,7 @@ if (__DEV__ && module.hot) {
     routes = routesContainer(store);
   });
 
-  module.hot.addStatusHandler(status => {
+  module.hot.addStatusHandler((status) => {
     if (status === 'abort') {
       setTimeout(() => process.exit(0), 0);
     }

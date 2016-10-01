@@ -7,7 +7,8 @@
     "no-unused-vars": 0,
     "object-curly-spacing": 0,
     "max-len": [1,120, 4, {"ignoreUrls": true}],
-    "max-statements-per-line": 0
+    "max-statements-per-line": 0,
+    "arrow-parens": ["error", "always"]
   },
   "parser": "babel-eslint",
   "plugins": [

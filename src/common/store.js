@@ -21,7 +21,7 @@ export default function(history, initialState = {}) {
       applyMiddleware(routerMiddleware(history)),
       typeof window === 'object' &&
       typeof window.devToolsExtension !== 'undefined' ?
-             window.devToolsExtension() : f => f
+             window.devToolsExtension() : (f) => f
     )(createStore);
   } else {
     finalCreateStore = compose(
