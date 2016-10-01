@@ -25,7 +25,7 @@ ReactDOM.render(
   reactRoot
 );
 
-history.listen(location => {
+history.listen((location) => {
   match({ routes, location }, (error, redirectLocation, renderProps) => {
     if (renderProps) {
       const { components } = renderProps;

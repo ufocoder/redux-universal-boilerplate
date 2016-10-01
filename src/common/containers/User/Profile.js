@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import {connect} from 'react-redux';
 
 @connect(
-  state => ({
+  (state) => ({
     user: state.auth.user
   })
 )

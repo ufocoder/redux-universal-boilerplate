@@ -11,7 +11,7 @@ import Github from 'src/common/components/Github';
   }
 })
 @connect(
-  state => ({
+  (state) => ({
     trends: state.github.trends,
     loading: state.github.loading,
     error: state.github.error
