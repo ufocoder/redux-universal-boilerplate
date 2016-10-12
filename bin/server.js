@@ -5,7 +5,6 @@ var projectBasePath = require('path').resolve(__dirname);
 var devMode = process.env.NODE_ENV !== 'production';
 
 var webpackIsomorphicTools = new WebpackIsomorphicTools(config)
-  .development(devMode)
   .server(projectBasePath, () => {
     require('../dist/server');
   });
