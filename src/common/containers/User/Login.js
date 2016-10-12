@@ -10,12 +10,12 @@ import {
 } from 'src/common/constants/actions/Auth';
 
 @connect(
-  state => ({
+  (state) => ({
     user: state.auth.user,
     error: state.auth.error,
     loggedIn: state.auth.loggedIn
   }),
-  dispatch => ({
+  (dispatch) => ({
     submit: (username, password) => {
       dispatch(login(username, password));
     }
@@ -29,7 +29,7 @@ export default class Login extends Component {
     submit: PropTypes.func
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     const username = this.refs.username.value;
     const password = this.refs.password.value;
 

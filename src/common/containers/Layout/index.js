@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Layout from 'src/common/components/Layout';
 
 @connect(
-  state => ({
+  (state) => ({
     loggedIn: state.auth.loggedIn
   })
 )
