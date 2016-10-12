@@ -48,7 +48,7 @@ if (prodMode) {
 
   loaders.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesCss'),
-    loader: ExtractTextPlugin.extract('style', 'css')
+    loader: ExtractTextPlugin.extract('style', 'css!sass')
   });
 
   loaders.push({
@@ -63,7 +63,7 @@ if (prodMode) {
 } else {
   loaders.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesCss'),
-    loader: 'style!css'
+    loader: 'style!css!sass'
   });
 
   loaders.push({
