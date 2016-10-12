@@ -29,6 +29,7 @@ var plugins = [
 
 var assetsIgnoredGroups = [
   'stylesCss',
+  'stylesSass',
   'stylesStyl',
   'fonts'
 ];

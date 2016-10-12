@@ -52,6 +52,11 @@ if (prodMode) {
   });
 
   loaders.push({
+    test: webpackIsomorphicToolsPlugin.regular_expression('stylesSass'),
+    loader: ExtractTextPlugin.extract('style', 'css!sass')
+  });
+
+  loaders.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesStyl'),
     loader: ExtractTextPlugin.extract('style', 'css!stylus')
   });
@@ -59,6 +64,11 @@ if (prodMode) {
   loaders.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesCss'),
     loader: 'style!css'
+  });
+
+  loaders.push({
+    test: webpackIsomorphicToolsPlugin.regular_expression('stylesSass'),
+    loader: 'style!css!sass'
   });
 
   loaders.push({

@@ -87,6 +87,14 @@ module.exports = {
       path: stylePath,
       parser: styleParser
     },
+    stylesSass: {
+      extensions: [
+        'sass'
+      ],
+      filter: styleFilter,
+      path: stylePath,
+      parser: styleParser
+    },
     stylesStyl: {
       extensions: [
         'styl'
