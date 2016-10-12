@@ -29,7 +29,7 @@
     "build:server": "webpack --config webpack/server/config.js",
     "build:client": "webpack --config webpack/client/config.js",
     "build": "npm run clean && concurrently \"npm run build:server\" \"npm run build:client\"",
-    "watch": "npm run clean && concurrently \"npm run watch:client\" \"npm run watch:server\" --kill-others",
+    "watch": "npm run clean && concurrently \"npm run watch:client\" \"npm run watch:server\" \"npm run wait:server\" --kill-others",
     "wait:server": "just-wait --pattern \"dist/*.js\" && npm run start",
     "watch:server": "webpack --config webpack/server/watch.js",
     "watch:client": "webpack-dev-server --config webpack/client/watch.js",
