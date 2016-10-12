@@ -31,7 +31,7 @@ Boilerplate based on:
 * Html layout as `react` component
 * Not Found page with 404 HTTP status
 * Stubs of media asset modules for server bundle
-* Stylus CSS preprocessor support
+* CSS preprocessors support: [SASS](http://sass-lang.com/), [Stylus](http://stylus-lang.com/)
 
 # Installation
 
