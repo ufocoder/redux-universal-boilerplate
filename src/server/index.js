@@ -66,27 +66,31 @@ app.use((req, res, next) => {
 
     trigger('fetch', components, locals)
       .then(() => {
-        const assets = webpackIsomorphicTools.assets();
-        const content = ReactDOM.renderToString(
-          <Provider store={store}>
-            <RouterContext {...renderProps} />
-          </Provider>
-        );
+        try {
+          const assets = webpackIsomorphicTools.assets();
+          const content = ReactDOM.renderToString(
+            <Provider store={store}>
+              <RouterContext {...renderProps} />
+            </Provider>
+          );
 
-        const markup = <Html
-          assets={assets}
-          store={store}
-          content={content} />;
+          const markup = <Html
+            assets={assets}
+            store={store}
+            content={content} />;
 
-        const doctype = '<!doctype html>';
-        const html = ReactDOM.renderToStaticMarkup(markup);
+          const doctype = '<!doctype html>';
+          const html = ReactDOM.renderToStaticMarkup(markup);
 
-        const isNotFound = _.find(renderProps.routes, {
-          name: 'not-found'
-        });
+          const isNotFound = _.find(renderProps.routes, {
+            name: 'not-found'
+          });
 
-        res.status(isNotFound ? 404 : 200);
-        res.send(doctype + html);
+          res.status(isNotFound ? 404 : 200);
+          res.send(doctype + html);
+        } catch (err) {
+          res.status(503);
+        }
       })
       .catch(() => {
         res.status(503);
