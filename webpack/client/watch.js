@@ -48,7 +48,7 @@ config.devServer = {
 module.exports = _.mergeWith(config, {
   cache: true,
   debug: true,
-  devtool: 'source-map',
+  devtool: 'eval',
   output: {
     filename: 'client.js'
   },

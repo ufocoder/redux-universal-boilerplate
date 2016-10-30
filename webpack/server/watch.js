@@ -13,6 +13,7 @@ config.module.loaders.unshift({
 });
 
 module.exports = _.mergeWith(config, {
+  devtool: 'eval',
   cache: true,
   debug: true,
   watch: true,
