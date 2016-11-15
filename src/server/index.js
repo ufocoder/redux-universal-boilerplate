@@ -39,6 +39,7 @@ app.use((req, res, next) => {
   routes = routesContainer(store);
 
   match({
+    history,
     routes,
     location: req.path,
   }, (error, redirectLocation, renderProps) => {
