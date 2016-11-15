@@ -1,14 +1,13 @@
 {
   "extends": [
-    "eslint-config-google",
+    "google",
     "plugin:react/recommended",
   ],
   "rules": {
-    "no-unused-vars": 0,
-    "object-curly-spacing": 0,
-    "max-len": [1,120, 4, {"ignoreUrls": true}],
-    "max-statements-per-line": 0,
-    "arrow-parens": ["error", "always"]
+    "indent": [2, 2, {SwitchCase: 1}],
+    "require-jsdoc": 0,
+    "no-invalid-this": 0,
+    "max-len": [1,120, 4, {"ignoreUrls": true}]
   },
   "parser": "babel-eslint",
   "plugins": [
