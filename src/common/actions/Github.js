@@ -2,7 +2,7 @@ import {
   RESET_TRENDS,
   FETCH_TRENDS_LOADING,
   FETCH_TRENDS_SUCCESS,
-  FETCH_TRENDS_FAILURE
+  FETCH_TRENDS_FAILURE,
 } from 'src/common/constants/actions/Github';
 
 import axios from 'axios';
@@ -19,19 +19,19 @@ export function fetchTrends() {
   return async (dispatch) => {
     try {
       dispatch({
-        type: FETCH_TRENDS_LOADING
+        type: FETCH_TRENDS_LOADING,
       });
 
       const response = await axios.get(URL);
 
       dispatch({
         type: FETCH_TRENDS_SUCCESS,
-        trends: response.data.items
+        trends: response.data.items,
       });
     } catch (error) {
       dispatch({
         type: FETCH_TRENDS_FAILURE,
-        error: error.message || 'Unknown error occured'
+        error: error.message || 'Unknown error occured',
       });
     }
   };
@@ -42,6 +42,6 @@ export function fetchTrends() {
  */
 export function resetTrends() {
   return {
-    type: RESET_TRENDS
+    type: RESET_TRENDS,
   };
 }

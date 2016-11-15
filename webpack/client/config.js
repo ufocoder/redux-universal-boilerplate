@@ -1,41 +1,41 @@
-var _ = require('lodash');
-var webpack = require('webpack');
-var path = require('path');
-var config = require('../common.config');
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
-var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
-var appPath = path.join(__dirname, '..', '..');
+let _ = require('lodash');
+let webpack = require('webpack');
+let path = require('path');
+let config = require('../common.config');
+let WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+let webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
+let appPath = path.join(__dirname, '..', '..');
 
-var devMode = process.env.NODE_ENV !== 'production';
-var prodMode = process.env.NODE_ENV === 'production';
+let devMode = process.env.NODE_ENV !== 'production';
+let prodMode = process.env.NODE_ENV === 'production';
 
-var plugins = [
+let plugins = [
   new webpack.DefinePlugin({
     __CLIENT__: true,
     __SERVER__: false,
     __PRODUCTION__: prodMode,
-    __DEV__: devMode
+    __DEV__: devMode,
   }),
-  webpackIsomorphicToolsPlugin
+  webpackIsomorphicToolsPlugin,
 ];
 
-var loaders = [
+let loaders = [
   {
     test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
-    loader: 'file?name=fonts/[hash].[ext]'
-  }
+    loader: 'file?name=fonts/[hash].[ext]',
+  },
 ];
 
 if (prodMode) {
-  var ExtractTextPlugin = require("extract-text-webpack-plugin");
+  let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-  plugins.push(new ExtractTextPlugin("styles.css"));
+  plugins.push(new ExtractTextPlugin('styles.css'));
   plugins.push(new webpack.optimize.DedupePlugin());
   plugins.push(new webpack.optimize.OccurenceOrderPlugin());
   plugins.push(new webpack.optimize.UglifyJsPlugin({
     compress: {
-      warnings: false
-    }
+      warnings: false,
+    },
   }));
 
   plugins.push(new webpack.DefinePlugin({
@@ -44,32 +44,32 @@ if (prodMode) {
 
   loaders.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesCss'),
-    loader: ExtractTextPlugin.extract('style', 'css')
+    loader: ExtractTextPlugin.extract('style', 'css'),
   });
 
   loaders.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesSass'),
-    loader: ExtractTextPlugin.extract('style', 'css!sass')
+    loader: ExtractTextPlugin.extract('style', 'css!sass'),
   });
 
   loaders.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesStyl'),
-    loader: ExtractTextPlugin.extract('style', 'css!stylus')
+    loader: ExtractTextPlugin.extract('style', 'css!stylus'),
   });
 } else {
   loaders.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesCss'),
-    loader: 'style!css'
+    loader: 'style!css',
   });
 
   loaders.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesSass'),
-    loader: 'style!css!sass'
+    loader: 'style!css!sass',
   });
 
   loaders.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesStyl'),
-    loader: 'style!css!stylus'
+    loader: 'style!css!stylus',
   });
 }
 
@@ -77,17 +77,17 @@ module.exports = _.mergeWith(config, {
   target: 'web',
   devtool: devMode ? 'source-map' : null,
   module: {
-    loaders: loaders
+    loaders: loaders,
   },
   entry: [
-    path.resolve(path.join(appPath, 'src', 'client'))
+    path.resolve(path.join(appPath, 'src', 'client')),
   ],
   output: {
     path: path.resolve(path.join(appPath, 'static', 'assets')),
     filename: 'client.js',
-    chunkFilename: '[name].[id].js'
+    chunkFilename: '[name].[id].js',
   },
-  plugins: plugins
+  plugins: plugins,
 }, function(objValue, srcValue) {
   if (_.isArray(objValue)) {
     return objValue.concat(srcValue);

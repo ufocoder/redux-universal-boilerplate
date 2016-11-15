@@ -1,2 +1,2 @@
-export Auth from './Auth';
-export Github from './Github';
+exportAuthfrom './Auth';
+exportGithubfrom './Github';

@@ -1,7 +1,6 @@
 /* global webpackIsomorphicTools, __DEV__ */
 /* eslint no-console: [2, { allow: ["log"] }] */
 
-import BabelPolyFill from 'babel-polyfill';
 import {trigger} from 'redial';
 import path from 'path';
 import _ from 'lodash';
@@ -17,34 +16,31 @@ import configureStore from 'src/common/store.js';
 import routesContainer from 'src/common/routes';
 import Html from './containers/Html';
 
-const supportedLocales = ["en", "en_US"];
+const supportedLocales = ['en', 'en_US'];
 const port = process.env.PORT || 8000;
 const app = new Express();
 const publicPath = path.resolve('static');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: false,
 }));
 app.use(locale(supportedLocales));
 app.use(Express.static(publicPath));
 
-let memoryHistory;
-let store;
-let history;
 let routes;
 
 app.use((req, res, next) => {
   const location = req.url;
 
-  memoryHistory = createMemoryHistory(location);
-  store = configureStore(memoryHistory);
-  history = syncHistoryWithStore(memoryHistory, store);
+  const memoryHistory = createMemoryHistory(location);
+  const store = configureStore(memoryHistory);
+  const history = syncHistoryWithStore(memoryHistory, store);
   routes = routesContainer(store);
 
   match({
     routes,
-    location: req.path
+    location: req.path,
   }, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
       res.redirect(redirectLocation.pathname + redirectLocation.search);
@@ -61,7 +57,7 @@ app.use((req, res, next) => {
       path: renderProps.location.pathname,
       query: renderProps.location.query,
       params: renderProps.params,
-      dispatch: store.dispatch
+      dispatch: store.dispatch,
     };
 
     trigger('fetch', components, locals)
@@ -83,7 +79,7 @@ app.use((req, res, next) => {
           const html = ReactDOM.renderToStaticMarkup(markup);
 
           const isNotFound = _.find(renderProps.routes, {
-            name: 'not-found'
+            name: 'not-found',
           });
 
           res.status(isNotFound ? 404 : 200);

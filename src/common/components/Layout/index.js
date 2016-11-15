@@ -1,4 +1,4 @@
-import React, {PropTypes} from "react";
+import React, {PropTypes} from 'react';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -7,7 +7,7 @@ import 'semantic-ui-css/semantic.css';
 export default class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.object,
-    loggedIn: PropTypes.bool
+    loggedIn: PropTypes.bool,
   }
 
   render() {

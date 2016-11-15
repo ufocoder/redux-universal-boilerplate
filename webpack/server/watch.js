@@ -1,6 +1,6 @@
-var _ = require('lodash');
-var webpack = require('webpack');
-var config = require('./config');
+let _ = require('lodash');
+let webpack = require('webpack');
+let config = require('./config');
 
 config.entry.push(
   'webpack/hot/poll?1000'
@@ -9,7 +9,7 @@ config.entry.push(
 config.module.loaders.unshift({
   test: /\.js$/,
   loader: 'react-hot',
-  exclude: /node_modules/
+  exclude: /node_modules/,
 });
 
 module.exports = _.mergeWith(config, {
@@ -18,13 +18,13 @@ module.exports = _.mergeWith(config, {
   debug: true,
   watch: true,
   output: {
-    hotUpdateMainFilename: "update/[hash]/update.json",
-    hotUpdateChunkFilename: "update/[hash]/[id].update.js"
+    hotUpdateMainFilename: 'update/[hash]/update.json',
+    hotUpdateChunkFilename: 'update/[hash]/[id].update.js',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
+    new webpack.NoErrorsPlugin(),
+  ],
 }, function(objValue, srcValue) {
   if (_.isArray(objValue)) {
     return objValue.concat(srcValue);

@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import {browserHistory, Router, Route, IndexRoute} from 'react-router';
 import Layout from './containers/Layout';
 import NotFound from './components/NotFound';
@@ -9,10 +8,8 @@ import Github from './containers/Github';
 import {
   authRequired,
   authNoRequired,
-  authLogout
+  authLogout,
 } from './helpers/routes';
-
-import {initialState as trendsInitialState} from './reducers/github';
 
 const routes = (store) => {
   return (

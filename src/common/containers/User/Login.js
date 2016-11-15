@@ -1,24 +1,24 @@
 import React, {Component, PropTypes} from 'react';
-import Helmet from "react-helmet";
+import Helmet from 'react-helmet';
 import {connect} from 'react-redux';
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 import {login} from 'src/common/actions/Auth';
 import Error from 'src/common/components/Error';
 import {
   TEST_USERNAME,
-  TEST_PASSWORD
+  TEST_PASSWORD,
 } from 'src/common/constants/actions/Auth';
 
 @connect(
   (state) => ({
     user: state.auth.user,
     error: state.auth.error,
-    loggedIn: state.auth.loggedIn
+    loggedIn: state.auth.loggedIn,
   }),
   (dispatch) => ({
     submit: (username, password) => {
       dispatch(login(username, password));
-    }
+    },
   })
 )
 export default class Login extends Component {
@@ -26,7 +26,7 @@ export default class Login extends Component {
     user: PropTypes.object,
     error: PropTypes.string,
     loggedIn: PropTypes.bool,
-    submit: PropTypes.func
+    submit: PropTypes.func,
   }
 
   handleSubmit = (event) => {

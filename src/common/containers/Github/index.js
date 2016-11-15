@@ -8,20 +8,20 @@ import Github from 'src/common/components/Github';
   fetch: ({dispatch}) => {
     dispatch(resetTrends());
     return dispatch(fetchTrends());
-  }
+  },
 })
 @connect(
   (state) => ({
     trends: state.github.trends,
     loading: state.github.loading,
-    error: state.github.error
+    error: state.github.error,
   })
 )
 export default class GithubContainer extends Component {
   static propTypes = {
     trends: PropTypes.array,
     loading: PropTypes.bool,
-    error: PropTypes.string
+    error: PropTypes.string,
   }
 
   render() {

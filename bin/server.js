@@ -1,10 +1,10 @@
-var WebpackIsomorphicTools = require('webpack-isomorphic-tools');
-var config = require('../webpack/isomorphic.config');
+let WebpackIsomorphicTools = require('webpack-isomorphic-tools');
+let config = require('../webpack/isomorphic.config');
 
-var projectBasePath = require('path').resolve(__dirname);
-var devMode = process.env.NODE_ENV !== 'production';
+let projectBasePath = require('path').resolve(__dirname);
+let devMode = process.env.NODE_ENV !== 'production';
 
-var webpackIsomorphicTools = new WebpackIsomorphicTools(config)
+let webpackIsomorphicTools = new WebpackIsomorphicTools(config)
   .server(projectBasePath, () => {
     require('../dist/server');
   });

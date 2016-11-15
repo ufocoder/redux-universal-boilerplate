@@ -1,12 +1,12 @@
 import React, {Component, PropTypes} from 'react';
-import Helmet from "react-helmet";
+import Helmet from 'react-helmet';
 import Error from './Error';
 
 export default class GithubContainer extends Component {
   static propTypes = {
     trends: PropTypes.array,
     loading: PropTypes.bool,
-    error: PropTypes.string
+    error: PropTypes.string,
   }
 
   render() {

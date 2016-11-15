@@ -6,7 +6,7 @@ import github from './github';
 export const rootReducer = combineReducers({
   routing,
   auth,
-  github
+  github,
 });
 
 export default rootReducer;

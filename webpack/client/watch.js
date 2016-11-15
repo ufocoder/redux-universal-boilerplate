@@ -1,27 +1,27 @@
-var _ = require('lodash');
-var path = require('path');
-var webpack = require("webpack");
-var config = require("./config");
-var appPath = path.join(__dirname, '..', '..');
+let _ = require('lodash');
+let path = require('path');
+let webpack = require('webpack');
+let config = require('./config');
+let appPath = path.join(__dirname, '..', '..');
 
-var wds = {
-  hostname: process.env.WATCH_HOSTNAME || "localhost",
-  port: process.env.WATCH_PORT || 8080
+let wds = {
+  hostname: process.env.WATCH_HOSTNAME || 'localhost',
+  port: process.env.WATCH_PORT || 8080,
 };
-var proxy = {
+let proxy = {
   hostname: process.env.HOSTNAME || 'localhost',
-  port: process.env.PORT || 8000
+  port: process.env.PORT || 8000,
 };
 
 config.entry.unshift(
-  "webpack-dev-server/client?http://" + wds.hostname + ":" + wds.port,
-  "webpack/hot/only-dev-server"
+  'webpack-dev-server/client?http://' + wds.hostname + ':' + wds.port,
+  'webpack/hot/only-dev-server'
 );
 
 config.module.loaders.unshift({
   test: /\.js$/,
   loader: 'react-hot',
-  exclude: /node_modules/
+  exclude: /node_modules/,
 });
 
 config.devServer = {
@@ -33,16 +33,16 @@ config.devServer = {
   quiet: true,
   noInfo: true,
   headers: {
-    "Access-Control-Allow-Origin": "*"
+    'Access-Control-Allow-Origin': '*',
   },
   proxy: {
-    '**': 'http://' + proxy.hostname + ':' + proxy.port
+    '**': 'http://' + proxy.hostname + ':' + proxy.port,
   },
   stats: {
-    colors: true
+    colors: true,
   },
   host: wds.hostname,
-  port: wds.port
+  port: wds.port,
 };
 
 module.exports = _.mergeWith(config, {
@@ -50,12 +50,12 @@ module.exports = _.mergeWith(config, {
   debug: true,
   devtool: 'eval',
   output: {
-    filename: 'client.js'
+    filename: 'client.js',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
+    new webpack.NoErrorsPlugin(),
+  ],
 }, function(objValue, srcValue) {
   if (_.isArray(objValue)) {
     return objValue.concat(srcValue);

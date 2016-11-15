@@ -1,15 +1,15 @@
-var fs = require('fs');
-var _ = require('lodash');
-var webpack = require('webpack');
-var path = require('path');
-var config = require('../common.config');
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
-var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
-var appPath = path.join(__dirname, '..', '..');
-var prodMode = process.env.NODE_ENV === 'production';
-var devMode = process.env.NODE_ENV !== 'production';
+let fs = require('fs');
+let _ = require('lodash');
+let webpack = require('webpack');
+let path = require('path');
+let config = require('../common.config');
+let WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+let webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
+let appPath = path.join(__dirname, '..', '..');
+let prodMode = process.env.NODE_ENV === 'production';
+let devMode = process.env.NODE_ENV !== 'production';
 
-var nodeModules = {};
+let nodeModules = {};
 fs.readdirSync('node_modules')
   .filter(function(x) {
     return ['.bin'].indexOf(x) === -1;
@@ -18,20 +18,20 @@ fs.readdirSync('node_modules')
     nodeModules[mod] = 'commonjs ' + mod;
   });
 
-var plugins = [
+let plugins = [
   new webpack.DefinePlugin({
     __CLIENT__: false,
     __SERVER__: true,
     __PRODUCTION__: prodMode,
-    __DEV__: devMode
-  })
+    __DEV__: devMode,
+  }),
 ];
 
-var assetsIgnoredGroups = [
+let assetsIgnoredGroups = [
   'stylesCss',
   'stylesSass',
   'stylesStyl',
-  'fonts'
+  'fonts',
 ];
 
 /**
@@ -50,8 +50,8 @@ _.forEach(assetsIgnoredGroups, addNodeNoop);
 if (prodMode) {
   plugins.push(new webpack.optimize.UglifyJsPlugin({
     compress: {
-      warnings: false
-    }
+      warnings: false,
+    },
   }));
 
   plugins.push(new webpack.DefinePlugin({
@@ -63,14 +63,14 @@ module.exports = _.mergeWith(config, {
   target: 'node',
   devtool: 'source-map',
   entry: [
-    path.resolve(path.join(appPath, 'src', 'server'))
+    path.resolve(path.join(appPath, 'src', 'server')),
   ],
   externals: nodeModules,
   output: {
     path: path.resolve(path.join(appPath, 'dist')),
-    filename: 'server.js'
+    filename: 'server.js',
   },
-  plugins: plugins
+  plugins: plugins,
 }, function(objValue, srcValue) {
   if (_.isArray(objValue)) {
     return objValue.concat(srcValue);

@@ -2,12 +2,12 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT_SUCCESS,
-  LOGOUT_FAILURE
+  LOGOUT_FAILURE,
 } from 'src/common/constants/actions/Auth';
 
 const initialState = {
   user: null,
-  loggedIn: false
+  loggedIn: false,
 };
 
 export default (state = initialState, action) => {
@@ -16,24 +16,24 @@ export default (state = initialState, action) => {
       return {
         ...state,
         user: action.result,
-        loggedIn: true
+        loggedIn: true,
       };
     case LOGIN_FAILURE:
       return {
         ...state,
         user: null,
-        error: action.error
+        error: action.error,
       };
     case LOGOUT_SUCCESS:
       return {
         ...state,
         loggedIn: false,
-        user: null
+        user: null,
       };
     case LOGOUT_FAILURE:
       return {
         ...state,
-        error: action.error
+        error: action.error,
       };
     default:
       return state;

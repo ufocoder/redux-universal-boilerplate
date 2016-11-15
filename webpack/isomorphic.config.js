@@ -1,6 +1,6 @@
 /* eslint camelcase: [2, {properties: "never"}] */
 
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+let WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 
 /**
  * Style filter
@@ -67,41 +67,41 @@ module.exports = {
         'jpg',
         'gif',
         'ico',
-        'svg'
-      ]
+        'svg',
+      ],
     },
     fonts: {
       extensions: [
         'woff',
         'woff2',
         'ttf',
-        'eot'
-      ]
+        'eot',
+      ],
     },
     stylesCss: {
       extensions: [
         'css',
-        'scss'
+        'scss',
       ],
       filter: styleFilter,
       path: stylePath,
-      parser: styleParser
+      parser: styleParser,
     },
     stylesSass: {
       extensions: [
-        'sass'
+        'sass',
       ],
       filter: styleFilter,
       path: stylePath,
-      parser: styleParser
+      parser: styleParser,
     },
     stylesStyl: {
       extensions: [
-        'styl'
+        'styl',
       ],
       filter: styleFilter,
       path: stylePath,
-      parser: styleParser
-    }
-  }
+      parser: styleParser,
+    },
+  },
 };

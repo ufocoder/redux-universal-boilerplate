@@ -4,12 +4,12 @@ import {
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE,
   TEST_USERNAME,
-  TEST_PASSWORD
+  TEST_PASSWORD,
 } from 'src/common/constants/actions/Auth';
 
 const fakeUser = {
   username: 'demo',
-  token: 'ojn2jr3wrefj'
+  token: 'ojn2jr3wrefj',
 };
 
 /**
@@ -28,12 +28,12 @@ export function login(username, password) {
 
       dispatch({
         type: LOGIN_SUCCESS,
-        result: fakeUser
+        result: fakeUser,
       });
     } catch (error) {
       dispatch({
         type: LOGIN_FAILURE,
-        error: error.message
+        error: error.message,
       });
     }
   };
@@ -46,12 +46,12 @@ export function logout() {
   return async (dispatch) => {
     try {
       dispatch({
-        type: LOGOUT_SUCCESS
+        type: LOGOUT_SUCCESS,
       });
     } catch (error) {
       dispatch({
         type: LOGOUT_FAILURE,
-        error: error.message
+        error: error.message,
       });
     }
   };

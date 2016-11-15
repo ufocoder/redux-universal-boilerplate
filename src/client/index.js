@@ -1,7 +1,6 @@
 /* global window, __PRODUCTION__ */
 /* eslint no-console: [2, { allow: ["error"] }] */
 
-import BabelPolyFill from 'babel-polyfill';
 import {trigger} from 'redial';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -26,14 +25,14 @@ ReactDOM.render(
 );
 
 history.listen((location) => {
-  match({ routes, location }, (error, redirectLocation, renderProps) => {
+  match({routes, location}, (error, redirectLocation, renderProps) => {
     if (renderProps) {
-      const { components } = renderProps;
+      const {components} = renderProps;
       const locals = {
         path: renderProps.location.pathname,
         query: renderProps.location.query,
         params: renderProps.params,
-        dispatch: store.dispatch
+        dispatch: store.dispatch,
       };
 
       if (window.__INITIAL_STATE__) {

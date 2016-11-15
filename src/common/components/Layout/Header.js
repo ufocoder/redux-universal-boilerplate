@@ -3,38 +3,38 @@ import {IndexLink, Link} from 'react-router';
 
 export default class Header extends Component {
   static propTypes = {
-    loggedIn: PropTypes.bool
+    loggedIn: PropTypes.bool,
   }
 
   render() {
     let links = [
       {
         to: '/trends',
-        title: 'Github trends'
+        title: 'Github trends',
       },
       {
         to: '/about',
-        title: 'About'
+        title: 'About',
       },
       {
         to: '/404',
-        title: 'Non-exists page'
-      }
+        title: 'Non-exists page',
+      },
     ];
 
     if (this.props.loggedIn) {
       links.push({
         to: '/profile',
-        title: 'Profile'
+        title: 'Profile',
       });
       links.push({
         to: '/logout',
-        title: 'Logout'
+        title: 'Logout',
       });
     } else {
       links.push({
         to: '/login',
-        title: 'Login'
+        title: 'Login',
       });
     }
 

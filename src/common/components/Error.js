@@ -1,10 +1,9 @@
 import React, {Component, PropTypes} from 'react';
-import {Link} from 'react-router';
 
 export default class Error extends Component {
   static propTypes = {
     title: PropTypes.string,
-    message: PropTypes.string
+    message: PropTypes.string,
   }
   render() {
     return (

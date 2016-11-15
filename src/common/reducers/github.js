@@ -2,13 +2,13 @@ import {
   RESET_TRENDS,
   FETCH_TRENDS_LOADING,
   FETCH_TRENDS_SUCCESS,
-  FETCH_TRENDS_FAILURE
+  FETCH_TRENDS_FAILURE,
 } from '../constants/actions/Github';
 
 export const initialState = {
   trends: [],
   loading: false,
-  error: null
+  error: null,
 };
 
 export default (state = initialState, action) => {
@@ -16,19 +16,19 @@ export default (state = initialState, action) => {
     case FETCH_TRENDS_LOADING:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     case FETCH_TRENDS_SUCCESS:
       return {
         ...state,
         loading: false,
-        trends: action.trends
+        trends: action.trends,
       };
     case FETCH_TRENDS_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.error
+        error: action.error,
       };
     case RESET_TRENDS:
       return initialState;
