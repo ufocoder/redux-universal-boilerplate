@@ -1,2 +1,0 @@
-exportLoginfrom './Login';
-exportProfilefrom './Profile';

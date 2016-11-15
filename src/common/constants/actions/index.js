@@ -1,2 +1,0 @@
-exportAuthfrom './Auth';
-exportGithubfrom './Github';

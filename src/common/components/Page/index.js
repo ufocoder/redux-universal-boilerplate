@@ -1,2 +1,0 @@
-exportAboutfrom './About';
-exportHomefrom './Home';
