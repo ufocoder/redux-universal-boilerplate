@@ -5,10 +5,7 @@ module.exports = {
   devtool: 'inline-source-map',
   module: {
     loaders: serverConfig.module.loaders,
-    noParse: [
-      /\.min\.js/,
-      /sinon/,
-    ],
+    noParse: /sinon|\.min\.js/,
   },
   resolve: {
     modulesDirectories: serverConfig.resolve.modulesDirectories,
