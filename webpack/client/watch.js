@@ -18,12 +18,6 @@ config.entry.unshift(
   'webpack/hot/only-dev-server'
 );
 
-config.module.loaders.unshift({
-  test: /\.js$/,
-  loader: 'react-hot',
-  exclude: /node_modules/,
-});
-
 config.devServer = {
   publicPath: '/assets/',
   contentBase: path.resolve(path.join(appPath, 'static')),

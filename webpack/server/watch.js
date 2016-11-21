@@ -6,12 +6,6 @@ config.entry.push(
   'webpack/hot/poll?1000'
 );
 
-config.module.loaders.unshift({
-  test: /\.js$/,
-  loader: 'react-hot',
-  exclude: /node_modules/,
-});
-
 module.exports = _.mergeWith(config, {
   devtool: 'eval',
   cache: true,

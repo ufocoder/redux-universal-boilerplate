@@ -30,7 +30,7 @@ module.exports = {
         loader: 'babel',
         query: {
           cacheDirectory: true,
-          plugins: ['transform-decorators-legacy'],
+          plugins: ['transform-decorators-legacy', 'react-hot-loader/babel'],
           presets: ['es2015', 'stage-0', 'react'],
         },
         exclude: /node_modules/,
