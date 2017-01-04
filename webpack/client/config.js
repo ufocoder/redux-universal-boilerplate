@@ -80,6 +80,7 @@ module.exports = _.mergeWith(config, {
     loaders: loaders,
   },
   entry: [
+    'babel-polyfill',
     path.resolve(path.join(appPath, 'src', 'client')),
   ],
   output: {

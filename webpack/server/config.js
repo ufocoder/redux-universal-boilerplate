@@ -63,6 +63,7 @@ module.exports = _.mergeWith(config, {
   target: 'node',
   devtool: 'source-map',
   entry: [
+    'babel-polyfill',
     path.resolve(path.join(appPath, 'src', 'server')),
   ],
   externals: nodeModules,
