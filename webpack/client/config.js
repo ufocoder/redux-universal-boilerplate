@@ -1,15 +1,15 @@
-let _ = require('lodash');
-let webpack = require('webpack');
-let path = require('path');
-let config = require('../common.config');
-let WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
-let webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
-let appPath = path.join(__dirname, '..', '..');
+const _ = require('lodash');
+const webpack = require('webpack');
+const path = require('path');
+const config = require('../common.config');
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
+const appPath = path.join(__dirname, '..', '..');
 
-let devMode = process.env.NODE_ENV !== 'production';
-let prodMode = process.env.NODE_ENV === 'production';
+const devMode = process.env.NODE_ENV !== 'production';
+const prodMode = process.env.NODE_ENV === 'production';
 
-let plugins = [
+const plugins = [
   new webpack.DefinePlugin({
     __CLIENT__: true,
     __SERVER__: false,
@@ -19,7 +19,7 @@ let plugins = [
   webpackIsomorphicToolsPlugin,
 ];
 
-let loaders = [
+const loaders = [
   {
     test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
     loader: 'file?name=fonts/[hash].[ext]',
@@ -27,7 +27,7 @@ let loaders = [
 ];
 
 if (prodMode) {
-  let ExtractTextPlugin = require('extract-text-webpack-plugin');
+  const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
   plugins.push(new ExtractTextPlugin('styles.css'));
   plugins.push(new webpack.optimize.DedupePlugin());

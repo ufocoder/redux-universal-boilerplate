@@ -1,6 +1,6 @@
 /* eslint camelcase: [2, {properties: "never"}] */
 
-let WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 
 /**
  * Style filter

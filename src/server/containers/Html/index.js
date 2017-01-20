@@ -16,7 +16,7 @@ export default class Html extends React.Component {
   render() {
     const {assets, store, content} = this.props;
 
-    let helmet = Helmet.rewind();
+    const helmet = Helmet.rewind();
     const attrs = helmet.htmlAttributes.toComponent();
 
     return (

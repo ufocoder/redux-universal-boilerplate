@@ -1,6 +1,6 @@
-let path = require('path');
-let WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
-let webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./isomorphic.config'));
+const path = require('path');
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./isomorphic.config'));
 
 module.exports = {
   cache: false,

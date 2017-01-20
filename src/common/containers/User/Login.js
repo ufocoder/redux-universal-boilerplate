@@ -45,11 +45,11 @@ export default class Login extends Component {
   }
 
   render() {
-    let userLayout = (
+    const userLayout = (
       <div>You already logged in</div>
     );
 
-    let guestLayout = (
+    const guestLayout = (
       <div>
         <Helmet title="Login" />
 

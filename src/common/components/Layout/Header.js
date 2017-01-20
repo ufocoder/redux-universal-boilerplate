@@ -7,7 +7,7 @@ export default class Header extends Component {
   }
 
   render() {
-    let links = [
+    const links = [
       {
         to: '/trends',
         title: 'Github trends',
@@ -50,19 +50,17 @@ export default class Header extends Component {
             activeClassName="active">
             Homepage
           </IndexLink>
-          {
-            links.map(function(link, i) {
-              return (
-                <Link
-                  to={link.to}
-                  key={i}
-                  className="item"
-                  activeClassName="active">
-                  {link.title}
-                </Link>
-              );
-            })
-          }
+          { links.map(function(link, i) {
+            return (
+              <Link
+                to={link.to}
+                key={i}
+                className="item"
+                activeClassName="active">
+                {link.title}
+              </Link>
+            );
+          }) }
         </div>
       </div>
     );

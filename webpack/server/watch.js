@@ -1,6 +1,6 @@
-let _ = require('lodash');
-let webpack = require('webpack');
-let config = require('./config');
+const _ = require('lodash');
+const webpack = require('webpack');
+const config = require('./config');
 
 config.entry.push(
   'webpack/hot/poll?1000'

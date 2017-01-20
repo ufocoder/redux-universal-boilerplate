@@ -1,15 +1,15 @@
-let fs = require('fs');
-let _ = require('lodash');
-let webpack = require('webpack');
-let path = require('path');
-let config = require('../common.config');
-let WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
-let webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
-let appPath = path.join(__dirname, '..', '..');
-let prodMode = process.env.NODE_ENV === 'production';
-let devMode = process.env.NODE_ENV !== 'production';
+const fs = require('fs');
+const _ = require('lodash');
+const webpack = require('webpack');
+const path = require('path');
+const config = require('../common.config');
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../isomorphic.config'));
+const appPath = path.join(__dirname, '..', '..');
+const prodMode = process.env.NODE_ENV === 'production';
+const devMode = process.env.NODE_ENV !== 'production';
 
-let nodeModules = {};
+const nodeModules = {};
 fs.readdirSync('node_modules')
   .filter(function(x) {
     return ['.bin'].indexOf(x) === -1;
@@ -18,7 +18,7 @@ fs.readdirSync('node_modules')
     nodeModules[mod] = 'commonjs ' + mod;
   });
 
-let plugins = [
+const plugins = [
   new webpack.DefinePlugin({
     __CLIENT__: false,
     __SERVER__: true,
@@ -27,7 +27,7 @@ let plugins = [
   }),
 ];
 
-let assetsIgnoredGroups = [
+const assetsIgnoredGroups = [
   'stylesCss',
   'stylesSass',
   'stylesStyl',

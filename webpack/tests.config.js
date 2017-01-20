@@ -1,5 +1,5 @@
-let path = require('path');
-let serverConfig = require('./server/config');
+const path = require('path');
+const serverConfig = require('./server/config');
 
 module.exports = {
   devtool: 'inline-source-map',
