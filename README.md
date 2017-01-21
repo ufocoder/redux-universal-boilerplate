@@ -18,7 +18,7 @@ Boilerplate based on:
 * [Redux](https://github.com/reactjs/redux)
 * [Redial](https://github.com/markdalgleish/redial)
 * [BabelJS](https://babeljs.io)
-* [Webpack](https://webpack.github.io/)
+* [Webpack 2](https://webpack.github.io/)
 * and etc.
 
 # Features
