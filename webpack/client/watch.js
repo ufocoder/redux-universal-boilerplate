@@ -1,14 +1,14 @@
-let _ = require('lodash');
-let path = require('path');
-let webpack = require('webpack');
-let config = require('./config');
-let appPath = path.join(__dirname, '..', '..');
+const _ = require('lodash');
+const path = require('path');
+const webpack = require('webpack');
+const config = require('./config');
+const appPath = path.join(__dirname, '..', '..');
 
-let wds = {
+const wds = {
   hostname: process.env.WATCH_HOSTNAME || 'localhost',
   port: process.env.WATCH_PORT || 8080,
 };
-let proxy = {
+const proxy = {
   hostname: process.env.HOSTNAME || 'localhost',
   port: process.env.PORT || 8000,
 };
@@ -41,14 +41,12 @@ config.devServer = {
 
 module.exports = _.mergeWith(config, {
   cache: true,
-  debug: true,
   devtool: 'eval',
   output: {
     filename: 'client.js',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
   ],
 }, function(objValue, srcValue) {
   if (_.isArray(objValue)) {

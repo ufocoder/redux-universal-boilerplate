@@ -4,7 +4,7 @@ const serverConfig = require('./server/config');
 module.exports = {
   devtool: 'inline-source-map',
   module: {
-    loaders: serverConfig.module.loaders,
+    rules: serverConfig.module.rules,
     noParse: /sinon|\.min\.js/,
   },
   resolve: {

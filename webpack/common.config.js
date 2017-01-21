@@ -4,7 +4,6 @@ const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('.
 
 module.exports = {
   cache: false,
-  debug: false,
   context: __dirname,
   stats: {
     colors: true,
@@ -14,21 +13,20 @@ module.exports = {
     errorDetails: true,
   },
   resolve: {
-    modulesDirectories: [
+    modules: [
       'src',
       'node_modules',
     ],
-    extensions: ['', '.json', '.js'],
     alias: {
       src: path.join(path.dirname(__dirname), 'src'),
     },
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel',
-        query: {
+        loader: 'babel-loader',
+        options: {
           cacheDirectory: true,
           plugins: ['transform-decorators-legacy', 'react-hot-loader/babel'],
           presets: ['es2015', 'stage-0', 'react'],
@@ -37,11 +35,15 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        loaders: ['json'],
+        loader: 'json-loader',
       },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
-        loader: 'url?limit=10240&name=assets/img/[hash].[ext]',
+        loader: 'url-loader',
+        options: {
+          limit: 10240,
+          name: 'assets/img/[hash].[ext]',
+        }
       },
     ],
     noParse: /\.min\.js/,

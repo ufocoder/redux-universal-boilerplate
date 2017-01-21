@@ -10,6 +10,7 @@ const prodMode = process.env.NODE_ENV === 'production';
 const devMode = process.env.NODE_ENV !== 'production';
 
 const nodeModules = {};
+
 fs.readdirSync('node_modules')
   .filter(function(x) {
     return ['.bin'].indexOf(x) === -1;
@@ -54,8 +55,16 @@ if (prodMode) {
     },
   }));
 
+  plugins.push(new webpack.LoaderOptionsPlugin({
+    minimize: true
+  }));
+
   plugins.push(new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production'),
+  }));
+} else {
+  plugins.push(new webpack.LoaderOptionsPlugin({
+    debug: true
   }));
 }
 

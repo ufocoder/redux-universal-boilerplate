@@ -19,10 +19,13 @@ const plugins = [
   webpackIsomorphicToolsPlugin,
 ];
 
-const loaders = [
+const rules = [
   {
     test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
-    loader: 'file?name=fonts/[hash].[ext]',
+    loader: 'file-loader',
+    options: {
+      name: 'fonts/[hash].[ext]',
+    },
   },
 ];
 
@@ -31,53 +34,69 @@ if (prodMode) {
 
   plugins.push(new ExtractTextPlugin('styles.css'));
   plugins.push(new webpack.optimize.DedupePlugin());
-  plugins.push(new webpack.optimize.OccurenceOrderPlugin());
   plugins.push(new webpack.optimize.UglifyJsPlugin({
     compress: {
       warnings: false,
     },
   }));
 
+  plugins.push(new webpack.LoaderOptionsPlugin({
+    minimize: true
+  }));
+
   plugins.push(new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production'),
   }));
 
-  loaders.push({
+  rules.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesCss'),
-    loader: ExtractTextPlugin.extract('style', 'css'),
+    use: ExtractTextPlugin.extract({
+      fallbackLoader: 'style-loader',
+      loader: 'css-loader',
+    }),
   });
 
-  loaders.push({
+  rules.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesSass'),
-    loader: ExtractTextPlugin.extract('style', 'css!sass'),
+    loader: ExtractTextPlugin.extract({
+      fallbackLoader: 'style-loader',
+      loader: 'css-loader!sass-loader',
+    }),
   });
 
-  loaders.push({
+  rules.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesStyl'),
-    loader: ExtractTextPlugin.extract('style', 'css!stylus'),
+    loader: ExtractTextPlugin.extract({
+      fallbackLoader: 'style-loader',
+      loader: 'css-loader!stylus-loader',
+    }),
   });
 } else {
-  loaders.push({
+  rules.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesCss'),
-    loader: 'style!css',
+    loader: 'style-loader!css-loader',
   });
 
-  loaders.push({
+  rules.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesSass'),
-    loader: 'style!css!sass',
+    loader: 'style-loader!css-loader!sass-loader',
   });
 
-  loaders.push({
+  rules.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesStyl'),
-    loader: 'style!css!stylus',
+    loader: 'style-loader!css-loader!stylus-loader',
   });
+
+  plugins.push(new webpack.LoaderOptionsPlugin({
+    debug: true
+  }));
 }
 
 module.exports = _.mergeWith(config, {
   target: 'web',
   devtool: devMode ? 'source-map' : null,
   module: {
-    loaders: loaders,
+    rules: rules,
   },
   entry: [
     'babel-polyfill',

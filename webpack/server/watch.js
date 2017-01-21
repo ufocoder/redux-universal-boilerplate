@@ -9,7 +9,6 @@ config.entry.push(
 module.exports = _.mergeWith(config, {
   devtool: 'eval',
   cache: true,
-  debug: true,
   watch: true,
   output: {
     hotUpdateMainFilename: 'update/[hash]/update.json',
@@ -17,7 +16,6 @@ module.exports = _.mergeWith(config, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
   ],
 }, function(objValue, srcValue) {
   if (_.isArray(objValue)) {
