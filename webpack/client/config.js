@@ -41,7 +41,7 @@ if (prodMode) {
   }));
 
   plugins.push(new webpack.LoaderOptionsPlugin({
-    minimize: true
+    minimize: true,
   }));
 
   plugins.push(new webpack.DefinePlugin({
@@ -88,7 +88,7 @@ if (prodMode) {
   });
 
   plugins.push(new webpack.LoaderOptionsPlugin({
-    debug: true
+    debug: true,
   }));
 }
 

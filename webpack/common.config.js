@@ -43,7 +43,7 @@ module.exports = {
         options: {
           limit: 10240,
           name: 'assets/img/[hash].[ext]',
-        }
+        },
       },
     ],
     noParse: /\.min\.js/,
