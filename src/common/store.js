@@ -34,7 +34,7 @@ export default function(history, initialState = {}) {
 
   if (__DEV__ && module.hot) {
     module.hot.accept('./reducers', () => {
-      const nextRootReducer = require('./reducers/index');
+      const nextRootReducer = require('./reducers').default;
       store.replaceReducer(nextRootReducer);
     });
   }
