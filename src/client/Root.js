@@ -42,7 +42,9 @@ export default class Root extends Component {
     return (
       <AppContainer>
         <Provider store={store}>
-          <Router routes={routes} history={history} />
+          <Router history={history}>
+            {routes}
+          </Router>
         </Provider>
       </AppContainer>
     );
