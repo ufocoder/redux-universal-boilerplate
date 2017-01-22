@@ -14,6 +14,7 @@ const proxy = {
 };
 
 config.entry.unshift(
+  'react-hot-loader/patch',
   'webpack-dev-server/client?http://' + wds.hostname + ':' + wds.port,
   'webpack/hot/only-dev-server'
 );
