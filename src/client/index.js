@@ -7,13 +7,14 @@ import {CONTAINER_ID} from 'src/common/constants/application';
 import Root from './Root';
 
 const reactRoot = window.document.getElementById(CONTAINER_ID);
+const render = () => {
+  ReactDOM.render(<Root />, reactRoot);
+};
 
-ReactDOM.render(<Root />, reactRoot);
+render();
 
 if (!__PRODUCTION__ && module.hot) {
-  module.hot.accept(() => {
-    ReactDOM.render(<Root />, reactRoot);
-  });
+  module.hot.accept(render);
 }
 
 if (__PRODUCTION__) {
