@@ -1,4 +1,4 @@
-/* global webpackIsomorphicTools, __DEV__ */
+/* global webpackIsomorphicTools, __PRODUCTION__ */
 /* eslint no-console: [2, { allow: ["log"] }] */
 
 import {trigger} from 'redial';
@@ -8,6 +8,7 @@ import locale from 'locale';
 import Express from 'express';
 import bodyParser from 'body-parser';
 import React from 'react';
+import {AppContainer} from 'react-hot-loader';
 import ReactDOM from 'react-dom/server';
 import {createMemoryHistory, RouterContext, match} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
@@ -29,7 +30,7 @@ app.use(locale(supportedLocales));
 app.use(Express.static(publicPath));
 
 let routes;
-let store
+let store;
 
 app.use((req, res, next) => {
   const location = req.url;
@@ -69,9 +70,11 @@ app.use((req, res, next) => {
         try {
           const assets = webpackIsomorphicTools.assets();
           const content = ReactDOM.renderToString(
-            <Provider store={store}>
-              <RouterContext {...renderProps} />
-            </Provider>
+            <AppContainer>
+              <Provider store={store}>
+                <RouterContext {...renderProps} />
+              </Provider>
+            </AppContainer>
           );
 
           const markup = <Html
@@ -98,13 +101,8 @@ app.use((req, res, next) => {
   });
 });
 
-if (__DEV__ && module.hot) {
+if (!__PRODUCTION__ && module.hot) {
   console.log('[HMR] Waiting for server-side updates');
-
-  module.hot.accept('../common/routes', () => {
-    let routesContainer = require('../common/routes').default;
-    routes = routesContainer(store);
-  });
 
   module.hot.addStatusHandler((status) => {
     if (status === 'abort') {
