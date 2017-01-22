@@ -37,27 +37,12 @@ history.listen((location) => {
   });
 });
 
-/**
- * Handle router update
- */
-function handleUpdateRouter() {
-  if (__PRODUCTION__) {
-    ReactGA.set({
-      page: window.location.pathname,
-    });
-    ReactGA.pageview(window.location.pathname);
-  }
-}
-
 export default class Root extends Component {
   render() {
     return (
       <AppContainer>
         <Provider store={store}>
-          <Router
-            routes={routes}
-            onUpdate={handleUpdateRouter}
-            history={history} />
+          <Router routes={routes} history={history} />
         </Provider>
       </AppContainer>
     );
