@@ -40,10 +40,6 @@ if (prodMode) {
     },
   }));
 
-  plugins.push(new webpack.LoaderOptionsPlugin({
-    minimize: true,
-  }));
-
   plugins.push(new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production'),
   }));
@@ -86,11 +82,13 @@ if (prodMode) {
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesStyl'),
     loader: 'style-loader!css-loader!stylus-loader',
   });
-
-  plugins.push(new webpack.LoaderOptionsPlugin({
-    debug: true,
-  }));
 }
+
+plugins.push(new webpack.LoaderOptionsPlugin({
+  debug: true,
+}));
+
+plugins.push(new webpack.NamedModulesPlugin());
 
 module.exports = _.mergeWith(config, {
   target: 'web',
