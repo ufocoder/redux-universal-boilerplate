@@ -29,14 +29,17 @@ app.use(locale(supportedLocales));
 app.use(Express.static(publicPath));
 
 let routes;
+let store
 
 app.use((req, res, next) => {
   const location = req.url;
 
   const memoryHistory = createMemoryHistory(location);
-  const store = configureStore(memoryHistory);
-  const history = syncHistoryWithStore(memoryHistory, store);
+
+  store = configureStore(memoryHistory);
   routes = routesContainer(store);
+
+  const history = syncHistoryWithStore(memoryHistory, store);
 
   match({
     history,
