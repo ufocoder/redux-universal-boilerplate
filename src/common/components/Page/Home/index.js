@@ -9,7 +9,7 @@ export default class Home extends React.Component {
           <Helmet title="Homepage" />
           <div className="homepage__space">
             <div className="homepage__space__title">
-              Universal biolerplate
+              Universal boilerplate
             </div>
             <div className="homepage__space__astronaut"></div>
           </div>
