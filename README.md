@@ -24,7 +24,7 @@ Boilerplate based on:
 # Features
 
 * es6/es7 syntax
-* Testing enviroment
+* Testing environment
 * Server and client side rendering
 * Routing on client and server sides
 * Hot module replacement
@@ -47,8 +47,7 @@ npm install
 To build and start project for production run in console:
 
 ```bash
-NODE_ENV=production npm run build
-NODE_ENV=production npm run start
+npm run deploy
 ```
 
 # Development
@@ -85,7 +84,7 @@ For working with hot reloading mode, open your in browser http://localhost:8080/
 
 ![Example of hot reload mode](docs/examle-hrm.gif)
 
-# Testing enviroment
+# Testing environment
 
 * [Karma](https://karma-runner.github.io/)
 * [Karma-phantomjs-launcher](https://github.com/karma-runner/karma-phantomjs-launcher)
