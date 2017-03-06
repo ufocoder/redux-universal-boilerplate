@@ -33,7 +33,6 @@ if (prodMode) {
   const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
   plugins.push(new ExtractTextPlugin('styles.css'));
-  plugins.push(new webpack.optimize.DedupePlugin());
   plugins.push(new webpack.optimize.UglifyJsPlugin({
     compress: {
       warnings: false,
@@ -46,25 +45,25 @@ if (prodMode) {
 
   rules.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesCss'),
-    use: ExtractTextPlugin.extract({
-      fallbackLoader: 'style-loader',
-      loader: 'css-loader',
+    loader: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: 'css-loader',
     }),
   });
 
   rules.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesSass'),
     loader: ExtractTextPlugin.extract({
-      fallbackLoader: 'style-loader',
-      loader: 'css-loader!sass-loader',
+      fallback: 'style-loader',
+      use: 'css-loader!sass-loader',
     }),
   });
 
   rules.push({
     test: webpackIsomorphicToolsPlugin.regular_expression('stylesStyl'),
     loader: ExtractTextPlugin.extract({
-      fallbackLoader: 'style-loader',
-      loader: 'css-loader!stylus-loader',
+      fallback: 'style-loader',
+      use: 'css-loader!stylus-loader',
     }),
   });
 } else {
@@ -92,7 +91,7 @@ plugins.push(new webpack.NamedModulesPlugin());
 
 module.exports = _.mergeWith(config, {
   target: 'web',
-  devtool: devMode ? 'source-map' : null,
+  devtool: devMode ? 'source-map' : false,
   module: {
     rules: rules,
   },
