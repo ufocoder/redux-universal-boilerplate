@@ -7,7 +7,7 @@ config.entry.push(
 );
 
 module.exports = _.mergeWith(config, {
-  devtool: 'eval',
+  devtool: 'source-map',
   cache: true,
   watch: true,
   output: {
