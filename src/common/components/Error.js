@@ -1,26 +1,20 @@
-import React, {Component, PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class Error extends Component {
-  static propTypes = {
-    title: PropTypes.string,
-    message: PropTypes.string,
-  }
-  render() {
-    return (
-      <div className="ui negative message">
-        { this.props.title ?
-          (
-            <div className="header">
-              { this.props.title }
-            </div>
-          ) : null
-        }
-        { this.props.message ?
-          (
-            <p>{this.props.message}</p>
-          ) : null
-        }
+const Error = (props) => (
+  <div className="ui negative message">
+    {props.title && (
+      <div className="header">
+        {props.title }
       </div>
-    );
-  }
-}
+    )}
+    {props.message && (
+      <p>{props.message}</p>
+    )}
+  </div>
+);
+
+Error.propTypes = {
+  title: PropTypes.string,
+  message: PropTypes.string,
+};
