@@ -3,9 +3,12 @@ import {
   LOGIN_FAILURE,
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE,
+} from 'src/common/constants/actions/Auth';
+
+import {
   TEST_USERNAME,
   TEST_PASSWORD,
-} from 'src/common/constants/actions/Auth';
+} from 'src/common/constants/application';
 
 const fakeUser = {
   username: 'demo',
