@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
+
 import {login} from 'src/common/actions/Auth';
 import Error from 'src/common/components/Error';
+
 import {
   TEST_USERNAME,
   TEST_PASSWORD,
-} from 'src/common/constants/actions/Auth';
+} from 'src/common/constants/application';
 
 @connect(
   (state) => ({

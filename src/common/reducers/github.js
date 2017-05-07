@@ -1,9 +1,9 @@
 import {
-  RESET_TRENDS,
-  FETCH_TRENDS_LOADING,
-  FETCH_TRENDS_SUCCESS,
-  FETCH_TRENDS_FAILURE,
-} from 'src/constants/actions/Github';
+  TRENDS_RESET,
+  TRENDS_FETCH_REQUEST,
+  TRENDS_FETCH_SUCCESS,
+  TRENDS_FETCH_FAILURE,
+} from 'src/common/constants/actions/Github';
 
 export const initialState = {
   trends: [],
@@ -13,24 +13,24 @@ export const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_TRENDS_LOADING:
+    case TRENDS_FETCH_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case FETCH_TRENDS_SUCCESS:
+    case TRENDS_FETCH_SUCCESS:
       return {
         ...state,
         loading: false,
-        trends: action.trends,
+        trends: action.payload.trends,
       };
-    case FETCH_TRENDS_FAILURE:
+    case TRENDS_FETCH_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.error,
+        error: action.payload,
       };
-    case RESET_TRENDS:
+    case TRENDS_RESET:
       return initialState;
     default:
       return state;

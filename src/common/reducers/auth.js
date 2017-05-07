@@ -15,14 +15,14 @@ export default (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        user: action.result,
+        user: action.payload,
         loggedIn: true,
       };
     case LOGIN_FAILURE:
       return {
         ...state,
         user: null,
-        error: action.error,
+        error: action.payload,
       };
     case LOGOUT_SUCCESS:
       return {
@@ -33,7 +33,7 @@ export default (state = initialState, action) => {
     case LOGOUT_FAILURE:
       return {
         ...state,
-        error: action.error,
+        error: action.payload,
       };
     default:
       return state;

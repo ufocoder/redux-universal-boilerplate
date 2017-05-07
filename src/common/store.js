@@ -1,9 +1,12 @@
 /* global window, __DEV__, __CLIENT__ */
 
 import {createStore, applyMiddleware, compose} from 'redux';
-import thunk from 'redux-thunk';
 import {routerMiddleware} from 'react-router-redux';
+import createSagaMiddleware from 'redux-saga';
+
 import rootReducer from './reducers';
+import rootSaga from './sagas';
+
 
 /**
  * Return store
@@ -13,11 +16,13 @@ import rootReducer from './reducers';
  * @return {object} Returns store with state
  */
 export default function(history, initialState = {}) {
+  const sagaMiddleware = createSagaMiddleware();
+
   let finalCreateStore;
 
   if (__DEV__ && __CLIENT__) {
     finalCreateStore = compose(
-      applyMiddleware(thunk),
+      applyMiddleware(sagaMiddleware),
       applyMiddleware(routerMiddleware(history)),
       typeof window === 'object' &&
       typeof window.devToolsExtension !== 'undefined' ?
@@ -25,12 +30,14 @@ export default function(history, initialState = {}) {
     )(createStore);
   } else {
     finalCreateStore = compose(
-      applyMiddleware(thunk),
+      applyMiddleware(sagaMiddleware),
       applyMiddleware(routerMiddleware(history))
     )(createStore);
   }
 
   const store = finalCreateStore(rootReducer, initialState);
+
+  sagaMiddleware.run(rootSaga);
 
   if (__DEV__ && module.hot) {
     module.hot.accept('./reducers', () => {
