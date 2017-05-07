@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
-import {login} from 'src/common/actions/Auth';
+import {loginRequest} from 'src/common/actions/Auth';
 import Error from 'src/common/components/Error';
 
 import {
@@ -20,7 +20,7 @@ import {
   }),
   (dispatch) => ({
     handleSubmit: (username, password) => {
-      dispatch(login(username, password));
+      dispatch(loginRequest(username, password));
     },
     handleRedirect: () => {
       dispatch(push('/profile'));

@@ -1,4 +1,4 @@
-import {logout} from 'src/common/actions/Auth';
+import {logoutRequest} from 'src/common/actions/Auth';
 
 /**
  * @param  {object} store Redux store
@@ -32,7 +32,7 @@ export function authNoRequired(store) {
  */
 export function authLogout(store) {
   return (nextState, replace) => {
-    store.dispatch(logout());
+    store.dispatch(logoutRequest());
     replace('/login');
   };
 }

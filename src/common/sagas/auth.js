@@ -1,9 +1,11 @@
 import {put} from 'redux-saga/effects';
 
 import {
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-} from 'src/common/constants/actions/Auth';
+  loginSuccess,
+  loginFailure,
+  logoutSuccess,
+  logoutFailure,
+} from 'src/common/actions/Auth';
 
 import {
   TEST_USERNAME,
@@ -11,24 +13,25 @@ import {
   USER_FIXTURE,
 } from 'src/common/constants/application';
 
-export function* fetchAuthData(action) {
+export function* fetchLogin(action) {
   try {
     const {payload: {username, password}} = action;
     const validCredentials = username !== TEST_USERNAME && password !== TEST_PASSWORD;
 
     if (validCredentials) {
       throw new Error('Bad credentials');
+    } else {
+      yield put(loginSuccess(USER_FIXTURE));
     }
-
-    yield put({
-      type: LOGIN_SUCCESS,
-      payload: USER_FIXTURE,
-    });
   } catch (error) {
-    yield put({
-      type: LOGIN_FAILURE,
-      error: true,
-      payload: error,
-    });
+    yield put(loginFailure(error));
+  }
+}
+
+export function* fetchLogout() {
+  try {
+    yield put(logoutSuccess());
+  } catch (error) {
+    yield put(logoutFailure(error));
   }
 }

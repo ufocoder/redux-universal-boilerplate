@@ -1,3 +1,5 @@
+import {handleActions} from 'redux-actions';
+
 import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
@@ -10,32 +12,24 @@ const initialState = {
   loggedIn: false,
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        user: action.payload,
-        loggedIn: true,
-      };
-    case LOGIN_FAILURE:
-      return {
-        ...state,
-        user: null,
-        error: action.payload,
-      };
-    case LOGOUT_SUCCESS:
-      return {
-        ...state,
-        loggedIn: false,
-        user: null,
-      };
-    case LOGOUT_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-      };
-    default:
-      return state;
-  }
-};
+export default handleActions({
+  [LOGIN_SUCCESS]: (state, action) => ({
+    ...state,
+    user: action.payload,
+    loggedIn: true,
+  }),
+  [LOGIN_FAILURE]: (state, action) => ({
+    ...state,
+    user: null,
+    error: action.payload,
+  }),
+  [LOGOUT_SUCCESS]: (state, action) => ({
+    ...state,
+    loggedIn: false,
+    user: null,
+  }),
+  [LOGOUT_FAILURE]: (state, action) => ({
+    ...state,
+    error: action.payload,
+  }),
+}, initialState);
