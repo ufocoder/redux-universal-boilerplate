@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {provideHooks} from 'redial';
 import {connect} from 'react-redux';
 import {fetchTrends, resetTrends} from 'src/common/actions/Github';

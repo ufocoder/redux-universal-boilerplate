@@ -1,6 +1,7 @@
 /* eslint react/no-danger: 0 */
 
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import serialize from 'serialize-javascript';
 import {CONTAINER_ID} from 'src/common/constants/application';

@@ -1,7 +1,8 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import {connect} from 'react-redux';
-import {browserHistory} from 'react-router';
+import {push} from 'react-router-redux';
 import {login} from 'src/common/actions/Auth';
 import Error from 'src/common/components/Error';
 import {
@@ -16,8 +17,11 @@ import {
     loggedIn: state.auth.loggedIn,
   }),
   (dispatch) => ({
-    submit: (username, password) => {
+    handleSubmit: (username, password) => {
       dispatch(login(username, password));
+    },
+    handleRedirect: () => {
+      dispatch(push('/profile'));
     },
   })
 )
@@ -26,21 +30,23 @@ export default class Login extends Component {
     user: PropTypes.object,
     error: PropTypes.string,
     loggedIn: PropTypes.bool,
-    submit: PropTypes.func,
+
+    handleSubmit: PropTypes.func,
+    handleRedirect: PropTypes.func,
   }
 
   handleSubmit = (event) => {
-    const username = this.refs.username.value;
-    const password = this.refs.password.value;
+    const username = this.username.value;
+    const password = this.password.value;
 
     event.preventDefault();
 
-    this.props.submit(username, password);
+    this.props.handleSubmit(username, password);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.loggedIn) {
-      browserHistory.push('/profile');
+      this.props.handleRedirect();
     }
   }
 
@@ -67,11 +73,15 @@ export default class Login extends Component {
         <form className="ui form" onSubmit={this.handleSubmit}>
           <div className="field">
             <label>Username</label>
-            <input type="text" ref="username" placeholder="Enter a username" />
+            <input type="text" ref={(ref) => {
+              this.username = ref;
+            }} placeholder="Enter a username" />
           </div>
           <div className="field">
             <label>Password</label>
-            <input type="password" ref="password" placeholder="Last Name" />
+            <input type="password" ref={(ref) => {
+              this.password = ref;
+            }} placeholder="Last Name" />
           </div>
           <button className="ui button"
                   type="submit"

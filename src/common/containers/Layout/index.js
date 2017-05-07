@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Layout from 'src/common/components/Layout';
 
@@ -7,7 +8,7 @@ import Layout from 'src/common/components/Layout';
     loggedIn: state.auth.loggedIn,
   })
 )
-export default class LayoutContainer extends React.Component {
+export default class LayoutContainer extends Component {
   static propTypes = {
     children: PropTypes.object,
     loggedIn: PropTypes.bool,
