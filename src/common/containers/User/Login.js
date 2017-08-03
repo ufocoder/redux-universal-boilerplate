@@ -8,7 +8,7 @@ import Error from 'src/common/components/Error';
 import {
   TEST_USERNAME,
   TEST_PASSWORD,
-} from 'src/common/constants/actions/Auth';
+} from 'src/common/constants/application';
 
 @connect(
   (state) => ({
