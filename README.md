@@ -87,11 +87,12 @@ For working with hot reloading mode, open your in browser http://localhost:8080/
 # Testing environment
 
 * [Karma](https://karma-runner.github.io/)
-* [Karma-phantomjs-launcher](https://github.com/karma-runner/karma-phantomjs-launcher)
+* [Karma-chrome-launcher](https://github.com/karma-runner/karma-chrome-launcher)
 * [Mocha](https://mochajs.org/)
 * [Chai](http://chaijs.com/)
 * [Sinon](http://sinonjs.org/)
 * [Enzyme](https://github.com/airbnb/enzyme)
+* [Puppeteer](https://github.com/GoogleChrome/puppeteer)
 * and etc.
 
 There is a watch mode for testing:
