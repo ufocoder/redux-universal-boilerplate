@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - 6
+  - 8
 
 before_script:
   - npm install
@@ -9,3 +9,5 @@ before_script:
 script:
   - npm run test
   - npm run lint
+  - npm run deploy & sleep 120
+  - npm run test:e2e

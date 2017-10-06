@@ -38,6 +38,7 @@
     "watch:client": "webpack-dev-server --config webpack/client/watch.js",
     "test": "karma start ./tests/karma.config.js --single-run",
     "test:watch": "karma start ./tests/karma.config.js no-single-run",
+    "test:e2e": "mkdir -p .screenshots && mocha --timeout=20000 ./tests/e2e",
     "lint": "eslint ./src ./bin ./webpack ./tests -c ./.eslintrc"
   },
   "dependencies": {
@@ -104,6 +105,7 @@
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
+    "puppeteer": "^0.11.0",
     "react-addons-test-utils": "^15.4.2",
     "react-hot-loader": "^3.0.0-beta.6",
     "sinon": "^2.2.0",
