@@ -1,3 +1,5 @@
+process.env.CHROME_BIN = require('puppeteer').executablePath();
+
 module.exports = function(config) {
   config.set({
     frameworks: [
@@ -5,12 +7,12 @@ module.exports = function(config) {
       'chai',
       'sinon',
     ],
-    browsers: ['PhantomJS'],
+    browsers: ['ChromeHeadless'],
     plugins: [
       'karma-mocha',
       'karma-chai',
       'karma-sinon',
-      'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
       'karma-sourcemap-loader',
       'karma-coverage',
       require('karma-webpack'),
