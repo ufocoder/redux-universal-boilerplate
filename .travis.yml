@@ -9,5 +9,5 @@ before_script:
 script:
   - npm run test
   - npm run lint
-  - npm run build & sleep 5
+  - npm run deploy & sleep 120
   - npm run test:e2e
