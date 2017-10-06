@@ -5,3 +5,4 @@ webpack-assets.json
 webpack-stats.json
 *.log
 *.map
+.screenshots/
