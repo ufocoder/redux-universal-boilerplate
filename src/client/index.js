@@ -8,7 +8,7 @@ import Root from './Root';
 
 const reactRoot = window.document.getElementById(CONTAINER_ID);
 const render = () => {
-  ReactDOM.render(<Root />, reactRoot);
+  ReactDOM.hydrate(<Root />, reactRoot);
 };
 
 render();
