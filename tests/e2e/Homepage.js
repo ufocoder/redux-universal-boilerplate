@@ -5,16 +5,16 @@ describe('Acceptance tests', async function() {
   let browser = null;
   let page = null;
 
-  before(async() => {
+  before(async () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
   });
 
-  after(async() => {
+  after(async () => {
     await browser.close();
   });
 
-  it('Homepage DOM contains critical elements', async() => {
+  it('Homepage DOM contains critical elements', async () => {
     await page.goto('http://localhost:8000/');
     await page.screenshot({path: '.screenshots/Homepage.png'});
     const expectedSelectors = [
@@ -29,7 +29,7 @@ describe('Acceptance tests', async function() {
     }
   });
 
-  it('Login/Logout works', async() => {
+  it('Login/Logout works', async () => {
     await page.goto('http://localhost:8000/');
 
     // Fill out username/password and login

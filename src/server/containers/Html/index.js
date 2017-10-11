@@ -7,7 +7,6 @@ import serialize from 'serialize-javascript';
 import {CONTAINER_ID} from 'src/common/constants/application';
 
 export default class Html extends React.Component {
-
   static propTypes = {
     assets: PropTypes.object.isRequired,
     content: PropTypes.string.isRequired,

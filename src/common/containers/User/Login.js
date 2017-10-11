@@ -83,9 +83,10 @@ export default class Login extends Component {
               this.password = ref;
             }} placeholder="Last Name" />
           </div>
-          <button className="ui button"
-                  type="submit"
-                  onClick={this.handleSubmit}>Submit</button>
+          <button
+            className="ui button"
+            type="submit"
+            onClick={this.handleSubmit}>Submit</button>
         </form>
       </div>
     );
