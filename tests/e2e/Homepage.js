@@ -47,7 +47,8 @@ describe('Acceptance tests', async function() {
     await page.waitForSelector('a.item.active[href="/profile"]');
     await page.screenshot({path: '.screenshots/LoggedIn.png'});
     let welcomeMessageText = await page.$eval('div.ui.text.container div.ui.segment', (el) => el.innerText);
-    expect(welcomeMessageText).to.equal('Welcome, demo!');
+    // Account for any leading/trailing whitespace/line returns
+    expect(welcomeMessageText).to.match(/^\s*Welcome, demo!\s*$/);
 
     // Logout
     await page.click('a.item[href="/logout"]');
