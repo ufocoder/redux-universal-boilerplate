@@ -1,25 +1,25 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import {connect} from 'react-redux';
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
+import {connect} from 'react-redux'
 
 @connect(
   (state) => ({
-    user: state.auth.user,
+    user: state.auth.user
   })
 )
 export default class Profile extends Component {
   static propTypes = {
-    user: PropTypes.object,
+    user: PropTypes.object
   };
 
-  render() {
+  render () {
     return (
       <div>
         <Helmet title="Profile" />
 
         Welcome, {this.props.user.username}!
       </div>
-    );
+    )
   }
 }

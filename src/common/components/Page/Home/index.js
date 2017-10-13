@@ -1,7 +1,7 @@
-import React from 'react';
-import Helmet from 'react-helmet';
+import React from 'react'
+import Helmet from 'react-helmet'
 
-import './assets/styles.styl';
+import './assets/styles.styl'
 
 const Home = () => (
   <div className="homepage">
@@ -14,6 +14,6 @@ const Home = () => (
     </div>
     <div className="homepage__ground" />
   </div>
-);
+)
 
-export default Home;
+export default Home

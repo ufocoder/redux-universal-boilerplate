@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Header = () => (
   <footer className="ui vertical footer segment">
@@ -6,6 +6,6 @@ const Header = () => (
       © {(new Date()).getFullYear()}, All rights reserved
     </div>
   </footer>
-);
+)
 
-export default Header;
+export default Header
