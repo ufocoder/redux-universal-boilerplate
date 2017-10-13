@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import Header from './Header';
-import Footer from './Footer';
+import Header from './Header'
+import Footer from './Footer'
 
-import 'semantic-ui-css/semantic.css';
+import 'semantic-ui-css/semantic.css'
 
 const Layout = (props) => (
   <div>
@@ -18,11 +18,11 @@ const Layout = (props) => (
     </div>
     <Footer />
   </div>
-);
+)
 
 Layout.propTypes = {
   children: PropTypes.object,
-  loggedIn: PropTypes.bool,
-};
+  loggedIn: PropTypes.bool
+}
 
-export default Layout;
+export default Layout

@@ -1,37 +1,37 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {IndexLink, Link} from 'react-router';
+import React from 'react'
+import PropTypes from 'prop-types'
+import {IndexLink, Link} from 'react-router'
 
 const Header = (props) => {
   const links = [
     {
       to: '/trends',
-      title: 'Github trends',
+      title: 'Github trends'
     },
     {
       to: '/about',
-      title: 'About',
+      title: 'About'
     },
     {
       to: '/404',
-      title: 'Non-exists page',
-    },
-  ];
+      title: 'Non-exists page'
+    }
+  ]
 
   if (props.loggedIn) {
     links.push({
       to: '/profile',
-      title: 'Profile',
-    });
+      title: 'Profile'
+    })
     links.push({
       to: '/logout',
-      title: 'Logout',
-    });
+      title: 'Logout'
+    })
   } else {
     links.push({
       to: '/login',
-      title: 'Login',
-    });
+      title: 'Login'
+    })
   }
 
   return (
@@ -46,7 +46,7 @@ const Header = (props) => {
           activeClassName="active">
           Homepage
         </IndexLink>
-        { links.map(function(link, i) {
+        { links.map(function (link, i) {
           return (
             <Link
               to={link.to}
@@ -55,15 +55,15 @@ const Header = (props) => {
               activeClassName="active">
               {link.title}
             </Link>
-          );
+          )
         }) }
       </div>
     </div>
-  );
-};
+  )
+}
 
 Header.propTypes = {
-  loggedIn: PropTypes.bool,
-};
+  loggedIn: PropTypes.bool
+}
 
-export default Header;
+export default Header

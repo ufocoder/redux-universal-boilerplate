@@ -1,38 +1,38 @@
-import {logout} from 'src/common/actions/Auth';
+import {logout} from 'src/common/actions/Auth'
 
 /**
  * @param  {object} store Redux store
  * @return {function} onEnter callback helper for check authenticated user
  */
-export function authRequired(store) {
+export function authRequired (store) {
   return (nextState, replace) => {
-    const state = store.getState();
+    const state = store.getState()
     if (!state.auth.loggedIn) {
-      replace('/login');
+      replace('/login')
     }
-  };
+  }
 }
 
 /**
  * @param  {object} store Redux store
  * @return {function} onEnter callback helper for check not authenticated user
  */
-export function authNoRequired(store) {
+export function authNoRequired (store) {
   return (nextState, replace) => {
-    const state = store.getState();
+    const state = store.getState()
     if (state.auth.loggedIn) {
-      replace('/profile');
+      replace('/profile')
     }
-  };
+  }
 }
 
 /**
  * @param  {object} store Redux store
  * @return {function} onEnter callback helper for user logout
  */
-export function authLogout(store) {
+export function authLogout (store) {
   return (nextState, replace) => {
-    store.dispatch(logout());
-    replace('/login');
-  };
+    store.dispatch(logout())
+    replace('/login')
+  }
 }

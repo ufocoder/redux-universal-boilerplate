@@ -1,9 +1,9 @@
 /* global window, __DEV__, __CLIENT__ */
 
-import {createStore, applyMiddleware, compose} from 'redux';
-import thunk from 'redux-thunk';
-import {routerMiddleware} from 'react-router-redux';
-import rootReducer from './reducers';
+import {createStore, applyMiddleware, compose} from 'redux'
+import thunk from 'redux-thunk'
+import {routerMiddleware} from 'react-router-redux'
+import rootReducer from './reducers'
 
 /**
  * Return store
@@ -12,8 +12,8 @@ import rootReducer from './reducers';
  * @param {object} initialState Initial state for store
  * @return {object} Returns store with state
  */
-export default function(history, initialState = {}) {
-  let finalCreateStore;
+export default function (history, initialState = {}) {
+  let finalCreateStore
 
   if (__DEV__ && __CLIENT__) {
     finalCreateStore = compose(
@@ -21,22 +21,22 @@ export default function(history, initialState = {}) {
       applyMiddleware(routerMiddleware(history)),
       typeof window === 'object' &&
       typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
-    )(createStore);
+    )(createStore)
   } else {
     finalCreateStore = compose(
       applyMiddleware(thunk),
       applyMiddleware(routerMiddleware(history))
-    )(createStore);
+    )(createStore)
   }
 
-  const store = finalCreateStore(rootReducer, initialState);
+  const store = finalCreateStore(rootReducer, initialState)
 
   if (__DEV__ && module.hot) {
     module.hot.accept('./reducers', () => {
-      const nextRootReducer = require('./reducers').default;
-      store.replaceReducer(nextRootReducer);
-    });
+      const nextRootReducer = require('./reducers').default
+      store.replaceReducer(nextRootReducer)
+    })
   }
 
-  return store;
+  return store
 }

@@ -1,6 +1,6 @@
-import React from 'react';
-import {Link} from 'react-router';
-import Helmet from 'react-helmet';
+import React from 'react'
+import {Link} from 'react-router'
+import Helmet from 'react-helmet'
 
 const NotFound = () => (
   <div>
@@ -14,6 +14,6 @@ const NotFound = () => (
     </div>
     <p><Link to="/">Go home</Link></p>
   </div>
-);
+)
 
-export default NotFound;
+export default NotFound

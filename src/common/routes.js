@@ -1,17 +1,17 @@
-import React from 'react';
-import {Route, IndexRoute} from 'react-router';
-import Layout from './containers/Layout';
-import NotFound from './components/NotFound';
-import About from './components/Page/About';
-import Home from './components/Page/Home';
-import Login from './containers/User/Login';
-import Profile from './containers/User/Profile';
-import Github from './containers/Github';
+import React from 'react'
+import {Route, IndexRoute} from 'react-router'
+import Layout from './containers/Layout'
+import NotFound from './components/NotFound'
+import About from './components/Page/About'
+import Home from './components/Page/Home'
+import Login from './containers/User/Login'
+import Profile from './containers/User/Profile'
+import Github from './containers/Github'
 import {
   authRequired,
   authNoRequired,
-  authLogout,
-} from './helpers/routes';
+  authLogout
+} from './helpers/routes'
 
 const routes = (store) => {
   return (
@@ -31,7 +31,7 @@ const routes = (store) => {
 
       <Route path="*" name="not-found" component={NotFound} />
     </Route>
-  );
-};
+  )
+}
 
-export default routes;
+export default routes

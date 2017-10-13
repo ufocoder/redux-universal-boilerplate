@@ -1,11 +1,11 @@
-process.env.CHROME_BIN = require('puppeteer').executablePath();
+process.env.CHROME_BIN = require('puppeteer').executablePath()
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     frameworks: [
       'mocha',
       'chai',
-      'sinon',
+      'sinon'
     ],
     browsers: ['ChromeHeadless'],
     plugins: [
@@ -15,28 +15,28 @@ module.exports = function(config) {
       'karma-chrome-launcher',
       'karma-sourcemap-loader',
       'karma-coverage',
-      require('karma-webpack'),
+      require('karma-webpack')
     ],
     reporters: ['dots'],
     preprocessors: {
       'entry.js': [
         'webpack',
-        'sourcemap',
-      ],
+        'sourcemap'
+      ]
     },
     webpack: require('../webpack/tests.config'),
     webpackServer: {
       watchOptions: {
         aggregateTimeout: 500,
-        poll: 1000,
+        poll: 1000
       },
       stats: {
-        colors: true,
+        colors: true
       },
-      noInfo: true,
+      noInfo: true
     },
     files: [
-      'entry.js',
-    ],
-  });
-};
+      'entry.js'
+    ]
+  })
+}
