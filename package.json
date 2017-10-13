@@ -39,7 +39,8 @@
     "test": "karma start ./tests/karma.config.js --single-run",
     "test:watch": "karma start ./tests/karma.config.js no-single-run",
     "test:e2e": "mkdir -p .screenshots && mocha --timeout=20000 ./tests/e2e",
-    "lint": "eslint ./src ./bin ./webpack ./tests -c ./.eslintrc"
+    "lint": "eslint ./src ./bin ./webpack ./tests -c ./.eslintrc",
+    "prettier": "prettier ./src/**/*.js ./bin/**/*.js ./webpack/**/*.js ./tests/**/*.js"
   },
   "dependencies": {
     "axios": "^0.16.1",
@@ -105,6 +106,7 @@
     "mocha": "^4.0.1",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
+    "prettier": "^1.7.4",
     "puppeteer": "^0.11.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "react-test-renderer": "^16.0.0",
