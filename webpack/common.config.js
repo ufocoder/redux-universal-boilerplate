@@ -1,6 +1,6 @@
-const path = require('path');
-const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
-const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./isomorphic.config'));
+const path = require('path')
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
+const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./isomorphic.config'))
 
 module.exports = {
   cache: false,
@@ -10,16 +10,16 @@ module.exports = {
     hasErrors: true,
     hasWarnings: true,
     reasons: true,
-    errorDetails: true,
+    errorDetails: true
   },
   resolve: {
     modules: [
       'src',
-      'node_modules',
+      'node_modules'
     ],
     alias: {
-      src: path.join(path.dirname(__dirname), 'src'),
-    },
+      src: path.join(path.dirname(__dirname), 'src')
+    }
   },
   module: {
     rules: [
@@ -29,30 +29,30 @@ module.exports = {
         options: {
           cacheDirectory: true,
           plugins: ['transform-decorators-legacy', 'react-hot-loader/babel'],
-          presets: ['es2015', 'stage-0', 'react'],
+          presets: ['es2015', 'stage-0', 'react']
         },
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.json$/,
-        loader: 'json-loader',
+        loader: 'json-loader'
       },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
         loader: 'url-loader',
         options: {
           limit: 10240,
-          name: 'assets/img/[hash].[ext]',
-        },
-      },
+          name: 'assets/img/[hash].[ext]'
+        }
+      }
     ],
-    noParse: /\.min\.js/,
+    noParse: /\.min\.js/
   },
   output: {
-    publicPath: '/assets/',
+    publicPath: '/assets/'
   },
   node: {
     __dirname: true,
-    fs: 'empty',
-  },
-};
+    fs: 'empty'
+  }
+}

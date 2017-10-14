@@ -1,6 +1,6 @@
 /* eslint camelcase: [2, {properties: "never"}] */
 
-const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
 
 /**
  * Style filter
@@ -11,14 +11,14 @@ const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
  * @param  {[type]} log               [description]
  * @return {[type]}                   [description]
  */
-function styleFilter(module, regularExpression, options, log) {
+function styleFilter (module, regularExpression, options, log) {
   if (options.development) {
     return WebpackIsomorphicToolsPlugin.style_loader_filter(
       module,
       regularExpression,
       options,
       log
-    );
+    )
   }
 }
 
@@ -30,13 +30,13 @@ function styleFilter(module, regularExpression, options, log) {
  * @param  {[type]} log     [description]
  * @return {[type]}         [description]
  */
-function stylePath(module, options, log) {
+function stylePath (module, options, log) {
   if (options.development) {
     return WebpackIsomorphicToolsPlugin.style_loader_path_extractor(
       module,
       options,
       log
-    );
+    )
   }
 }
 
@@ -47,13 +47,13 @@ function stylePath(module, options, log) {
  * @param  {[type]} log     [description]
  * @return {[type]}         [description]
  */
-function styleParser(module, options, log) {
+function styleParser (module, options, log) {
   if (options.development) {
     return WebpackIsomorphicToolsPlugin.css_loader_parser(
       module,
       options,
       log
-    );
+    )
   }
 }
 
@@ -67,41 +67,41 @@ module.exports = {
         'jpg',
         'gif',
         'ico',
-        'svg',
-      ],
+        'svg'
+      ]
     },
     fonts: {
       extensions: [
         'woff',
         'woff2',
         'ttf',
-        'eot',
-      ],
+        'eot'
+      ]
     },
     stylesCss: {
       extensions: [
         'css',
-        'scss',
+        'scss'
       ],
       filter: styleFilter,
       path: stylePath,
-      parser: styleParser,
+      parser: styleParser
     },
     stylesSass: {
       extensions: [
-        'sass',
+        'sass'
       ],
       filter: styleFilter,
       path: stylePath,
-      parser: styleParser,
+      parser: styleParser
     },
     stylesStyl: {
       extensions: [
-        'styl',
+        'styl'
       ],
       filter: styleFilter,
       path: stylePath,
-      parser: styleParser,
-    },
-  },
-};
+      parser: styleParser
+    }
+  }
+}

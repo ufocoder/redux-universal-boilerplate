@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const Error = (props) => (
-  <div className="ui negative message">
+  <div className='ui negative message'>
     {props.title && (
-      <div className="header">
+      <div className='header'>
         {props.title }
       </div>
     )}
@@ -12,9 +12,9 @@ const Error = (props) => (
       <p>{props.message}</p>
     )}
   </div>
-);
+)
 
 Error.propTypes = {
   title: PropTypes.string,
-  message: PropTypes.string,
-};
+  message: PropTypes.string
+}

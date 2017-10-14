@@ -39,7 +39,7 @@
     "test": "karma start ./tests/karma.config.js --single-run",
     "test:watch": "karma start ./tests/karma.config.js no-single-run",
     "test:e2e": "mkdir -p .screenshots && mocha --timeout=20000 ./tests/e2e",
-    "lint": "eslint ./src ./bin ./webpack ./tests -c ./.eslintrc",
+    "lint": "standard ./src/**/*.js ./bin/**/*.js ./webpack/**/*.js ./tests/**/*.js",
     "prettier": "prettier ./src/**/*.js ./bin/**/*.js ./webpack/**/*.js ./tests/**/*.js"
   },
   "dependencies": {
@@ -91,9 +91,6 @@
     "enzyme-adapter-react-16": "^1.0.1",
     "es6-map": "^0.1.5",
     "es6-set": "^0.1.5",
-    "eslint": "^4.8.0",
-    "eslint-config-google": "^0.9.1",
-    "eslint-plugin-react": "^7.0.0",
     "just-wait": "^1.0.11",
     "karma": "^1.5.0",
     "karma-chai": "^0.1.0",
@@ -111,6 +108,7 @@
     "react-hot-loader": "^3.0.0-beta.6",
     "react-test-renderer": "^16.0.0",
     "sinon": "^4.0.1",
+    "standard": "^10.0.3",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.4.1",
     "webpack-node-externals": "^1.4.3"
