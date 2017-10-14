@@ -115,5 +115,10 @@
   },
   "engines": {
     "node": ">=6.9.0"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
   }
 }

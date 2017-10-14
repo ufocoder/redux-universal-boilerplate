@@ -16,7 +16,7 @@ describe('Acceptance tests', async function () {
 
   it('Homepage DOM contains critical elements', async () => {
     await page.goto('http://localhost:8000/')
-    await page.screenshot({path: '.screenshots/Homepage.png'})
+    await page.screenshot({ path: '.screenshots/Homepage.png' })
     const expectedSelectors = [
       'div#application',
       'div.layout-container',
@@ -25,7 +25,7 @@ describe('Acceptance tests', async function () {
     ]
     for (let expectedSelector of expectedSelectors) {
       expect(await page.$(expectedSelector),
-        `Expected CSS Selector [${expectedSelector}] to exist in DOM`).to.not.be.null
+        `Expected CSS Selector [${expectedSelector}] to exist in DOM`).to.not.equal(null)
     }
   })
 
@@ -45,7 +45,7 @@ describe('Acceptance tests', async function () {
 
     // Verify we are logged in and expected welcome message is shown
     await page.waitForSelector('a.item.active[href="/profile"]')
-    await page.screenshot({path: '.screenshots/LoggedIn.png'})
+    await page.screenshot({ path: '.screenshots/LoggedIn.png' })
     let welcomeMessageText = await page.$eval('div.ui.text.container div.ui.segment', (el) => el.innerText)
     // Account for any leading/trailing whitespace/line returns
     expect(welcomeMessageText).to.match(/^\s*Welcome, demo!\s*$/)
@@ -53,6 +53,6 @@ describe('Acceptance tests', async function () {
     // Logout
     await page.click('a.item[href="/logout"]')
     await new Promise((resolve) => setTimeout(resolve, 2000))
-    expect(await page.$('a.item[href="/profile"]')).to.be.null
+    expect(await page.$('a.item[href="/profile"]')).to.equal(null)
   })
 })

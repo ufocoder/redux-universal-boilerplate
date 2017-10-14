@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
-import {AppContainer} from 'react-hot-loader'
-import {trigger} from 'redial'
-import {Router, browserHistory, match} from 'react-router'
-import {syncHistoryWithStore} from 'react-router-redux'
-import {Provider} from 'react-redux'
+import React, { Component } from 'react'
+import { AppContainer } from 'react-hot-loader'
+import { trigger } from 'redial'
+import { Router, browserHistory, match } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+import { Provider } from 'react-redux'
 
 import configureStore from 'src/common/store'
 import routesContainer from 'src/common/routes'
@@ -12,12 +12,15 @@ const initialState = window.__INITIAL_STATE__
 const store = configureStore(browserHistory, initialState)
 const history = syncHistoryWithStore(browserHistory, store)
 const routes = routesContainer(store)
-const {dispatch} = store
+const { dispatch } = store
 
 history.listen((location) => {
-  match({routes, location, history}, (error, redirectLocation, renderProps) => {
+  match({ routes, location, history }, (error, redirectLocation, renderProps) => {
+    if (error) {
+      console.error(error)
+    }
     if (renderProps) {
-      const {components} = renderProps
+      const { components } = renderProps
       const locals = {
         path: renderProps.location.pathname,
         query: renderProps.location.query,
