@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-import {routerReducer as routing} from 'react-router-redux'
+import {routerReducer as routing} from 'connected-react-router'
 import auth from './auth'
 import github from './github'
 

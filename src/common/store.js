@@ -2,7 +2,7 @@
 
 import {createStore, applyMiddleware, compose} from 'redux'
 import thunk from 'redux-thunk'
-import {routerMiddleware} from 'react-router-redux'
+import {connectRouter, routerMiddleware} from 'connected-react-router'
 import rootReducer from './reducers'
 
 /**
@@ -12,21 +12,27 @@ import rootReducer from './reducers'
  * @param {object} initialState Initial state for store
  * @return {object} Returns store with state
  */
+
 export default function (history, initialState = {}) {
-  let finalCreateStore
+
+  let finalCreateStore;
+
+  const middlleware = [thunk, routerMiddleware(history)];
 
   if (__DEV__ && __CLIENT__) {
-    finalCreateStore = compose(
-      applyMiddleware(thunk),
-      applyMiddleware(routerMiddleware(history)),
-      typeof window === 'object' &&
-      typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
-    )(createStore)
+    finalCreateStore = createStore(
+      connectRouter(browserHistory)(rootReducer),
+      applyMiddleware(...middleware),
+    );
   } else {
-    finalCreateStore = compose(
-      applyMiddleware(thunk),
-      applyMiddleware(routerMiddleware(history))
-    )(createStore)
+    finalCreateStore = createStore(
+      connectRouter(browserHistory)(rootReducer),
+      compose(
+        applyMiddleware(...middleware),
+        typeof window === 'object' &&
+        typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
+      ),
+    );
   }
 
   const store = finalCreateStore(rootReducer, initialState)
@@ -38,5 +44,6 @@ export default function (history, initialState = {}) {
     })
   }
 
-  return store
+  return store;
+
 }

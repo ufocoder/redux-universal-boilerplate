@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, IndexRoute} from 'react-router'
+import {Route, IndexRoute, Switch} from 'react-router-dom'
 import Layout from './containers/Layout'
 import NotFound from './components/NotFound'
 import About from './components/Page/About'
@@ -15,22 +15,24 @@ import {
 
 const routes = (store) => {
   return (
-    <Route path='/' component={Layout}>
-      <IndexRoute component={Home} />
-      <Route path='about' component={About} />
-      <Route path='trends' component={Github} />
+    <Switch>
+      <Route exact path='/' component={Layout}>
+        <Route path='/home' component={Home} />
+        <Route path='/about' component={About} />
+        <Route path='/trends' component={Github} />
 
-      <Route onEnter={authNoRequired(store)}>
-        <Route path='login' component={Login} />
+        <Route render={() => { return authNoRequired(store) }} >
+          <Route path='/login' component={Login} />
+        </Route>
+
+        <Route render={() => { return authRequired(store) }} >
+          <Route path='/profile' component={Profile} />
+          <Route path='/logout' render={() => { return authLogout(store) }} />
+        </Route>
+
+        <Route path='*' name='not-found' component={NotFound} />
       </Route>
-
-      <Route onEnter={authRequired(store)}>
-        <Route path='profile' component={Profile} />
-        <Route path='logout' onEnter={authLogout(store)} />
-      </Route>
-
-      <Route path='*' name='not-found' component={NotFound} />
-    </Route>
+    </Switch>
   )
 }
 

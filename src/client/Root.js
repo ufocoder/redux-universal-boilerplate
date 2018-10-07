@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { AppContainer } from 'react-hot-loader'
 import { trigger } from 'redial'
-import { Router, browserHistory, match } from 'react-router'
-import { syncHistoryWithStore } from 'react-router-redux'
+import { Router, browserHistory, match } from 'react-router-dom'
+import { ConnectedRouter, syncHistoryWithStore } from 'connected-react-router'
 import { Provider } from 'react-redux'
 
 import configureStore from 'src/common/store'
@@ -45,9 +45,9 @@ export default class Root extends Component {
     return (
       <AppContainer>
         <Provider store={store}>
-          <Router history={history}>
+          <ConnectedRouter history={history}>
             {routes}
-          </Router>
+          </ConnectedRouter>
         </Provider>
       </AppContainer>
     )

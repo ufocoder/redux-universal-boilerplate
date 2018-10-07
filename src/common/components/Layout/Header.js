@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {IndexLink, Link} from 'react-router'
+import {Link} from 'react-router-dom'
 
 const Header = (props) => {
   const links = [
@@ -40,12 +40,12 @@ const Header = (props) => {
         Redux universal boilerplate
       </h1>
       <div className='ui secondary pointing menu'>
-        <IndexLink
+        <Link
           className='item'
           to='/'
           activeClassName='active'>
           Homepage
-        </IndexLink>
+        </Link>
         { links.map(function (link, i) {
           return (
             <Link
